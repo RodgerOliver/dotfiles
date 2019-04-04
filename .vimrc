@@ -1,8 +1,18 @@
 " use VIM config instead of VI
 set nocompatible
+" source .vimrc
+nnoremap <space>s :w<CR>:source %<CR>:AirlineRefresh<CR>
+
+" disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " to remove a set option prepend 'no' to the option
+
 set number "nu"
+set numberwidth=4
 set relativenumber "rnu"
 set hlsearch "hls"
 set ignorecase "ic"
@@ -10,6 +20,8 @@ set showcmd
 set autoindent "ai"
 set tabstop=3
 set showmatch
+" enter creater a new line
+nnoremap <CR> o<Esc>
 colorscheme wellsokai
 
 " compile
@@ -23,10 +35,11 @@ noremap <C-c> :w !diff % -<CR>
 
 " :find [file]
 set path+=**
+" show nice menu on command mode
+set wildmenu
 
 " show tabs and spaces
 set list
-"set listchars=tab:>\ ,trail:·
 set listchars=tab:▸\ ,trail:·
 
 call plug#begin()

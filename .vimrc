@@ -1,16 +1,10 @@
+" to remove a set option prepend 'no' to the option
 " use VIM config instead of VI
 set nocompatible
-" source .vimrc
-nnoremap <space>s :w<CR>:source %<CR>:AirlineRefresh<CR>
 
-" disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" to remove a set option prepend 'no' to the option
-
+""""""""""""""""""""""
+"			SETS
+""""""""""""""""""""""
 set number "nu"
 set numberwidth=4
 set relativenumber "rnu"
@@ -20,27 +14,43 @@ set showcmd
 set autoindent "ai"
 set tabstop=3
 set showmatch
-" enter creater a new line
-nnoremap <CR> o<Esc>
-colorscheme wellsokai
-
-" compile
-noremap <F9> :!gcc %:t && ./a.out && rm a.out<CR>
-" jump to the end of the line
-inoremap <C-e> <C-o>A
-" remove highlight last search
-noremap ,<space> :nohls<CR>
-" get changes of the current file
-noremap <C-c> :w !diff % -<CR>
-
 " :find [file]
 set path+=**
 " show nice menu on command mode
 set wildmenu
-
 " show tabs and spaces
 set list
 set listchars=tab:▸\ ,trail:·
+colorscheme wellsokai
+
+""""""""""""""""""""""
+"			MAPS
+""""""""""""""""""""""
+
+" compile
+noremap <F9> :!gcc %:t && ./a.out && rm a.out<CR>
+" jump to the end of the line
+inoremap <C-e> <C-o>l
+" remove highlight last search
+noremap ,<space> :nohls<CR>
+" get changes of the current file
+noremap <C-c> :w !diff % -<CR>
+" source .vimrc
+nnoremap <space>s :w<CR>:source %<CR>:AirlineRefresh<CR>
+" enter creater a new line
+nnoremap <CR> o<Esc>
+" disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+" move correctly in wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+"""""""""""""""""""""
+"			PLUGINS
+""""""""""""""""""""""
 
 call plug#begin()
 
@@ -54,7 +64,10 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
-" airline config
+""""""""""""""""""""""
+"			AIRLINE
+""""""""""""""""""""""
+
 let g:airline_powerline_fonts = 1
 let g:airline_theme='cool'
 let g:airline#extensions#whitespace#enabled = 0

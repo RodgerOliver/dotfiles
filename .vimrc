@@ -30,7 +30,7 @@ colorscheme wellsokai
 " compile
 noremap <F9> :!gcc %:t && ./a.out && rm a.out<CR>
 " jump to the end of the line
-inoremap <C-e> <C-o>l
+inoremap <C-e> <C-o>a
 " remove highlight last search
 noremap ,<space> :nohls<CR>
 " get changes of the current file

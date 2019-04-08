@@ -14,12 +14,16 @@ set showcmd
 set autoindent "ai"
 set tabstop=3
 set showmatch
+set incsearch
+set splitbelow splitright
 " :find [file]
 set path+=**
 " show nice menu on command mode
 set wildmenu
 " show tabs and spaces
 set list
+" Nerd Tree
+nnoremap <C-n> :NERDTreeToggle<CR>
 set listchars=tab:▸\ ,trail:·
 colorscheme wellsokai
 
@@ -47,6 +51,19 @@ noremap <Right> <Nop>
 " move correctly in wrapped lines
 nnoremap j gj
 nnoremap k gk
+" tab navigation
+nnoremap tn :tabnew
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tl :tablast<CR>
+nnoremap th :tabfirst<CR>
+"split screen navigation
+nnoremap hsp :sp
+nnoremap vsp :vs
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 """""""""""""""""""""
 "			PLUGINS
@@ -61,6 +78,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
@@ -80,10 +99,10 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+let g:airline_left_sep = '>>'
+"let g:airline_left_sep = '▶'
+let g:airline_right_sep = '<<'
+"let g:airline_right_sep = '◀'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.linenr = '␊'
@@ -108,3 +127,20 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = '㏑'
+
+""""""""""""""""""""""
+"			NERD TREE GIT
+""""""""""""""""""""""
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }

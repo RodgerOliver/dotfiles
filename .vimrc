@@ -52,14 +52,14 @@ noremap <Right> <Nop>
 nnoremap j gj
 nnoremap k gk
 " tab navigation
-nnoremap tn :tabnew
+nnoremap tn :tabnew 
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap tl :tablast<CR>
 nnoremap th :tabfirst<CR>
 "split screen navigation
-nnoremap hsp :sp
-nnoremap vsp :vs
+nnoremap hsp :sp 
+nnoremap vsp :vs 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k

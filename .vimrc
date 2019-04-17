@@ -13,6 +13,7 @@ set ignorecase "ic"
 set showcmd
 set autoindent "ai"
 set tabstop=3
+set shiftwidth=0
 set showmatch
 set incsearch
 set splitbelow splitright
@@ -22,8 +23,6 @@ set path+=**
 set wildmenu
 " show tabs and spaces
 set list
-" Nerd Tree
-nnoremap <C-n> :NERDTreeToggle<CR>
 set listchars=tab:▸\ ,trail:·
 colorscheme wellsokai
 
@@ -52,14 +51,14 @@ noremap <Right> <Nop>
 nnoremap j gj
 nnoremap k gk
 " tab navigation
-nnoremap tn :tabnew 
+nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap tl :tablast<CR>
 nnoremap th :tabfirst<CR>
 "split screen navigation
-nnoremap hsp :sp 
-nnoremap vsp :vs 
+nnoremap gh :sp<Space>
+nnoremap gv :vs<Space>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -131,9 +130,9 @@ let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = '㏑'
 
 """"""""""""""""""""""
-"			NERD TREE GIT
+"			NERD TREE
 """"""""""""""""""""""
-
+nnoremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -146,3 +145,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+""""""""""""""""""""""
+"			GIT GUTTER
+""""""""""""""""""""""
+set updatetime=100

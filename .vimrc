@@ -30,8 +30,10 @@ colorscheme wellsokai
 "			MAPS
 """"""""""""""""""""""
 
-" compile
-noremap <F9> :!gcc %:t && ./a.out && rm a.out<CR>
+" compile C
+noremap <F9> :w<CR>:!gcc % && ./a.out && rm a.out<CR>
+" compile C++
+noremap <F10> :w<CR>:!g++ % && ./a.out && rm a.out<CR>
 " jump to the end of the line
 inoremap <C-e> <C-o>a
 " remove highlight last search

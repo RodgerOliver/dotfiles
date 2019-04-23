@@ -1,6 +1,7 @@
 " to remove a set option prepend 'no' to the option
 " use VIM config instead of VI
 set nocompatible
+let mapleader = " "
 
 """"""""""""""""""""""
 "			SETS
@@ -37,13 +38,11 @@ noremap <F10> :w<CR>:!g++ % && ./a.out && rm a.out<CR>
 " jump to the end of the line
 inoremap <C-e> <C-o>a
 " remove highlight last search
-noremap ,<space> :nohls<CR>
+noremap ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <C-c> :w !diff % -<CR>
 " source .vimrc
-nnoremap <space>s :w<CR>:source %<CR>:AirlineRefresh<CR>
-" enter creater a new line
-nnoremap <CR> o<Esc>
+nnoremap <leader>s :w<CR>:source %<CR>:AirlineRefresh<CR>
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -67,6 +66,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " multiple cursors feature
 nnoremap c* *Ncgn
+" save and quit
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :wq<CR>
 
 """""""""""""""""""""
 "			PLUGINS
@@ -83,6 +85,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -152,3 +157,15 @@ let g:NERDTreeIndicatorMapCustom = {
 "			GIT GUTTER
 """"""""""""""""""""""
 set updatetime=100
+
+""""""""""""""""""""""
+"			SYNTASTIC
+""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

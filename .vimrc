@@ -70,9 +70,11 @@ nnoremap <C-l> <C-w>l
 nnoremap c* *Ncgn
 " save and exit
 nnoremap <leader>s :w<CR>
-nnoremap <leader>x :q<CR>
+nnoremap <leader>q :q<CR>
 " open .vimrc
 nnoremap <leader>v :tabnew ~/.vimrc<CR>
+" preview markdown
+nnoremap <leader>md :InstantMarkdownPreview<CR>
 
 """""""""""""""""""""
 "			PLUGINS
@@ -93,9 +95,12 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'matze/vim-move'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'mattn/emmet-vim'
-Plug 'valloric/youcompleteme'
+Plug 'ervandew/supertab'
+Plug 'suan/vim-instant-markdown'
+" Plug 'wincent/scalpel'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'mattn/emmet-vim'
+" Plug 'valloric/youcompleteme'
 
 call plug#end()
 
@@ -181,4 +186,21 @@ let g:syntastic_check_on_wq = 0
 """"""""""""""""""""""
 "			VIM MOVE
 """"""""""""""""""""""
-let g:move_key_modifier = 'S'
+let g:move_key_modifier = 'C'
+
+""""""""""""""""""""""
+"			VIM INSTANT MARKDOWN
+""""""""""""""""""""""
+let g:instant_markdown_autostart = 0
+
+""""""""""""""""""""""
+"			VIM WIKI
+""""""""""""""""""""""
+let index = {}
+let index.path = '~/vimwiki/'
+let index.syntax = 'markdown'
+let index.ext = '.md'
+
+let g:vimwiki_list = [index]
+let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_global_ext = 0

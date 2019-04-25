@@ -1,6 +1,8 @@
 " to remove a set option prepend 'no' to the option
 " use VIM config instead of VI
 set nocompatible
+syntax on
+filetype plugin on
 let mapleader = " "
 
 """"""""""""""""""""""
@@ -42,7 +44,7 @@ noremap ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <C-c> :w !diff % -<CR>
 " source .vimrc
-nnoremap <leader>s :w<CR>:source %<CR>:AirlineRefresh<CR>
+nnoremap <leader>r :w<CR>:source %<CR>:AirlineRefresh<CR>
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -66,9 +68,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " multiple cursors feature
 nnoremap c* *Ncgn
-" save and quit
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :wq<CR>
+" save and exit
+nnoremap <leader>s :w<CR>
+nnoremap <leader>x :q<CR>
+" open .vimrc
+nnoremap <leader>v :tabnew ~/.vimrc<CR>
 
 """""""""""""""""""""
 "			PLUGINS
@@ -88,6 +92,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
+Plug 'matze/vim-move'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mattn/emmet-vim'
+Plug 'valloric/youcompleteme'
 
 call plug#end()
 
@@ -169,3 +177,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+""""""""""""""""""""""
+"			VIM MOVE
+""""""""""""""""""""""
+let g:move_key_modifier = 'S'

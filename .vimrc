@@ -97,6 +97,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'matze/vim-move'
 Plug 'ervandew/supertab'
 Plug 'suan/vim-instant-markdown'
+Plug 'christoomey/vim-system-copy'
 " Plug 'wincent/scalpel'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'mattn/emmet-vim'
@@ -203,4 +204,5 @@ let index.ext = '.md'
 
 let g:vimwiki_list = [index]
 let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_global_ext = 0
+" use wiki syntax on other .md files
+" let g:vimwiki_global_ext = 0

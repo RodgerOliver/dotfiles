@@ -102,6 +102,9 @@ Plug 'christoomey/vim-system-copy'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'mattn/emmet-vim'
 " Plug 'valloric/youcompleteme'
+" Plug 'christoomey/vim-sort-motion'
+" Plug 'christoomey/vim-titlecase'
+Plug 'chazy/dirsettings'
 
 call plug#end()
 
@@ -187,7 +190,9 @@ let g:syntastic_check_on_wq = 0
 """"""""""""""""""""""
 "			VIM MOVE
 """"""""""""""""""""""
-let g:move_key_modifier = 'C'
+execute "set <A-j>=\ej"
+execute "set <A-k>=\ek"
+let g:move_key_modifier = 'A'
 
 """"""""""""""""""""""
 "			VIM INSTANT MARKDOWN

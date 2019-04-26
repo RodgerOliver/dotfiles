@@ -44,7 +44,7 @@ noremap ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <C-c> :w !diff % -<CR>
 " source .vimrc
-nnoremap <leader>r :w<CR>:source %<CR>:AirlineRefresh<CR>
+nnoremap <leader>r :w<CR>:source %<CR>:AirlineRefresh<CR>:nohls<CR>
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -91,20 +91,21 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'matze/vim-move'
-Plug 'ervandew/supertab'
 Plug 'suan/vim-instant-markdown'
 Plug 'christoomey/vim-system-copy'
+" Plug 'sirver/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'scrooloose/syntastic'
+" Plug 'ervandew/supertab'
+" Plug 'valloric/youcompleteme'
 " Plug 'wincent/scalpel'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'mattn/emmet-vim'
-" Plug 'valloric/youcompleteme'
 " Plug 'christoomey/vim-sort-motion'
 " Plug 'christoomey/vim-titlecase'
-Plug 'chazy/dirsettings'
 
 call plug#end()
 
@@ -178,14 +179,14 @@ set updatetime=100
 """"""""""""""""""""""
 "			SYNTASTIC
 """"""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""
 "			VIM MOVE

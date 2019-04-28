@@ -4,6 +4,8 @@ set nocompatible
 syntax on
 filetype plugin on
 let mapleader = " "
+colorscheme wellsokai
+highlight Pmenu ctermbg=gray guibg=gray
 
 " ========== SETS
 set number "nu"
@@ -22,13 +24,13 @@ set splitbelow splitright
 set path+=**
 " show nice menu on command mode
 set wildmenu
-set completeopt=menu,menuone
 " show tabs and spaces
 set list
 set listchars=tab:▸\ ,trail:·
-colorscheme wellsokai
-" omni complete
+" complete
 set omnifunc=syntaxcomplete#Complete
+set completeopt=menu,menuone
+set complete=.,w,b,u,t,i
 set foldmethod=manual
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
@@ -185,7 +187,7 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
 
 " ========== SUPERTAB
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = '<C-X><C-p>'
 
 " ========== YCM
 " let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']

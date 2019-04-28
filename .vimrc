@@ -5,9 +5,7 @@ syntax on
 filetype plugin on
 let mapleader = " "
 
-""""""""""""""""""""""
-"			SETS
-""""""""""""""""""""""
+" ========== SETS
 set number "nu"
 set numberwidth=4
 set relativenumber "rnu"
@@ -24,15 +22,18 @@ set splitbelow splitright
 set path+=**
 " show nice menu on command mode
 set wildmenu
+set completeopt=menu,menuone
 " show tabs and spaces
 set list
 set listchars=tab:▸\ ,trail:·
 colorscheme wellsokai
+" omni complete
+set omnifunc=syntaxcomplete#Complete
+set foldmethod=manual
+" remove esc delay
+set timeoutlen=1000 ttimeoutlen=0
 
-""""""""""""""""""""""
-"			MAPS
-""""""""""""""""""""""
-
+" ========== MAPS
 " compile C
 noremap <F9> :w<CR>:!gcc % && ./a.out && rm a.out<CR>
 " compile C++
@@ -71,15 +72,13 @@ nnoremap c* *Ncgn
 " save and exit
 nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
 " open .vimrc
 nnoremap <leader>v :tabnew ~/.vimrc<CR>
 " preview markdown
 nnoremap <leader>md :InstantMarkdownPreview<CR>
 
-"""""""""""""""""""""
-"			PLUGINS
-""""""""""""""""""""""
-
+" ========== PLUGINS
 call plug#begin()
 
 Plug 'flazz/vim-colorschemes'
@@ -93,37 +92,33 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
-Plug 'matze/vim-move'
 Plug 'suan/vim-instant-markdown'
 Plug 'christoomey/vim-system-copy'
-" Plug 'sirver/ultisnips'
-" Plug 'honza/vim-snippets'
-" Plug 'scrooloose/syntastic'
-" Plug 'ervandew/supertab'
+Plug 'wincent/scalpel'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 " Plug 'valloric/youcompleteme'
-" Plug 'wincent/scalpel'
+" Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'mattn/emmet-vim'
 " Plug 'christoomey/vim-sort-motion'
 " Plug 'christoomey/vim-titlecase'
+" Plug 'matze/vim-move'
 
 call plug#end()
 
-""""""""""""""""""""""
-"			AIRLINE
-""""""""""""""""""""""
-
+" ========== AIRLINE
 let g:airline_powerline_fonts = 1
 let g:airline_theme='cool'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
+" function
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
 " unicode symbols
 let g:airline_left_sep = '>>'
 "let g:airline_left_sep = '▶'
@@ -143,7 +138,6 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
-
 " powerline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -154,9 +148,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = '㏑'
 
-""""""""""""""""""""""
-"			NERD TREE
-""""""""""""""""""""""
+" ========== NERD TREE
 nnoremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -171,44 +163,45 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-""""""""""""""""""""""
-"			GIT GUTTER
-""""""""""""""""""""""
+" ========== GIT GUTTER
 set updatetime=100
 
-""""""""""""""""""""""
-"			SYNTASTIC
-""""""""""""""""""""""
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-""""""""""""""""""""""
-"			VIM MOVE
-""""""""""""""""""""""
-execute "set <A-j>=\ej"
-execute "set <A-k>=\ek"
-let g:move_key_modifier = 'A'
-
-""""""""""""""""""""""
-"			VIM INSTANT MARKDOWN
-""""""""""""""""""""""
+" ========== VIM INSTANT MARKDOWN
 let g:instant_markdown_autostart = 0
 
-""""""""""""""""""""""
-"			VIM WIKI
-""""""""""""""""""""""
+" ========== VIM WIKI
 let index = {}
 let index.path = '~/vimwiki/'
 let index.syntax = 'markdown'
 let index.ext = '.md'
-
 let g:vimwiki_list = [index]
 let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " use wiki syntax on other .md files
 " let g:vimwiki_global_ext = 0
+
+" ========== UTILSNIPS
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
+
+" ========== SUPERTAB
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" ========== YCM
+" let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+" let g:ycm_key_list_accept_completion = ['<C-y>']
+
+" ========== VIM MOVE
+" execute 'set <A-j>=\ej'
+" execute 'set <A-k>=\ek'
+" let g:move_key_modifier = 'A'
+
+" ========== SYNTASTIC
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0

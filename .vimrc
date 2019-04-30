@@ -44,11 +44,11 @@ noremap <F9> :w<CR>:!gcc % && ./a.out && rm a.out<CR>
 " compile C++
 noremap <F10> :w<CR>:!g++ % && ./a.out && rm a.out<CR>
 " jump to the end of the line
-inoremap <C-e> <C-o>a
+inoremap <C-c> <C-o>a
 " remove highlight last search
 noremap ,<leader> :nohls<CR>
 " get changes of the current file
-noremap <C-c> :w !diff % -<CR>
+noremap <leader>c :w !diff % -<CR>
 " source .vimrc
 nnoremap <leader>r :w<CR>:source %<CR>:AirlineRefresh<CR>:nohls<CR>
 " disable arrow keys

@@ -6,6 +6,8 @@ filetype plugin on
 let mapleader = " "
 colorscheme wellsokai
 highlight Pmenu ctermbg=gray guibg=gray
+" sync notes when leave a note tab
+autocmd TabLeave ~/vimwiki/* tabnew | 0read !notes.sh
 
 " ========== SETS
 set number "nu"
@@ -76,7 +78,8 @@ nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 " open .vimrc
-nnoremap <leader>v :tabnew ~/.vimrc<CR>
+nnoremap <leader>vv :e ~/.vimrc<CR>
+nnoremap <leader>vt :tabnew ~/.vimrc<CR>
 " preview markdown
 nnoremap <leader>md :InstantMarkdownPreview<CR>
 
@@ -185,9 +188,10 @@ let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
+let g:UltiSnipsEditSplit="vertical"
 
 " ========== SUPERTAB
-let g:SuperTabDefaultCompletionType = '<C-X><C-p>'
+let g:SuperTabDefaultCompletionType = 'context'
 
 " ========== YCM
 " let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']

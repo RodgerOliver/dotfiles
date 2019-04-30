@@ -7,7 +7,8 @@ let mapleader = " "
 colorscheme wellsokai
 highlight Pmenu ctermbg=gray guibg=gray
 " sync notes when leave a note tab
-autocmd TabLeave ~/vimwiki/* tabnew | 0read !notes.sh
+autocmd TabLeave ~/vimwiki/* !notes.sh
+autocmd VimLeave ~/vimwiki/* !notes.sh
 
 " ========== SETS
 set number "nu"

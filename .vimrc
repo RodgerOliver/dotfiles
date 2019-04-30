@@ -6,9 +6,6 @@ filetype plugin on
 let mapleader = " "
 colorscheme wellsokai
 highlight Pmenu ctermbg=gray guibg=gray
-" sync notes when leave a note tab
-autocmd TabLeave ~/vimwiki/* !notes.sh
-autocmd VimLeave ~/vimwiki/* !notes.sh
 
 " ========== SETS
 set number "nu"

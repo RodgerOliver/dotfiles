@@ -37,9 +37,9 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " ========== MAPS
 " compile C
-noremap <F9> :w<CR>:!gcc % && ./a.out && rm a.out<CR>
+noremap <F9> :w<CR>:!gcc % && time ./a.out && rm a.out<CR>
 " compile C++
-noremap <F10> :w<CR>:!g++ % && ./a.out && rm a.out<CR>
+noremap <F10> :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " jump to the end of the line
 inoremap <C-c> <C-o>a
 " remove highlight last search
@@ -80,6 +80,7 @@ nnoremap <leader>vv :e ~/.vimrc<CR>
 nnoremap <leader>vt :tabnew ~/.vimrc<CR>
 " preview markdown
 nnoremap <leader>md :InstantMarkdownPreview<CR>
+nnoremap <leader>ue :UltiSnipsEdit<CR>
 
 " ========== PLUGINS
 call plug#begin()
@@ -101,6 +102,7 @@ Plug 'wincent/scalpel'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
+Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'
@@ -179,7 +181,7 @@ let index.syntax = 'markdown'
 let index.ext = '.md'
 let g:vimwiki_list = [index]
 let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-" use wiki syntax on other .md files
+" don't use wiki syntax on other .md files
 " let g:vimwiki_global_ext = 0
 
 " ========== UTILSNIPS
@@ -187,8 +189,10 @@ let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
 
 " ========== SUPERTAB
+" let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
 let g:SuperTabDefaultCompletionType = 'context'
 
 " ========== YCM

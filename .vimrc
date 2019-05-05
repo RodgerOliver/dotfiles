@@ -41,7 +41,7 @@ noremap <F9> :w<CR>:!gcc % && time ./a.out && rm a.out<CR>
 " compile C++
 noremap <F10> :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " jump to the end of the line
-inoremap <C-c> <C-o>a
+inoremap <C-e> <C-o>a
 " remove highlight last search
 noremap ,<leader> :nohls<CR>
 " get changes of the current file

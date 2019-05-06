@@ -6,15 +6,17 @@ filetype plugin on
 let mapleader = " "
 colorscheme wellsokai
 highlight Pmenu ctermbg=gray guibg=gray
+" CtrlP
+hi CursorLine cterm=NONE ctermfg=white ctermbg=darkred
 
 " ========== SETS
-set number "nu"
+set number "nu
 set numberwidth=4
-set relativenumber "rnu"
-set hlsearch "hls"
-set ignorecase "ic"
+set relativenumber "rnu
+set hlsearch "hls
+set ignorecase "ic
 set showcmd
-set autoindent "ai"
+set autoindent "ai
 set tabstop=3
 set shiftwidth=0
 set showmatch
@@ -81,6 +83,7 @@ nnoremap <leader>vt :tabnew ~/.vimrc<CR>
 " preview markdown
 nnoremap <leader>md :InstantMarkdownPreview<CR>
 nnoremap <leader>ue :UltiSnipsEdit<CR>
+nnoremap <leader>x :!clear<CR><CR>
 
 " ========== PLUGINS
 call plug#begin()

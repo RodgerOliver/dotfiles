@@ -7,7 +7,7 @@ let mapleader = " "
 colorscheme wellsokai
 highlight Pmenu ctermbg=gray guibg=gray
 " CtrlP
-hi CursorLine cterm=NONE ctermfg=white ctermbg=darkred
+hi CursorLine cterm=NONE ctermfg=white ctermbg=darkgreen
 
 " ========== SETS
 set number "nu
@@ -43,7 +43,7 @@ noremap <F9> :w<CR>:!gcc % && time ./a.out && rm a.out<CR>
 " compile C++
 noremap <F10> :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " jump to the end of the line
-inoremap <C-e> <C-o>a
+inoremap <C-c> <C-o>a
 " remove highlight last search
 noremap ,<leader> :nohls<CR>
 " get changes of the current file
@@ -179,10 +179,16 @@ let g:instant_markdown_autostart = 0
 
 " ========== VIM WIKI
 let index = {}
-let index.path = '~/vimwiki/'
+let index.path = '~/notes/vimwiki/'
 let index.syntax = 'markdown'
 let index.ext = '.md'
-let g:vimwiki_list = [index]
+
+let local_notes = {}
+let local_notes.path = '~/notes/local/'
+let local_notes.syntax = 'markdown'
+let local_notes.ext = '.md'
+
+let g:vimwiki_list = [index, local_notes]
 let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " don't use wiki syntax on other .md files
 " let g:vimwiki_global_ext = 0

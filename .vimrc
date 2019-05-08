@@ -7,7 +7,7 @@ let mapleader = " "
 colorscheme wellsokai
 highlight Pmenu ctermbg=gray guibg=gray
 " CtrlP
-hi CursorLine cterm=NONE ctermfg=white ctermbg=darkgreen
+hi CursorLine cterm=NONE ctermfg=black ctermbg=yellow
 
 " ========== SETS
 set number "nu
@@ -31,7 +31,7 @@ set list
 set listchars=tab:▸\ ,trail:·
 " complete
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menu,menuone
+set completeopt=menu,longest
 set complete=.,w,b,u,t,i
 set foldmethod=manual
 " remove esc delay

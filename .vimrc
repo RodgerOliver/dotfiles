@@ -17,8 +17,12 @@ set hlsearch "hls
 set ignorecase "ic
 set showcmd
 set autoindent "ai
+" tab config
 set tabstop=3
 set shiftwidth=0
+" don't make tabs turn to spaces
+set noexpandtab
+set softtabstop=0
 set showmatch
 set incsearch
 set splitbelow splitright

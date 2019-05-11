@@ -5,9 +5,6 @@ syntax on
 filetype plugin on
 let mapleader = " "
 colorscheme wellsokai
-highlight Pmenu ctermbg=gray guibg=gray
-" CtrlP
-hi CursorLine cterm=NONE ctermfg=black ctermbg=yellow
 
 " ========== SETS
 set number "nu
@@ -40,6 +37,10 @@ set complete=.,w,b,u,t,i
 set foldmethod=manual
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
+
+" ========== HIGHLIGHTS
+highlight Pmenu ctermbg=gray guibg=gray
+hi CursorLine ctermfg=white ctermbg=darkred guifg=white guibg=darkred
 
 " ========== MAPS
 " compile C

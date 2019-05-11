@@ -39,8 +39,9 @@ set foldmethod=manual
 set timeoutlen=1000 ttimeoutlen=0
 
 " ========== HIGHLIGHTS
-highlight Pmenu ctermbg=gray guibg=gray
-hi CursorLine ctermfg=white ctermbg=darkred guifg=white guibg=darkred
+hi Pmenu ctermfg=white ctermbg=darkgrey
+hi Pmenusel ctermfg=black ctermbg=white
+hi CursorLine ctermfg=white ctermbg=darkred
 
 " ========== MAPS
 " compile C

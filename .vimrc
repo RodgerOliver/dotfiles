@@ -34,7 +34,9 @@ set listchars=tab:▸\ ,trail:·
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
 set complete=.,w,b,u,t,i
-set foldmethod=manual
+set foldmethod=syntax
+set nofoldenable
+set foldlevel=2
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
 

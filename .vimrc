@@ -39,6 +39,8 @@ set nofoldenable
 set foldlevel=2
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
+set backspace=indent,eol,start
+set backspace=2
 
 " ========== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey

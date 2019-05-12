@@ -41,6 +41,7 @@ set foldlevel=2
 set timeoutlen=1000 ttimeoutlen=0
 set backspace=indent,eol,start
 set backspace=2
+set tags=tags;
 
 " ========== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey
@@ -94,6 +95,9 @@ nnoremap <leader>vt :tabnew ~/.vimrc<CR>
 nnoremap <leader>md :InstantMarkdownPreview<CR>
 nnoremap <leader>ue :UltiSnipsEdit<CR>
 nnoremap <leader>x :!clear<CR><CR>
+nnoremap <leader>. :CtrlPTag<CR>
+nnoremap <leader><leader> za
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " ========== PLUGINS
 call plug#begin()
@@ -116,6 +120,7 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'

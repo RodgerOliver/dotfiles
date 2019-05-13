@@ -97,7 +97,7 @@ nnoremap <leader>ue :UltiSnipsEdit<CR>
 nnoremap <leader>x :!clear<CR><CR>
 " nnoremap <leader>. :CtrlPTag<CR>
 nnoremap <leader><leader> za
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <leader>. :bn<CR>
 nnoremap <leader>, :bp<CR>
 

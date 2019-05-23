@@ -139,4 +139,4 @@ Bar {
 
 # ===== STARTUP COMMANDS =====
 exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
+exec_always feh --bg-scale ~/.config/wallpaper.jpg

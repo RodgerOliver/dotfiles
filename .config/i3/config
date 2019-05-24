@@ -121,7 +121,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 
 # ===== i3BLOCKS =====
-Bar {
+bar {
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	position top
 	colors {

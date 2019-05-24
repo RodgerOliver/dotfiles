@@ -4,7 +4,7 @@ font pango:mononoki 9
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # lock screen
-bindsym $mod+Shift+x exec i3lock
+bindsym $mod+Shift+x exec ~/.config/i3/scripts/lock.sh ~/.config/lock_icon.png
 
 # ===== APPS SHORTCUTS =====
 bindsym $mod+Return exec i3-sensible-terminal
@@ -123,6 +123,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 # ===== i3BLOCKS =====
 bar {
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	font pango:mononoki 10
 	position top
 	colors {
 		background #000000

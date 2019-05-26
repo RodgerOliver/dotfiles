@@ -134,8 +134,9 @@ bar {
 	position top
 	colors {
 		background #000000
+		# text
 		statusline #FFFFFF
-		separator  #666666
+		separator  #777777
 		# class            border  bg      text
 		focused_workspace  #4C7899 #285577 #FFFFFF
 		active_workspace   #333333 #222222 #FFFFFF
@@ -146,5 +147,5 @@ bar {
 }
 
 # ===== STARTUP COMMANDS =====
-exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec_always xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec_always feh --bg-scale ~/.config/wallpaper.jpg

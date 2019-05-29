@@ -50,7 +50,7 @@ hi CursorLine ctermfg=white ctermbg=darkred
 
 " ========== MAPS
 " compile C
-noremap <F9> :w<CR>:!gcc % && time ./a.out && rm a.out<CR>
+noremap <F9> :w<CR>:!gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++
 noremap <F10> :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " jump to the end of the line
@@ -100,6 +100,8 @@ nnoremap <leader><leader> za
 nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <leader>. :bn<CR>
 nnoremap <leader>, :bp<CR>
+nnoremap <leader>d :windo difft<CR>:set wrap<CR>
+nnoremap <leader>D :windo diffo<CR>
 
 " ========== PLUGINS
 call plug#begin()

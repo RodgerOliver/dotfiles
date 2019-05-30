@@ -100,7 +100,7 @@ nnoremap <leader><leader> za
 nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <leader>. :bn<CR>
 nnoremap <leader>, :bp<CR>
-nnoremap <leader>d :windo difft<CR>:set wrap<CR>
+nnoremap <leader>d :windo difft<CR>:windo set wrap<CR>
 nnoremap <leader>D :windo diffo<CR>
 
 " ========== PLUGINS
@@ -125,6 +125,7 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-repeat'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'

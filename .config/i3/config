@@ -7,7 +7,7 @@ floating_modifier $mod
 bindsym $mod+Shift+x exec ~/.config/i3/scripts/lock.sh ~/.config/lock_icon.png
 # hide window borders
 hide_edge_borders both
-bindsym Print exec scrot 'Screenshot_%d-%m-%y_%H-%M.png' -e 'mv $f ~/Pictures/'
+bindsym Print exec scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
 
 # ===== APPS SHORTCUTS =====
 bindsym $mod+Return exec i3-sensible-terminal

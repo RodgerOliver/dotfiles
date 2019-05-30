@@ -29,7 +29,7 @@ set path+=**
 set wildmenu
 " show tabs and spaces
 set list
-set listchars=tab:▸\ ,trail:·
+set listchars=tab:▸\ ,trail:•
 " complete
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
@@ -47,6 +47,7 @@ set tags=tags;
 hi Pmenu ctermfg=white ctermbg=darkgrey
 hi Pmenusel ctermfg=black ctermbg=white
 hi CursorLine ctermfg=white ctermbg=darkred
+hi SpecialKey ctermfg=darkgrey
 
 " ========== MAPS
 " compile C

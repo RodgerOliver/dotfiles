@@ -4,7 +4,9 @@ set nocompatible
 syntax on
 filetype plugin on
 let mapleader = " "
-colorscheme wellsokai
+set background=dark
+colorscheme plastic
+let g:lightline = {'colorscheme': 'plastic'}
 
 " ========== SETS
 set number "nu

@@ -5,8 +5,7 @@ syntax on
 filetype plugin on
 let mapleader = " "
 set background=dark
-colorscheme plastic
-let g:lightline = {'colorscheme': 'plastic'}
+colorscheme snazzy
 
 " ========== SETS
 set number "nu
@@ -130,6 +129,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-repeat'
 Plug 'flrnprz/plastic.vim'
+Plug 'connorholyday/vim-snazzy'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'

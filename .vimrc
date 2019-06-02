@@ -29,7 +29,7 @@ set path+=**
 set wildmenu
 " show tabs and spaces
 set list
-set listchars=tab:▸\ ,trail:·
+set listchars=tab:▸\ ,trail:•
 " complete
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
@@ -47,6 +47,7 @@ set tags=tags;
 hi Pmenu ctermfg=white ctermbg=darkgrey
 hi Pmenusel ctermfg=black ctermbg=white
 hi CursorLine ctermfg=white ctermbg=darkred
+hi SpecialKey ctermfg=darkgrey
 
 " ========== MAPS
 " compile C
@@ -100,7 +101,7 @@ nnoremap <leader><leader> za
 nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <leader>. :bn<CR>
 nnoremap <leader>, :bp<CR>
-nnoremap <leader>d :windo difft<CR>:set wrap<CR>
+nnoremap <leader>d :windo difft<CR>:windo set wrap<CR>
 nnoremap <leader>D :windo diffo<CR>
 
 " ========== PLUGINS
@@ -125,6 +126,8 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-repeat'
+Plug 'flrnprz/plastic.vim'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'

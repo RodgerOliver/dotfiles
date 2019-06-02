@@ -6,12 +6,13 @@ floating_modifier $mod
 # lock screen
 bindsym $mod+Shift+x exec ~/.config/i3/scripts/lock.sh ~/.config/lock_icon.png
 # hide window borders
-hide_edge_borders both
+# hide_edge_borders both
 bindsym Print exec scrot 'Screenshot_%d-%m-%y_%H-%M.png' -e 'mv $f ~/Pictures/'
+bindsym $mod+BackSpace exec ~/.config/i3/scripts/dmenu-emoji.sh
 
 # ===== APPS SHORTCUTS =====
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF'"
 bindsym $mod+b exec firefox
 
 # ===== WINDOWS ACTIONS =====
@@ -60,7 +61,7 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 # apps on workspaces
-#assign [class="Firefox"] $ws2
+# assign [class="Firefox"] $ws2
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -109,6 +110,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+20 i3block
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioStop exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 # change NUM_LOCK
@@ -120,13 +122,26 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # text = window title, text
 # indicator = window body, where the next window will be tilled
 # child_border = window body, left and right borders
+# yellow #E1BC29
+# purple #7768AE
+# darkblue #003F91
+# lightblue #4D9DE0
+# lightgreen #21FA90
 
-# class                 border  bground text    indicator child_border
-client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #285577
-client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
-client.unfocused        #333333 #222222 #888888 #292D2E   #222222
-client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
-client.background       #FFFFFF
+set $c_bg_fc #2489C6
+set $c_bg_in #555555
+set $c_bg_uf #424651
+set $c_bg_ug #E15554
+set $c_tx_fc #FFFFFF
+set $c_tc_uf #888888
+set $c_in #3BB273
+
+# class                 border    bground   text      indicator child_border
+client.focused          $c_bg_fc  $c_bg_fc  $c_tx_fc  $c_in     $c_bg_uf
+client.focused_inactive $c_bg_in  $c_bg_in  $c_tx_fc  $c_in     $c_bg_uf
+client.unfocused        $c_bg_uf  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
+client.urgent           $c_bg_ug  $c_bg_ug  $c_tx_fc  $c_in     $c_bg_uf
+client.background       $c_tx_fc
 
 # ===== i3BLOCKS =====
 bar {
@@ -138,12 +153,12 @@ bar {
 		# text
 		statusline #FFFFFF
 		separator  #777777
-		# class            border  bg      text
-		focused_workspace  #4C7899 #285577 #FFFFFF
-		active_workspace   #333333 #222222 #FFFFFF
-		inactive_workspace #333333 #222222 #888888
-		urgent_workspace   #2F343A #900000 #FFFFFF
-		binding_mode       #2F343A #900000 #FFFFFF
+		# class            border   bg       text
+		focused_workspace  $c_bg_fc $c_bg_fc $c_tx_fc
+		active_workspace   $c_bg_uf $c_bg_uf $c_tx_fc
+		inactive_workspace $c_bg_uf $c_bg_uf $c_tx_uf
+		urgent_workspace   $c_bg_ug $c_bg_ug $c_tx_fc
+		binding_mode       $c_bg_ug $c_bg_ug $c_tx_fc
 	}
 }
 

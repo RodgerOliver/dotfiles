@@ -144,6 +144,7 @@ client.background       $c_tx_fc
 
 # ===== i3BLOCKS =====
 bar {
+	tray_output primary
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	font pango:mononoki 11
 	position top
@@ -163,4 +164,5 @@ bar {
 
 # ===== STARTUP COMMANDS =====
 exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec redshift-gtk
 exec_always feh --bg-scale ~/.config/wallpaper.jpg

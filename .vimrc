@@ -5,7 +5,7 @@ syntax on
 filetype plugin on
 let mapleader = " "
 set background=dark
-colorscheme snazzy
+colorscheme plastic
 
 " ========== SETS
 set number "nu
@@ -129,8 +129,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-repeat'
 Plug 'flrnprz/plastic.vim'
-Plug 'connorholyday/vim-snazzy'
 Plug 'mileszs/ack.vim'
+Plug 'matze/vim-move'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'
@@ -138,7 +138,6 @@ Plug 'mileszs/ack.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'christoomey/vim-sort-motion'
 " Plug 'christoomey/vim-titlecase'
-" Plug 'matze/vim-move'
 
 call plug#end()
 
@@ -230,15 +229,15 @@ let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
 " let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
 let g:SuperTabDefaultCompletionType = 'context'
 
+" ========== VIM MOVE
+" execute 'set <A-j>=\ej'
+" execute 'set <A-k>=\ek'
+let g:move_key_modifier = 'C'
+
 " ========== YCM
 " let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 " let g:ycm_key_list_accept_completion = ['<C-y>']
-
-" ========== VIM MOVE
-" execute 'set <A-j>=\ej'
-" execute 'set <A-k>=\ek'
-" let g:move_key_modifier = 'A'
 
 " ========== SYNTASTIC
 " set statusline+=%#warningmsg#

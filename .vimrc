@@ -5,7 +5,7 @@ syntax on
 filetype plugin on
 let mapleader = " "
 set background=dark
-colorscheme plastic
+colorscheme snazzy
 
 " ========== SETS
 set number "nu
@@ -109,6 +109,8 @@ nnoremap <leader>D :windo diffo<CR>
 call plug#begin()
 
 Plug 'flazz/vim-colorschemes'
+Plug 'connorholyday/vim-snazzy'
+Plug 'flrnprz/plastic.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -128,9 +130,8 @@ Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-repeat'
-Plug 'flrnprz/plastic.vim'
 Plug 'mileszs/ack.vim'
-Plug 'matze/vim-move'
+" Plug 'matze/vim-move'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'
@@ -232,7 +233,7 @@ let g:SuperTabDefaultCompletionType = 'context'
 " ========== VIM MOVE
 " execute 'set <A-j>=\ej'
 " execute 'set <A-k>=\ek'
-let g:move_key_modifier = 'C'
+" let g:move_key_modifier = 'C'
 
 " ========== YCM
 " let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']

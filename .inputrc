@@ -1,6 +1,6 @@
 set show-mode-in-prompt on
-set vi-ins-mode-string "\e[38;5;14m(ins): \e[0m"
-set vi-cmd-mode-string "\e[38;5;200m(cmd): \e[0m"
+set vi-ins-mode-string "\1\e\[38;5;14m\2(ins): \1\e[0m\2"
+set vi-cmd-mode-string "\1\e[38;5;200m\2(cmd): \1\e[0m\2"
 set keyseq-timeout 0
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting

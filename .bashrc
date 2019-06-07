@@ -25,6 +25,9 @@ PS1+="\n$ \[${reset_colors}\]"
 export PS1
 
 # ===== ALIASES =====
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'

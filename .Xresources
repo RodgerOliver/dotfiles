@@ -1,9 +1,12 @@
+! .Xdefaults, older method and fallback, read everytime and Xlib program starts
+! .Xresources, newer method, loads with xrdb
+! ===== GENERAL =====
 ! disable scroll bar
 *.scrollBar: false
 ! font
 *.font: xft:monospace:size=12
 
-!! Colorscheme
+! ===== COLORS =====
 ! text color
 *.foreground: #ffffff
 ! background

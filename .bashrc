@@ -1,3 +1,8 @@
+# .bashrc is read by login and subshells
+# .bash_profile is read by login shells
+# .profile is for all shells
+# backup files are in /etc/skel
+# general config files are in /etc
 # ===== GENERAL =====
 set -o vi # vi mode
 stty -ixon # Disable ctrl-s and ctrl-q.

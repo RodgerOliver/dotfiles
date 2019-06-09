@@ -6,28 +6,28 @@
 # ===== GENERAL =====
 set -o vi # vi mode
 stty -ixon # Disable ctrl-s and ctrl-q.
-shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
 HISTSIZE=2000
 HISTFILESIZE=2000
 
-# ===== COLORS =====
-yellow=$(tput setaf 226)
-green=$(tput setaf 34)
-light_green=$(tput setaf 46)
-blue=$(tput setaf 27)
-white=$(tput setaf 255)
-bold=$(tput bold)
-reset_colors=$(tput sgr0)
+# add local bin to PATH
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
-# ===== PS1 =====
-PS1="\[${bold}\]\n"
-PS1+="\[${yellow}\]\u"
-PS1+="\[${green}\]@"
-PS1+="\[${blue}\]\h"
-PS1+="\[${white}\]:"
-PS1+="\[${light_green}\]\w"
-PS1+="\n$ \[${reset_colors}\]"
-export PS1
+# source files
+for file in ~/.bash_{aliases,prompt}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+# ===== EXPORTS =====
+export EDITOR=vim
+export TERM=xterm-256color
+export BROWSER=firefox
+export READER=zathura
+export FILE=ranger
 
 # ===== ALIASES =====
 if [ -f ~/.bash_aliases ]; then

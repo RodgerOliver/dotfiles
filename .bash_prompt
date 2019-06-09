@@ -1,0 +1,85 @@
+# ===== GIT =====
+prompt_git() {
+	local s='';
+	local branchName='';
+
+	# Check if the current directory is in a Git repository.
+	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+
+		# check if the current directory is in .git before running git checks
+		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+
+			# Ensure the index is up to date.
+			git update-index --really-refresh -q &>/dev/null;
+
+			# Check for uncommitted changes in the index.
+			if ! $(git diff --quiet --ignore-submodules --cached); then
+				s+='+';
+			fi;
+
+			# Check for unstaged changes.
+			if ! $(git diff-files --quiet --ignore-submodules --); then
+				s+='!';
+			fi;
+
+			# Check for untracked files.
+			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+				s+='?';
+			fi;
+
+			# Check for stashed files.
+			if $(git rev-parse --verify refs/stash &>/dev/null); then
+				s+='$';
+			fi;
+
+		fi;
+
+		# Get the short symbolic ref.
+		# If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+		# Otherwise, just give up.
+		branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+			git rev-parse --short HEAD 2> /dev/null || \
+			echo '(unknown)')";
+
+		[ -n "${s}" ] && s=" [${s}]";
+
+		echo -e "${1}${branchName}${2}${s}";
+	else
+		return;
+	fi;
+}
+
+# ===== COLORS =====
+if tput setaf 1 &> /dev/null; then
+	reset=$(tput sgr0)
+	bold=$(tput bold)
+	yellow=$(tput setaf 226)
+	green=$(tput setaf 34)
+	light_green=$(tput setaf 46)
+	blue=$(tput setaf 27)
+	violet=$(tput setaf 61)
+	white=$(tput setaf 255)
+else
+	reset="\e[0m"
+	bold=''
+	yellow="\e[38;5;226m"
+	green="\e[38;5;34m"
+	light_green="\e[38;5;46m"
+	blue="\e[38;5;27m"
+	violet="\e[38;5;61m"
+	white="\e[38;5;255m"
+fi
+
+# ===== PS1 =====
+PS1="\[${bold}\]\n"
+PS1+="\[${yellow}\]\u"
+PS1+="\[${green}\]@"
+PS1+="\[${blue}\]\h"
+PS1+="\[${white}\]:"
+PS1+="\[${light_green}\]\w"
+PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")";
+PS1+="\n$ \[${reset}\]"
+export PS1
+
+PS2="→ "
+export PS2

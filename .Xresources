@@ -10,7 +10,7 @@
 ! text color
 *.foreground: #ffffff
 ! background
-*.background: #1c1c1c
+*.background: #282a36
 ! cursor
 *.cursorColor: #afbfbf
 ! black

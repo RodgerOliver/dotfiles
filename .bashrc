@@ -4,6 +4,18 @@
 # backup files are in /etc/skel
 # general config files are in /etc
 # ===== GENERAL =====
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
 set -o vi # vi mode
 stty -ixon # Disable ctrl-s and ctrl-q.
 # Append to the Bash history file, rather than overwriting it

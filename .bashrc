@@ -10,6 +10,8 @@ stty -ixon # Disable ctrl-s and ctrl-q.
 shopt -s histappend
 HISTSIZE=2000
 HISTFILESIZE=2000
+# swap esc with caps
+setxkbmap -option caps:swapescape
 
 # add local bin to PATH
 if [ -d "$HOME/.local/bin" ] ; then

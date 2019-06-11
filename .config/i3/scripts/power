@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dmenu="dmenu -i -nb darkred -sb red -sf white -nf gray -fn monoki-13"
+option=$(echo "poweroff\nreboot\nhibernate\nsuspend" | ${dmenu} -p "What you want to do?") && opt="$(echo $option | tr a-z A-Z)" && [ "$(printf "No\\nYes" | ${dmenu} -p "${opt} now?")" = "Yes" ] && systemctl ${option}

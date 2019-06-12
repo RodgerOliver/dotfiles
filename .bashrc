@@ -47,13 +47,12 @@ export READER=zathura
 export FILE=ranger
 
 # ===== ALIASES =====
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
-fi
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias grep='grep --color=auto'
 alias v='vim'
+alias vv='vim ~/notes/vimwiki/index.md'
 alias g='git'
+alias q='exit'

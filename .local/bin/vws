@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ~/notes/vimwiki/
+./sync.sh
+cd -

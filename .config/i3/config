@@ -4,7 +4,7 @@ font pango:mononoki 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # lock screen
-bindsym $mod+Shift+x exec ~/.config/i3/scripts/lock ~/.config/lock_icon.png
+bindsym $mod+Shift+x exec ~/.config/i3/scripts/lock
 # power machine
 bindsym $mod+Shift+BackSpace exec ~/.config/i3/scripts/power
 # hide window borders

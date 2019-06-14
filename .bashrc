@@ -4,10 +4,7 @@
 # backup files are in /etc/skel
 # general config files are in /etc
 # ===== GENERAL =====
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# sudo completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -15,10 +12,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
 # Start graphical server if i3 not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
-
 set -o vi # vi mode
 stty -ixon # Disable ctrl-s and ctrl-q.
 # Append to the Bash history file, rather than overwriting it
@@ -27,10 +22,10 @@ HISTSIZE=2000
 HISTFILESIZE=2000
 # swap esc with caps
 setxkbmap -option caps:swapescape
-
 # add local bin to PATH
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+	# export recursively
+	export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 fi
 
 # source files

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # .bashrc is read by login and subshells
 # .bash_profile is read by login shells
 # .profile is for all shells

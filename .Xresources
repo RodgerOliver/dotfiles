@@ -7,6 +7,8 @@
 *scrollBar: false
 ! font
 *font: xft:monospace:size=12
+XTerm*faceName: mononoki
+XTerm*faceSize: 12
 
 ! ===== COLORS =====
 ! text color

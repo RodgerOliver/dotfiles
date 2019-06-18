@@ -1,7 +1,7 @@
 " to remove a set option prepend 'no' to the option
 " use VIM config instead of VI
 set nocompatible
-syntax on
+syntax enable
 filetype plugin on
 let mapleader = " "
 set background=dark
@@ -15,6 +15,7 @@ set hlsearch "hls
 set ignorecase "ic
 set showcmd
 set autoindent "ai
+set encoding=UTF-8
 " tab config
 set tabstop=3
 set shiftwidth=0
@@ -131,9 +132,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-repeat'
 Plug 'mileszs/ack.vim'
-" Plug 'jaxbot/browserlink.vim'
 Plug 'ap/vim-css-color'
 Plug 'alvan/vim-closetag'
+Plug 'ryanoasis/vim-devicons'
+" Plug 'jaxbot/browserlink.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'matze/vim-move'
 " Plug 'ludovicchabant/vim-gutentags'

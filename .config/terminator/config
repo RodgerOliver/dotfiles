@@ -18,7 +18,7 @@
     background_color = "#282a36"
     background_darkness = 0.8
     cursor_color = "#aaaaaa"
-    font = mononoki 14
+    font = mononoki Nerd Font 14
     foreground_color = "#cbdddf"
     icon_bell = False
     palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"

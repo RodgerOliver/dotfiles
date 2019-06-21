@@ -6,9 +6,9 @@
 ! disable scroll bar
 *scrollBar: false
 ! font
-*font: xft:monospace:size=12
-XTerm*faceName: mononoki
-XTerm*faceSize: 12
+*font: xft:mononoki Nerd Font:size=12
+XTerm*faceName: mononoki Nerd Font
+XTerm*faceSize: 14
 
 ! ===== COLORS =====
 ! text color

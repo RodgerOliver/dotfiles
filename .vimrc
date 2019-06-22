@@ -50,18 +50,20 @@ hi Pmenu ctermfg=white ctermbg=darkgrey
 hi Pmenusel ctermfg=black ctermbg=white
 hi CursorLine ctermfg=white ctermbg=darkred
 hi SpecialKey ctermfg=darkgrey
+" transparent bg
+hi Normal ctermbg=NONE
 
 " ========== MAPS
 " compile C
-noremap <F9> :w<CR>:!gcc % -lm && time ./a.out && rm a.out<CR>
+noremap <leader>cc :w<CR>:!gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++
-noremap <F10> :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
+noremap <leader>cC :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " jump to the end of the line
 inoremap <C-c> <C-o>a
 " remove highlight last search
 noremap ,<leader> :nohls<CR>
 " get changes of the current file
-noremap <leader>c :w !diff % -<CR>
+noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
 nnoremap <leader>r :w<CR>:source %<CR>:AirlineRefresh<CR>:nohls<CR>
 " disable arrow keys

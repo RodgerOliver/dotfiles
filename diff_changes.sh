@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# find . -type f ! -path './.git/*'
+
 for remote_file in $(find .); do
 	home_path=$(echo $HOME | sed 's/\//\\\//g')
 	if [ -f $remote_file ]; then

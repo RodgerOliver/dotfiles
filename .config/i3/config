@@ -37,7 +37,7 @@ bindsym $mod+o resize grow width 5 px or 5 ppt
 # split in vertical orientation
 bindsym $mod+v split v
 bindsym $mod+c split h
-bindsym $mod+t split toggle
+bindsym $mod+x split toggle
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)

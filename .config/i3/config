@@ -125,17 +125,19 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 # text = window title, text
 # indicator = window body, where the next window will be tilled
 # child_border = window body, left and right borders
-# yellow #E1BC29
-# purple #7768AE
-# darkblue #003F91
-# lightblue #4D9DE0
-# lightgreen #21FA90
+# yellow #e1bc29
+# purple #7768ae
+# green #3bb273
+# orange #f26419
+# darkblue #003f91
+# lightblue #4d9de0
+# lightgreen #21fa90
 
-set $c_bg_fc #2489C6
+set $c_bg_fc #2489c6
 set $c_bg_in #555555
 set $c_bg_uf #424651
-set $c_bg_ug #E15554
-set $c_tx_fc #FFFFFF
+set $c_bg_ug #e15554
+set $c_tx_fc #ffffff
 set $c_tc_uf #888888
 set $c_in #f26419
 
@@ -155,7 +157,7 @@ bar {
 	colors {
 		background #000000
 		# text
-		statusline #FFFFFF
+		statusline #ffffff
 		separator  #777777
 		# class            border   bg       text
 		focused_workspace  $c_bg_fc $c_bg_fc $c_tx_fc

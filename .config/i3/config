@@ -37,6 +37,7 @@ bindsym $mod+o resize grow width 5 px or 5 ppt
 # split in vertical orientation
 bindsym $mod+v split v
 bindsym $mod+c split h
+bindsym $mod+t split toggle
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
@@ -136,10 +137,10 @@ set $c_bg_uf #424651
 set $c_bg_ug #E15554
 set $c_tx_fc #FFFFFF
 set $c_tc_uf #888888
-set $c_in #3BB273
+set $c_in #f26419
 
 # class                 border    bground   text      indicator child_border
-client.focused          $c_bg_fc  $c_bg_fc  $c_tx_fc  $c_in     $c_bg_uf
+client.focused          $c_bg_fc  $c_bg_fc  $c_tx_fc  $c_in     $c_bg_fc
 client.focused_inactive $c_bg_in  $c_bg_in  $c_tx_fc  $c_in     $c_bg_uf
 client.unfocused        $c_bg_uf  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
 client.urgent           $c_bg_ug  $c_bg_ug  $c_tx_fc  $c_in     $c_bg_uf

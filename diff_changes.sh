@@ -8,7 +8,7 @@ for remote_file in $(find . -type f ! -path './.git/*' ! -path './.icons/*'); do
 			local_hash=$(md5sum $local_file | sed "s/\ .*//g");
 			remote_hash=$(md5sum $remote_file | sed "s/\ .*//g");
 			if [[ $local_hash != $remote_hash ]]; then
-				vimdiff $local_file $remote_file;
+				vimdiff $remote_file $local_file;
 				echo "UPDATED ${home_file}";
 			fi
 		else

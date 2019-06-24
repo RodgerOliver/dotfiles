@@ -61,6 +61,7 @@ if tput setaf 1 &> /dev/null; then
 	blue=$(tput setaf 27)
 	violet=$(tput setaf 63)
 	orange=$(tput setaf 208)
+	red=$(tput setaf 196)
 	white=$(tput setaf 255)
 else
 	reset="\e[0m"
@@ -71,6 +72,7 @@ else
 	blue="\e[38;5;27m"
 	violet="\e[38;5;63m"
 	orange="\e[38;5;208m"
+	red="\e[38;5;196m"
 	white="\e[38;5;255m"
 fi
 

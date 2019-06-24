@@ -10,6 +10,8 @@ bindsym $mod+Shift+BackSpace exec ~/.config/i3/scripts/power
 # hide window borders
 # hide_edge_borders both
 bindsym Print exec scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
+# disable mouse hover focus
+focus_follows_mouse no
 
 # ===== APPS SHORTCUTS =====
 bindsym $mod+Return exec terminator

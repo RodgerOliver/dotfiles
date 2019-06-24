@@ -7,6 +7,9 @@ let mapleader = " "
 set background=dark
 colorscheme snazzy
 
+" ========== AUTOCMDS
+autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+
 " ========== SETS
 set number "nu
 set numberwidth=4

@@ -66,8 +66,10 @@ XTerm*metaSendsEscape: true
 *color0: #363636
 *color8: #424242
 ! red
-*color1: #ff0883
-*color9: #ff1e8e
+*color1: #ff0a2a
+*color9: #ff1e3c
+/* *color1: #ff0883 */
+/* *color9: #ff1e8e */
 ! green
 *color2: #83ff08
 *color10: #8eff1e

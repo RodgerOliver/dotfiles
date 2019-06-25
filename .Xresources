@@ -61,7 +61,7 @@ XTerm*metaSendsEscape: true
 ! background
 *background: #282a36
 ! cursor
-*cursorColor: #afbfbf
+*cursorColor: #ffffff
 ! black
 *color0: #363636
 *color8: #424242

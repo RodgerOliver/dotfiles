@@ -1,28 +1,40 @@
 [global_config]
+  title_transmit_fg_color = "#ffffff"
+  title_transmit_bg_color = "#363636"
+  title_inactive_fg_color = "#ffffff"
+  title_inactive_bg_color = "#424242"
 [keybindings]
-  copy = <Primary>Insert
-  paste = <Shift>Insert
   split_horiz = <Primary><Shift>h
   split_vert = <Primary><Shift>v
-[layouts]
-  [[default]]
-    [[[child1]]]
-      parent = window0
-      type = Terminal
-    [[[window0]]]
-      parent = ""
-      type = Window
-[plugins]
+  copy = <Primary>Insert
+  paste = <Shift>Insert
 [profiles]
   [[default]]
+    icon_bell = False
     background_color = "#282a36"
     background_darkness = 0.8
-    cursor_color = "#aaaaaa"
-    font = mononoki Nerd Font 14
-    foreground_color = "#cbdddf"
-    icon_bell = False
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
-    scrollback_lines = 9999
-    scrollbar_position = hidden
+    cursor_color = "#ffffff"
+    font = mononoki Nerd Font 12
+    foreground_color = "#ffffff"
     show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 9999
+    palette = "#363636:#ff0a2a:#83ff08:#ff8308:#0883ff:#8308ff:#08ff83:#b6b6b6:#424242:#ff1e3c:#8eff1e:#ff8e1e:#1e8eff:#8e1eff:#1eff8e:#c2c2c2"
     use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""

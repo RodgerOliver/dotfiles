@@ -47,6 +47,10 @@ set timeoutlen=1000 ttimeoutlen=0
 set backspace=indent,eol,start
 set backspace=2
 set tags=tags;
+" better colors
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+set termguicolors
 
 " ========== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey
@@ -54,7 +58,7 @@ hi Pmenusel ctermfg=black ctermbg=white
 hi CursorLine ctermfg=white ctermbg=darkred
 hi SpecialKey ctermfg=darkgrey
 " transparent bg
-" hi Normal ctermbg=NONE
+hi! Normal ctermbg=NONE guibg=NONE
 
 " ========== MAPS
 " compile C

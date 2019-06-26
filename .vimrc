@@ -58,7 +58,7 @@ hi Pmenusel ctermfg=black ctermbg=white
 hi CursorLine ctermfg=white ctermbg=darkred
 hi SpecialKey ctermfg=darkgrey
 " transparent bg
-hi! Normal ctermbg=NONE guibg=NONE
+" hi! Normal ctermbg=NONE guibg=NONE
 
 " ========== MAPS
 " compile C

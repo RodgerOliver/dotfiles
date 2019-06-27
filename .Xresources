@@ -74,8 +74,10 @@ XTerm*metaSendsEscape: true
 *color2: #83ff08
 *color10: #8eff1e
 ! yellow
-*color3: #ff8308
-*color11: #ff8e1e
+*.color3:  #ffcc08
+*.color11: #ffd11e
+/* *color3: #ff8308 */
+/* *color11: #ff8e1e */
 ! blue
 *color4: #0883ff
 *color12: #1e8eff

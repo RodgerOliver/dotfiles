@@ -14,7 +14,7 @@
     background_color = "#282a36"
     background_darkness = 0.8
     cursor_color = "#ffffff"
-    font = mononoki Nerd Font 12
+    font = mononoki Nerd Font 14
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden

@@ -140,7 +140,6 @@ Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
 Plug 'christoomey/vim-system-copy'
-Plug 'wincent/scalpel'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
@@ -161,6 +160,7 @@ Plug 'junegunn/goyo.vim'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'christoomey/vim-sort-motion'
 " Plug 'christoomey/vim-titlecase'
+" Plug 'wincent/scalpel'
 
 call plug#end()
 

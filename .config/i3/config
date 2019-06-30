@@ -14,9 +14,9 @@ bindsym Print exec scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures
 focus_follows_mouse no
 
 # ===== APPS SHORTCUTS =====
-bindsym $mod+Return exec terminator
 bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
-bindsym $mod+b exec firefox
+bindsym $mod+Return exec terminator
+bindsym $mod+Shift+Return exec firefox
 
 # ===== WINDOWS ACTIONS =====
 # kill window

@@ -51,6 +51,7 @@ set tags=tags;
 set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
+set t_Co=256
 
 " ========== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey
@@ -121,6 +122,8 @@ nnoremap <leader>f :NERDTreeClose<CR>:vs ~/%<CR>:windo difft<CR>:windo set wrap<
 " move in quickfix list
 nnoremap <leader>m :cn<CR>
 nnoremap <leader>n :cp<CR>
+nnoremap cO :copen<CR>
+nnoremap cC :cclose<CR>
 
 " ========== PLUGINS
 call plug#begin()

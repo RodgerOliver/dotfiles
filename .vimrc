@@ -9,6 +9,7 @@ colorscheme snazzy
 
 " ========== AUTOCMDS
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+autocmd BufEnter *.php set foldmethod=indent
 
 " ========== SETS
 set number "nu
@@ -39,11 +40,13 @@ set listchars=tab:▸\ ,trail:•
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
 set complete=.,w,b,u,t,i
+" fold
 set foldmethod=syntax
 set nofoldenable
 set foldlevel=2
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
+" fix backspace
 set backspace=indent,eol,start
 set backspace=2
 set tags=tags;

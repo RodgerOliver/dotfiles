@@ -4,19 +4,19 @@ font pango:mononoki 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # lock screen
-bindsym $mod+Shift+x exec ~/.config/i3/scripts/lock
+bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock
 # power machine
-bindsym $mod+Shift+BackSpace exec ~/.config/i3/scripts/power
+bindsym $mod+Shift+BackSpace exec --no-startup-id ~/.config/i3/scripts/power
 # hide window borders
 # hide_edge_borders both
-bindsym Print exec scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
+bindsym Print exec --no-startup-id scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
 # disable mouse hover focus
 focus_follows_mouse no
 
 # ===== APPS SHORTCUTS =====
-bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
-bindsym $mod+Return exec terminator
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
+bindsym $mod+Return exec --no-startup-id terminator
+bindsym $mod+Shift+Return exec --no-startup-id firefox
 
 # ===== WINDOWS ACTIONS =====
 # kill window
@@ -105,23 +105,23 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # ===== AUDIO AND BRIGHTNESS =====
 # Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec pkill -SIGRTMIN+10 i3blocks
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec pkill -SIGRTMIN+10 i3blocks
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+; exec pkill -RTMIN+10 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-; exec pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle; exec pkill -RTMIN+10 i3blocks
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+; exec --no-startup-id pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%-; exec --no-startup-id pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle; exec --no-startup-id pkill -RTMIN+10 i3blocks
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && pkill -RTMIN+20 i3blocks
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && pkill -RTMIN+20 i3blocks
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && pkill -RTMIN+20 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && pkill -RTMIN+20 i3blocks
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioStop exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioStop exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # change NUM_LOCK
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
 
 # ===== COLORS =====
 # border = window title, top and bottom borders
@@ -173,6 +173,6 @@ bar {
 }
 
 # ===== STARTUP COMMANDS =====
-exec xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-exec redshift-gtk
+exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec_always feh --bg-scale ~/.config/wallpaper.jpg

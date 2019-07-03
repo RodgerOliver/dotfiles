@@ -1,6 +1,12 @@
 #!/bin/bash
 
-for remote_file in $(find . -type f ! -path './.git/*' ! -path './.icons/*' | grep -vFf ~/.ignore_dots); do
+if [ -f ~/.ignore_dots ]; then
+	a=$(find . -type f ! -path './.git/*' ! -path './.icons/*' | grep -vFf ~/.ignore_dots);
+else
+	a=$(find . -type f ! -path './.git/*' ! -path './.icons/*');
+fi
+
+for remote_file in ${a}; do
 	home_path=$(echo $HOME | sed 's/\//\\\//g')
 	local_file=$(echo $remote_file | sed "s/^\./$home_path/");
 	home_file=$(echo $remote_file | sed "s/^\./~/");

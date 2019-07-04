@@ -19,6 +19,8 @@ bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
 
 # ===== WINDOWS ACTIONS =====
+# make window sticky
+bindsym $mod+z sticky toggle
 # kill window
 bindsym $mod+Shift+q kill
 # change focus
@@ -27,15 +29,15 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 20px
+bindsym $mod+Shift+j move down 20px
+bindsym $mod+Shift+k move up 20px
+bindsym $mod+Shift+l move right 20px
 # resize window
-bindsym $mod+y resize shrink width 5 px or 5 ppt
-bindsym $mod+u resize grow height 5 px or 5 ppt
-bindsym $mod+i resize shrink height 5 px or 5 ppt
-bindsym $mod+o resize grow width 5 px or 5 ppt
+bindsym $mod+y resize shrink width 20 px or 20 ppt
+bindsym $mod+u resize grow height 20 px or 20 ppt
+bindsym $mod+i resize shrink height 20 px or 20 ppt
+bindsym $mod+o resize grow width 20 px or 20 ppt
 # split in vertical orientation
 bindsym $mod+v split v
 bindsym $mod+c split h
@@ -69,8 +71,8 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 # apps on workspaces
-# assign [class="Firefox"] $ws2
 for_window [class="Spotify"] move to workspace $ws9
+# assign [class="Firefox"] $ws2
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

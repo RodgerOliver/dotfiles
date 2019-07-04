@@ -17,7 +17,7 @@ fi
 # start tmux session scratchpad
 if tmux has-session -t scratchpad 2> /dev/null; then
 	# tmux attach -t scratchpad
-	exit
+	echo "continue" > /dev/null
 else
 	tmux new -d -s scratchpad
 fi

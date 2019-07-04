@@ -59,7 +59,7 @@ bindsym $mod+q focus child
 # ===== SCRATCHPAD =====
 # bindsym $mod+Shift+p move scratchpad
 bindsym $mod+p [title="scratchpad"] scratchpad show; [title="scratchpad"] move position center
-bindsym $mod+ccedilla exec --no-startup-id terminator -T "scratchpad" -x "tmux a"
+bindsym $mod+Shift+ccedilla exec --no-startup-id terminator -T "scratchpad" -x "tmux a"
 for_window [title="scratchpad"] floating enable
 for_window [title="scratchpad"] move scratchpad
 for_window [title="scratchpad"] move position center

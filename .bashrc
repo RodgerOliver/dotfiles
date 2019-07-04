@@ -14,6 +14,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# start tmux session scratchpad
+if tmux has-session -t scratchpad 2> /dev/null; then
+	# tmux attach -t scratchpad
+	exit
+else
+	tmux new -d -s scratchpad
+fi
+echo "oooooooo"
 # Start graphical server if i3 not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 set -o vi # vi mode

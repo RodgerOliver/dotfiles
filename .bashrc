@@ -17,7 +17,7 @@ fi
 # start tmux session scratchpad
 if tmux has-session -t scratchpad 2> /dev/null; then
 	# tmux attach -t scratchpad
-	echo "continue" > /dev/null
+	echo "continue" &> /dev/null
 else
 	tmux new -d -s scratchpad
 fi
@@ -52,9 +52,10 @@ export FILE=ranger
 
 # ===== ALIASES =====
 alias ls='ls --color=auto'
-alias ll='ls -alF'
+alias ll='ls -la'
 alias la='ls -A'
-alias l='ls -CF'
+alias c='clear'
+alias q='exit'
 alias mkdir='mkdir -pv'
 alias ip='ip -c'
 alias grep='grep --color=auto'
@@ -63,5 +64,4 @@ alias vv='vim ~/notes/vimwiki/index.md'
 alias g='git'
 alias glog='git log --all --graph --oneline --decorate'
 alias r='ranger'
-alias c='clear'
-alias q='exit'
+alias t='tmux'

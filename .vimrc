@@ -157,6 +157,11 @@ Plug 'ap/vim-css-color'
 Plug 'alvan/vim-closetag'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
+Plug 'austintaylor/vim-commaobject'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'vim-vdebug/vdebug'
+Plug 'godlygeek/tabular'
+" Plug 'easymotion/vim-easymotion'
 " Plug 'jaxbot/browserlink.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'matze/vim-move'
@@ -276,3 +281,9 @@ let g:SuperTabDefaultCompletionType = 'context'
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
+
+" ========== VDEBUG
+" let g:vdebug_options = {'ide_key': 'netbeans-xdebug'}
+" let g:vdebug_options = {'break_on_open': 0}
+" let g:vdebug_options = {'server': '127.0.0.1'}
+" let g:vdebug_options = {'port': '10000'}

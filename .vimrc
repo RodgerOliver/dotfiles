@@ -283,7 +283,9 @@ let g:SuperTabDefaultCompletionType = 'context'
 " let g:syntastic_check_on_wq = 0
 
 " ========== VDEBUG
-" let g:vdebug_options = {'break_on_open': 0}
-" let g:vdebug_options = {'server': '127.0.0.1'}
-" let g:vdebug_options = {'port': '10000'}
-" let g:vdebug_options = {'ide_key': 'netbeans-xdebug'}
+" let g:vdebug_options = {
+" 	\ 'break_on_open': 0,
+" 	\ 'server': '127.0.0.1',
+" 	\ 'port': '9000',
+" 	\ 'ide_key': 'netbeans-xdebug'
+" 	\ }

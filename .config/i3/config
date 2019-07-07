@@ -58,13 +58,13 @@ bindsym $mod+q focus child
 
 # ===== SCRATCHPAD =====
 # bindsym $mod+Shift+p move scratchpad
-bindsym $mod+p [title="scratchpad"] scratchpad show; [title="scratchpad"] move position center
+bindsym $mod+p [title="scratchpad" class="Terminator"] scratchpad show; [title="scratchpad" class="Terminator"] move position center
 bindsym $mod+Shift+ccedilla exec --no-startup-id terminator -T "scratchpad" -x "tmux a -t scratchpad"
-for_window [title="scratchpad"] floating enable
-for_window [title="scratchpad"] sticky enable
-for_window [title="scratchpad"] move scratchpad
-for_window [title="scratchpad"] move position center
-for_window [title="scratchpad"] border pixel 5
+for_window [title="scratchpad" class="Terminator"] floating enable
+for_window [title="scratchpad" class="Terminator"] sticky enable
+for_window [title="scratchpad" class="Terminator"] move scratchpad
+for_window [title="scratchpad" class="Terminator"] move position center
+for_window [title="scratchpad" class="Terminator"] border pixel 5
 
 # ===== WORKSPACES =====
 set $ws1 1

@@ -7,9 +7,20 @@ let mapleader = " "
 set background=dark
 colorscheme snazzy
 
+" ========== FUNCTIONS
+function! Fold()
+	let line = getline(v:lnum)
+	if match(line, '^[#"!]\s=') > -1
+		return ">1"
+	else
+		return "="
+	endif
+endfunction
+
 " ========== AUTOCMDS
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
-autocmd BufEnter *.php set foldmethod=indent
+autocmd BufEnter *.php setlocal foldmethod=indent
+autocmd FileType vim,sh,xdefaults,conf setlocal foldmethod=expr foldexpr=Fold() foldlevel=0 foldenable
 
 " ========== SETS
 set number "nu

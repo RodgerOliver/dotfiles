@@ -8,7 +8,7 @@ set background=dark
 colorscheme snazzy
 
 " ========== FUNCTIONS
-function! Fold()
+function! FoldConfig()
 	let line = getline(v:lnum)
 	if match(line, '^[#"!]\s=') > -1
 		return ">1"
@@ -16,11 +16,15 @@ function! Fold()
 		return "="
 	endif
 endfunction
+function! FoldText()
+	let foldSize = (v:foldend-v:foldstart)
+	return getline(v:foldstart).' ('.foldSize.' lines)'
+endfunction
 
 " ========== AUTOCMDS
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 autocmd BufEnter *.php setlocal foldmethod=indent
-autocmd FileType vim,sh,xdefaults,conf setlocal foldmethod=expr foldexpr=Fold() foldlevel=0 foldenable
+autocmd FileType vim,sh,xdefaults,conf setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=FoldText() foldlevel=0 foldenable
 
 " ========== SETS
 set number "nu

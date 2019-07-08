@@ -17,6 +17,8 @@ focus_follows_mouse no
 bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
+bindsym $mod+equal [class="Firefox"] resize set 300px 313px
+bindsym $mod+Shift+equal [class="Firefox"] resize set 465px 429px
 
 # ===== WINDOWS ACTIONS =====
 # make window sticky
@@ -38,6 +40,10 @@ bindsym $mod+y resize shrink width 5 px or 5 ppt
 bindsym $mod+u resize grow height 5 px or 5 ppt
 bindsym $mod+i resize shrink height 5 px or 5 ppt
 bindsym $mod+o resize grow width 5 px or 5 ppt
+bindsym $mod+Shift+y resize shrink width 50 px or 50 ppt
+bindsym $mod+Shift+u resize grow height 50 px or 50 ppt
+bindsym $mod+Shift+i resize shrink height 50 px or 50 ppt
+bindsym $mod+Shift+o resize grow width 50 px or 50 ppt
 # split in vertical orientation
 bindsym $mod+v split v
 bindsym $mod+c split h

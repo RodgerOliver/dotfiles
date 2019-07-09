@@ -16,7 +16,7 @@ function! FoldConfig()
 		return "="
 	endif
 endfunction
-function! FoldText()
+function! TextFold()
 	let foldSize = (v:foldend-v:foldstart)
 	return getline(v:foldstart).' ('.foldSize.' lines)'
 endfunction
@@ -24,7 +24,7 @@ endfunction
 " ========== AUTOCMDS
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 autocmd BufEnter *.php setlocal foldmethod=indent
-autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=FoldText() foldlevel=0 foldenable
+autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 
 " ========== SETS
 set number "nu

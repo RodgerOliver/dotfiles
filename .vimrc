@@ -128,7 +128,7 @@ nnoremap <leader>vt :tabnew ~/.vimrc<CR>
 nnoremap <leader>pm :InstantMarkdownPreview<CR>
 nnoremap <leader>ue :UltiSnipsEdit<CR>
 nnoremap <leader>x :!clear<CR><CR>
-" nnoremap <leader>. :CtrlPTag<CR>
+" nnoremap <leader>P :CtrlPTag<CR>
 nnoremap <leader><leader> za
 nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <leader>. :bn<CR>

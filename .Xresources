@@ -1,6 +1,6 @@
 ! .Xdefaults, older method and fallback, read everytime and Xlib program starts
 ! .Xresources, newer method, loads with xrdb
-! ===== GENERAL =====
+! ===== GENERAL
 ! Term Name
 *termName: xterm-256color
 ! disable scroll bar
@@ -8,7 +8,7 @@
 ! font
 *font: xft:mononoki Nerd Font:size=12
 
-! ===== XTERM =====
+! ===== XTERM
 XTerm*faceName: mononoki Nerd Font
 XTerm*faceSize: 14
 ! VT Font Menu
@@ -55,7 +55,7 @@ XTerm*fullscreen: never
 ! enable alt key to work
 XTerm*metaSendsEscape: true
 
-! ===== COLORS =====
+! ===== COLORS
 ! text color
 *foreground: #ffffff
 ! background

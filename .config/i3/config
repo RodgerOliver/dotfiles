@@ -1,4 +1,4 @@
-# ===== GENERAL =====
+# ===== GENERAL
 set $mod Mod4
 font pango:mononoki 11
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -13,14 +13,14 @@ bindsym Print exec --no-startup-id scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e '
 # disable mouse hover focus
 focus_follows_mouse no
 
-# ===== APPS SHORTCUTS =====
+# ===== APPS SHORTCUTS
 bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
 bindsym $mod+equal [class="Firefox"] resize set 300px 313px
 bindsym $mod+Shift+equal [class="Firefox"] resize set 465px 429px
 
-# ===== WINDOWS ACTIONS =====
+# ===== WINDOWS ACTIONS
 # make window sticky
 bindsym $mod+z sticky toggle
 # kill window
@@ -62,7 +62,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+q focus child
 
-# ===== SCRATCHPAD =====
+# ===== SCRATCHPAD
 # bindsym $mod+Shift+p move scratchpad
 bindsym $mod+p [title="scratchpad" class="Terminator"] scratchpad show; [title="scratchpad" class="Terminator"] move position center
 bindsym $mod+Shift+ccedilla exec --no-startup-id terminator -T "scratchpad" -x "tmux a -t scratchpad"
@@ -72,7 +72,7 @@ for_window [title="scratchpad" class="Terminator"] move scratchpad
 for_window [title="scratchpad" class="Terminator"] move position center
 for_window [title="scratchpad" class="Terminator"] border pixel 5
 
-# ===== WORKSPACES =====
+# ===== WORKSPACES
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -110,7 +110,7 @@ bindsym $mod+Tab workspace back_and_forth
 # bindsym $mod+Tab workspace next
 # bindsym $mod+Shift+Tab workspace prev
 
-# ===== DEBUG AND EXIT =====
+# ===== DEBUG AND EXIT
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -118,7 +118,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# ===== AUDIO AND BRIGHTNESS =====
+# ===== AUDIO AND BRIGHTNESS
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
@@ -138,7 +138,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # change NUM_LOCK
 bindsym --release Num_Lock  exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
 
-# ===== COLORS =====
+# ===== COLORS
 # border = window title, top and bottom borders
 # bground = window title, background
 # text = window title, text
@@ -167,7 +167,7 @@ client.unfocused        $c_bg_uf  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
 client.urgent           $c_bg_ug  $c_bg_ug  $c_tx_fc  $c_in     $c_bg_uf
 client.background       $c_tx_fc
 
-# ===== i3BLOCKS =====
+# ===== i3BLOCKS
 bar {
 	tray_output primary
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
@@ -187,7 +187,7 @@ bar {
 	}
 }
 
-# ===== STARTUP COMMANDS =====
+# ===== STARTUP COMMANDS
 exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec_always feh --bg-scale ~/.config/wallpaper.jpg

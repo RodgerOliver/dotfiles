@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===== GIT =====
+# ===== GIT
 prompt_git() {
 	local s='';
 	local branchName='';
@@ -51,7 +51,7 @@ prompt_git() {
 	fi;
 }
 
-# ===== COLORS =====
+# ===== COLORS
 if tput setaf 1 &> /dev/null; then
 	reset=$(tput sgr0)
 	bold=$(tput bold)
@@ -76,7 +76,7 @@ else
 	white="\e[38;5;255m"
 fi
 
-# ===== PS1 =====
+# ===== PS1
 PS1="\[${bold}\]\n"
 PS1+="\[${yellow}\]\u"
 PS1+="\[${blue}\]@"

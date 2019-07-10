@@ -5,7 +5,7 @@
 # .profile is for all shells
 # backup files are in /etc/skel
 # general config files are in /etc
-# ===== GENERAL =====
+# ===== GENERAL
 # sudo completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -43,14 +43,14 @@ for file in ~/.bash_{aliases,prompt}; do
 done;
 unset file;
 
-# ===== EXPORTS =====
+# ===== EXPORTS
 export EDITOR=vim
 export TERM=xterm-256color
 export BROWSER=firefox
 export READER=zathura
 export FILE=ranger
 
-# ===== ALIASES =====
+# ===== ALIASES
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias la='ls -A'

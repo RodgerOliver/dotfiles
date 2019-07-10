@@ -70,6 +70,10 @@ set t_8f=[38;2;%lu;%lu;%lum
 set t_8b=[48;2;%lu;%lu;%lum
 set termguicolors
 set t_Co=256
+" remove backup and swap files
+set nobackup
+set nowritebackup
+set noswapfile
 
 " ========== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey

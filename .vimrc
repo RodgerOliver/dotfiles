@@ -92,6 +92,8 @@ noremap <leader>cc :w<CR>:!gcc % -lm && time ./a.out && rm a.out<CR>
 noremap <leader>cC :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " compile Php
 noremap <leader>cp :w<CR>:!time php %<CR>
+" fix pasting
+nnoremap p p=`]"
 " jump to the end of the line
 inoremap <C-c> <C-o>a
 " remove highlight last search

@@ -35,12 +35,14 @@ set ignorecase "ic
 set showcmd
 set autoindent "ai
 set encoding=UTF-8
+" highlight current line
+set cursorline
 " tab config
 set tabstop=3
-set shiftwidth=0
-" don't make tabs turn to spaces
+set shiftwidth=3
+set softtabstop=3
 set noexpandtab
-set softtabstop=0
+" show matching curly, paren or bracket
 set showmatch
 set incsearch
 set splitbelow splitright
@@ -166,7 +168,6 @@ Plug 'suan/vim-instant-markdown'
 Plug 'christoomey/vim-system-copy'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-repeat'
@@ -179,6 +180,7 @@ Plug 'austintaylor/vim-commaobject'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'vim-vdebug/vdebug'
 Plug 'godlygeek/tabular'
+" Plug 'ervandew/supertab'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'jaxbot/browserlink.vim'
 " Plug 'mattn/emmet-vim'
@@ -277,10 +279,6 @@ let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
 
-" ===== SUPERTAB
-" let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
-let g:SuperTabDefaultCompletionType = 'context'
-
 " ===== CTRLP
 let g:ctrlp_extensions = ['tag']
 
@@ -302,6 +300,10 @@ let g:ctrlp_extensions = ['tag']
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
+
+" ===== SUPERTAB
+" let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
+" let g:SuperTabDefaultCompletionType = 'context'
 
 " ===== VDEBUG
 " let g:vdebug_options = {

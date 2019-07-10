@@ -132,7 +132,6 @@ nnoremap <leader>vt :tabnew ~/.vimrc<CR>
 nnoremap <leader>pm :InstantMarkdownPreview<CR>
 nnoremap <leader>ue :UltiSnipsEdit<CR>
 nnoremap <leader>x :!clear<CR><CR>
-" nnoremap <leader>P :CtrlPTag<CR>
 nnoremap <leader><leader> za
 nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <leader>. :bn<CR>
@@ -281,6 +280,9 @@ let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
 " ===== SUPERTAB
 " let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
 let g:SuperTabDefaultCompletionType = 'context'
+
+" ===== CTRLP
+let g:ctrlp_extensions = ['tag']
 
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'

@@ -22,7 +22,7 @@ function! TextFold()
 endfunction
 
 " ===== AUTOCMDS
-autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 
@@ -124,7 +124,7 @@ nnoremap c* *Ncgn
 " save and exit
 nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q!<CR>
+nnoremap <leader>Q :qall!<CR>
 " open .vimrc
 nnoremap <leader>vv :e ~/.vimrc<CR>
 nnoremap <leader>vt :tabnew ~/.vimrc<CR>

@@ -7,7 +7,7 @@ let mapleader = " "
 set background=dark
 colorscheme snazzy
 
-" ========== FUNCTIONS
+" ===== FUNCTIONS
 function! FoldConfig()
 	let line = getline(v:lnum)
 	if match(line, '^[#"!]\s=') > -1
@@ -21,12 +21,12 @@ function! TextFold()
 	return getline(v:foldstart).' ('.foldSize.' lines)'
 endfunction
 
-" ========== AUTOCMDS
+" ===== AUTOCMDS
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 
-" ========== SETS
+" ===== SETS
 set number "nu
 set numberwidth=4
 set relativenumber "rnu
@@ -75,7 +75,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" ========== HIGHLIGHTS
+" ===== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey
 hi Pmenusel ctermfg=black ctermbg=white
 hi CursorLine ctermfg=white ctermbg=darkred
@@ -83,7 +83,7 @@ hi SpecialKey ctermfg=darkgrey
 " transparent bg
 " hi! Normal ctermbg=NONE guibg=NONE
 
-" ========== MAPS
+" ===== MAPS
 " compile C
 noremap <leader>cc :w<CR>:!gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++
@@ -147,7 +147,7 @@ nnoremap <leader>n :cp<CR>
 nnoremap cO :copen<CR>
 nnoremap cC :cclose<CR>
 
-" ========== PLUGINS
+" ===== PLUGINS
 call plug#begin()
 
 Plug 'flazz/vim-colorschemes'
@@ -194,7 +194,7 @@ Plug 'godlygeek/tabular'
 
 call plug#end()
 
-" ========== AIRLINE
+" ===== AIRLINE
 let g:airline_powerline_fonts = 1
 let g:airline_theme='cool'
 let g:airline#extensions#whitespace#enabled = 0
@@ -234,7 +234,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = '㏑'
 
-" ========== NERD TREE
+" ===== NERD TREE
 nnoremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -249,13 +249,13 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-" ========== GIT GUTTER
+" ===== GIT GUTTER
 set updatetime=100
 
-" ========== VIM INSTANT MARKDOWN
+" ===== VIM INSTANT MARKDOWN
 let g:instant_markdown_autostart = 0
 
-" ========== VIM WIKI
+" ===== VIM WIKI
 let index = {}
 let index.path = '~/notes/vimwiki/'
 let index.syntax = 'markdown'
@@ -271,28 +271,28 @@ let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 
 " don't use wiki syntax on other .md files
 " let g:vimwiki_global_ext = 0
 
-" ========== UTILSNIPS
+" ===== UTILSNIPS
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
 
-" ========== SUPERTAB
+" ===== SUPERTAB
 " let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
 let g:SuperTabDefaultCompletionType = 'context'
 
-" ========== VIM MOVE
+" ===== VIM MOVE
 " execute 'set <A-j>=\ej'
 " execute 'set <A-k>=\ek'
 " let g:move_key_modifier = 'C'
 
-" ========== YCM
+" ===== YCM
 " let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 " let g:ycm_key_list_accept_completion = ['<C-y>']
 
-" ========== SYNTASTIC
+" ===== SYNTASTIC
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -301,7 +301,7 @@ let g:SuperTabDefaultCompletionType = 'context'
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 
-" ========== VDEBUG
+" ===== VDEBUG
 " let g:vdebug_options = {
 " 	\ 'break_on_open': 0,
 " 	\ 'server': '127.0.0.1',

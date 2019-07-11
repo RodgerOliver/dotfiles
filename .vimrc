@@ -23,19 +23,19 @@ endfunction
 function! s:Marks()
 	marks abcdefghijklmnopqrstuvwxyz.
 	echo 'Jump to mark: '
-	let marks = nr2char(getchar())
+	let mark_char = nr2char(getchar())
 	redraw
-	if(marks)
-		execute 'normal! `' . marks
+	if match(mark_char, '\w') > -1
+		execute 'normal! `' . mark_char
 	endif
 endfunction
 function! s:Regs()
 	reg abcdefghijklmnopqrstuvwxyz
 	echo 'Paste register: '
-	let regs = nr2char(getchar())
+	let reg_char = nr2char(getchar())
 	redraw
-	if(regs)
-		execute 'normal! "' . regs . 'p=`]'
+	if match(reg_char, '\w') > -1
+		execute 'normal! "' . reg_char . 'p=`]'
 	endif
 endfunction
 

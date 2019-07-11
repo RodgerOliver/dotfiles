@@ -20,11 +20,31 @@ function! TextFold()
 	let foldSize = (v:foldend-v:foldstart)
 	return getline(v:foldstart).' ('.foldSize.' lines)'
 endfunction
+function! s:Marks()
+	marks abcdefghijklmnopqrstuvwxyz.
+	echo 'Jump to mark: '
+	let marks = nr2char(getchar())
+	redraw
+	if(marks)
+		execute 'normal! `' . marks
+	endif
+endfunction
+function! s:Regs()
+	reg abcdefghijklmnopqrstuvwxyz
+	echo 'Paste register: '
+	let regs = nr2char(getchar())
+	redraw
+	if(regs)
+		execute 'normal! "' . regs . 'p=`]'
+	endif
+endfunction
 
 " ===== AUTOCMDS
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
+command! Marks call s:Marks()
+command! Regs call s:Regs()
 
 " ===== SETS
 set number "nu
@@ -93,7 +113,7 @@ noremap <leader>cC :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " compile Php
 noremap <leader>cp :w<CR>:!time php %<CR>
 " fix pasting
-nnoremap p p=`]"
+nnoremap p p=`]
 " jump to the end of the line
 inoremap <C-c> <C-o>a
 " remove highlight last search

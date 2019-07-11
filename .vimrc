@@ -153,36 +153,44 @@ nnoremap cC :cclose<CR>
 " ===== PLUGINS
 call plug#begin()
 
+" APPEARANCE
 Plug 'flazz/vim-colorschemes'
 Plug 'connorholyday/vim-snazzy'
 Plug 'flrnprz/plastic.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-commentary'
-Plug 'vimwiki/vimwiki'
-Plug 'suan/vim-instant-markdown'
-Plug 'christoomey/vim-system-copy'
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-repeat'
-Plug 'mileszs/ack.vim'
-Plug 'ap/vim-css-color'
-Plug 'alvan/vim-closetag'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
+" GIT
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" FILE BROWSING
+Plug 'scrooloose/nerdtree'
+" SEARCH
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'majutsushi/tagbar'
+" SNIPPETS
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+" UTILITIES
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'christoomey/vim-system-copy'
+Plug 'tpope/vim-repeat'
+Plug 'alvan/vim-closetag'
 Plug 'austintaylor/vim-commaobject'
+" PHP
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'vim-vdebug/vdebug'
-Plug 'godlygeek/tabular'
+" OTHER
+Plug 'vimwiki/vimwiki'
+Plug 'suan/vim-instant-markdown'
+Plug 'ap/vim-css-color'
 " Plug 'ervandew/supertab'
+" Plug 'godlygeek/tabular'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'jaxbot/browserlink.vim'
 " Plug 'mattn/emmet-vim'

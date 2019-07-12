@@ -19,6 +19,7 @@ bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
 bindsym $mod+equal [class="Firefox"] resize set 300px 313px
 bindsym $mod+Shift+equal [class="Firefox"] resize set 465px 429px
+bindsym $mod+m exec --no-startup-id spotify
 
 # ===== WINDOWS ACTIONS
 # make window sticky

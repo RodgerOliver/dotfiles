@@ -98,10 +98,12 @@ set nowritebackup
 set noswapfile
 
 " ===== HIGHLIGHTS
-hi Pmenu ctermfg=white ctermbg=darkgrey
-hi Pmenusel ctermfg=black ctermbg=white
-hi CursorLine ctermfg=white ctermbg=darkred
-hi SpecialKey ctermfg=darkgrey
+hi Pmenu ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey
+hi Pmenusel ctermfg=black ctermbg=white guifg=black guibg=white
+" hi CursorLine ctermfg=white ctermbg=darkred guifg=white guibg=darkred
+hi SpecialKey ctermfg=darkgrey guifg=darkgrey
+hi ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 " transparent bg
 " hi! Normal ctermbg=NONE guibg=NONE
 
@@ -171,8 +173,12 @@ nnoremap <leader>f :NERDTreeClose<CR>:vs ~/%<CR>:windo difft<CR>:windo set wrap<
 " move in quickfix list
 nnoremap <leader>m :cn<CR>
 nnoremap <leader>n :cp<CR>
-nnoremap cO :copen<CR>
+nnoremap cO :copen<CR>:set nowrap<CR>
 nnoremap cC :cclose<CR>
+" remove trailing whitespaces
+nnoremap <leader>0 :%s/\s\+$//e<CR><C-o>
+" indent file
+nnoremap <leader>i gg=G<C-o><C-o>
 
 " ===== PLUGINS
 call plug#begin()

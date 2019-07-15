@@ -177,7 +177,7 @@ nnoremap <leader>n :cp<CR>zz
 nnoremap cO :copen<CR>:set nowrap<CR>
 nnoremap cC :cclose<CR>
 " remove trailing whitespaces
-nnoremap <leader>0 :%s/\s\+$//e<CR>
+nnoremap <leader>0 :%s/\s\+$//e<CR>:nohls<CR>
 " indent file
 nnoremap <leader>i gg=G<C-o><C-o>
 

@@ -30,7 +30,7 @@ function! s:Marks()
 	endif
 endfunction
 function! s:Regs()
-	reg abcdefghijklmnopqrstuvwxyz
+	reg abcdefghijklmnopqrstuvwxyz1234567890
 	echo "\nPaste register: "
 	let reg_char = nr2char(getchar())
 	redraw
@@ -128,7 +128,7 @@ noremap ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
-nnoremap <leader>r :w<CR>:source %<CR>:AirlineRefresh<CR>:nohls<CR>
+nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>

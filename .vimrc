@@ -41,7 +41,7 @@ endfunction
 
 " ===== AUTOCMDS
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
-autocmd BufEnter *.php setlocal foldmethod=indent
+" autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 command! Marks call s:Marks()
 command! Regs call s:Regs()
@@ -177,9 +177,9 @@ nnoremap <leader>n :cp<CR>zz
 nnoremap cO :copen<CR>:set nowrap<CR>
 nnoremap cC :cclose<CR>
 " remove trailing whitespaces
-nnoremap <leader>0 :%s/\s\+$//e<CR>:nohls<CR>
+nnoremap <leader>0 :%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
 " indent file
-nnoremap <leader>i gg=G<C-o><C-o>
+nnoremap <leader>i gg=G:w<CR>:e!<CR>
 
 " ===== PLUGINS
 call plug#begin()

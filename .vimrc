@@ -155,7 +155,7 @@ nnoremap c* *Ncgn
 " save and exit
 nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qall!<CR>
+nnoremap <leader>Q :q!<CR>
 " open .vimrc
 nnoremap <leader>vv :e ~/.vimrc<CR>
 nnoremap <leader>vt :tabnew ~/.vimrc<CR>

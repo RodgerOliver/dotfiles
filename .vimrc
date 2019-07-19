@@ -55,6 +55,9 @@ set ignorecase "ic
 set showcmd
 set autoindent "ai
 set encoding=UTF-8
+" set history change
+set undodir=~/.vim/undodir
+set undofile
 " highlight current line
 set cursorline
 " tab config

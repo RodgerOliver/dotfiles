@@ -131,7 +131,7 @@ noremap ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
-nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>
+nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR>
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -179,10 +179,8 @@ nnoremap <leader>m :cn<CR>zz
 nnoremap <leader>n :cp<CR>zz
 nnoremap cO :copen<CR>:set nowrap<CR>
 nnoremap cC :cclose<CR>
-" remove trailing whitespaces
-nnoremap <leader>0 :%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
-" indent file
-nnoremap <leader>i gg=G:w<CR>:e!<CR>
+" remove trailing whitespaces and indent
+nnoremap <leader>0 gg=G:%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
 
 " ===== PLUGINS
 call plug#begin()

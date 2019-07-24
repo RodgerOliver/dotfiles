@@ -47,13 +47,16 @@ command! Marks call s:Marks()
 command! Regs call s:Regs()
 
 " ===== SETS
-set number "nu
+set number
 set numberwidth=4
-set relativenumber "rnu
-set hlsearch "hls
-set ignorecase "ic
+set relativenumber
+" search
+set hlsearch
+set ignorecase
+set incsearch
+" show typed cmd
 set showcmd
-set autoindent "ai
+set autoindent
 set encoding=UTF-8
 " set history change
 set undodir=~/.vim/undodir
@@ -67,7 +70,6 @@ set softtabstop=3
 set noexpandtab
 " show matching curly, paren or bracket
 set showmatch
-set incsearch
 set splitbelow splitright
 " :find [file]
 set path+=**
@@ -248,7 +250,7 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " function
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 " unicode symbols
 let g:airline_left_sep = '>>'
@@ -282,17 +284,17 @@ let g:airline_symbols.maxlinenr = '㏑'
 " ===== NERD TREE
 nnoremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+			\ "Modified"  : "✹",
+			\ "Staged"    : "✚",
+			\ "Untracked" : "✭",
+			\ "Renamed"   : "➜",
+			\ "Unmerged"  : "═",
+			\ "Deleted"   : "✖",
+			\ "Dirty"     : "✗",
+			\ "Clean"     : "✔︎",
+			\ 'Ignored'   : '☒',
+			\ "Unknown"   : "?"
+			\ }
 
 " ===== GIT GUTTER
 set updatetime=100

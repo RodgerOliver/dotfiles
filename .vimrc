@@ -83,7 +83,7 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
 set complete=.,w,b,u,t,i
 " fold
-set foldmethod=syntax
+"set foldmethod=syntax
 set nofoldenable
 set foldlevel=2
 " remove esc delay

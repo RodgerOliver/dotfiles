@@ -148,6 +148,10 @@ nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap tl :tablast<CR>
 nnoremap th :tabfirst<CR>
+nnoremap tK :tabmove +1<CR>
+nnoremap tJ :tabmove -1<CR>
+nnoremap tL :tabmove +2<CR>
+nnoremap tH :tabmove -2<CR>
 "split screen navigation
 nnoremap gh :sp<Space>
 nnoremap gv :vs<Space>

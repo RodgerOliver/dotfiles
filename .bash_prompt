@@ -83,7 +83,7 @@ PS1+="\[${blue}\]@"
 PS1+="\[${orange}\]\h"
 PS1+="\[${white}\]:"
 PS1+="\[${light_green}\]\w"
-PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")";
+PS1+="\$(prompt_git \"\[${white}\] on \[${yellow}\]\" \"\[${blue}\]\")";
 PS1+="\n$ \[${reset}\]"
 export PS1
 

@@ -44,6 +44,7 @@ done;
 unset file;
 
 # ===== EXPORTS
+export DISPLAY=:0
 export EDITOR=vim
 export TERM=xterm-256color
 export BROWSER=firefox

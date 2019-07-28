@@ -221,6 +221,7 @@ Plug 'tpope/vim-repeat'
 Plug 'alvan/vim-closetag'
 Plug 'austintaylor/vim-commaobject'
 " FRONT-END
+Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
 " Plug 'turbio/bracey.vim'

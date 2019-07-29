@@ -38,7 +38,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # source files
-for file in ~/.bash_{aliases,prompt}; do
+for file in ~/.bash_{aliases,prompt,completion}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -66,3 +66,6 @@ alias g='git'
 alias glog='git log --all --graph --oneline --decorate'
 alias r='ranger'
 alias t='tmux'
+
+# ===== COMPLETE
+complete -F _complete_alias g

@@ -63,7 +63,7 @@ alias grep='grep --color=auto'
 alias v='vim'
 alias vv='vim ~/notes/vimwiki/index.md'
 alias g='git'
-alias glog='git log --all --graph --oneline --decorate'
+alias glog='git log --all --graph --pretty=format:"%C(yellow)%h %C(green)%an %C(reset)%s %C(auto)%d"'
 alias r='ranger'
 alias t='tmux'
 

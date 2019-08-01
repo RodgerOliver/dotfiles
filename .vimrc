@@ -220,6 +220,7 @@ Plug 'christoomey/vim-system-copy'
 Plug 'tpope/vim-repeat'
 Plug 'alvan/vim-closetag'
 Plug 'austintaylor/vim-commaobject'
+" Plug 'oprogramador/vim-ftp'
 " FRONT-END
 Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'

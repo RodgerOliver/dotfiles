@@ -8,6 +8,12 @@
   split_vert = <Primary><Shift>v
   copy = <Primary>Insert
   paste = <Shift>Insert
+  page_up = <Alt>i
+  page_down = <Alt>u
+  page_up_half = <Alt>m
+  page_down_half = <Alt>n
+  line_up = <Alt>k
+  line_down = <Alt>j
 [profiles]
   [[default]]
     icon_bell = False

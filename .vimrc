@@ -38,6 +38,16 @@ function! s:Regs()
 		execute 'normal! "' . reg_char . 'p=`]'
 	endif
 endfunction
+function! VimPlugUpdate() abort
+  " Run PlugUpdate every week automatically when entering Vim.
+  if exists('g:plug_home')
+    let l:filename = printf('%s/.vim_plug_update_%s', g:plug_home, strftime('%Y_%V'))
+    if filereadable(l:filename) == 0
+      call execute('PlugUpdate')
+      call system(printf('touch %s', l:filename))
+    endif
+  endif
+endfunction
 
 " ===== AUTOCMDS
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
@@ -45,6 +55,7 @@ autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 command! Marks call s:Marks()
 command! Regs call s:Regs()
+autocmd VimEnter * call VimPlugUpdate()
 
 " ===== SETS
 set number

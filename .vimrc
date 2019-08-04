@@ -38,7 +38,7 @@ function! s:Regs()
 		execute 'normal! "' . reg_char . 'p=`]'
 	endif
 endfunction
-function! VimPlugUpdate() abort
+function! s:VimPlugUpdate() abort
 	" Run PlugUpdate every week automatically when entering Vim.
 	if exists('g:plug_home')
 		let l:filename = printf('%s/.vim_plug_update', g:plug_home)
@@ -59,9 +59,9 @@ endfunction
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 " autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
+autocmd VimEnter * call s:VimPlugUpdate()
 command! Marks call s:Marks()
 command! Regs call s:Regs()
-autocmd VimEnter * call VimPlugUpdate()
 
 " ===== SETS
 set number

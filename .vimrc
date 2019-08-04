@@ -210,7 +210,7 @@ call plug#begin()
 
 " APPEARANCE
 Plug 'flazz/vim-colorschemes'
-Plug 'connorholyday/vim-snazzy'
+Plug 'rodgeroliver/vim-snazzy'
 Plug 'flrnprz/plastic.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

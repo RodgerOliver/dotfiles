@@ -67,5 +67,14 @@ alias glog='git log --all --graph --pretty=format:"%C(yellow)%h %C(green)%an %C(
 alias r='ranger'
 alias t='tmux'
 
+# push branch to deploy with git
+gpud() {
+    branch=$1;
+    if [ -z $branch ]; then
+        branch=HEAD;
+    fi
+    git push -f deploy $branch:master
+}
+
 # ===== COMPLETE
 complete -F _complete_alias g

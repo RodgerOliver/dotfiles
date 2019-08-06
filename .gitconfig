@@ -1,0 +1,4 @@
+[alias]
+    co = checkout
+    l = log --graph --pretty=format:'%C(yellow)%h %C(reset)%s %C(auto)%d'
+    ll = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"

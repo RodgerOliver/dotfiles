@@ -1,8 +1,9 @@
 [alias]
 	ck = checkout
+	co = commit -m
 	ca = commit -am
 	st = status
 	l = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"
 	pud = "!f() { \
-		git push -f deploy $1:master; \
+		git push -f deploy HEAD:master; \
 	}; f"

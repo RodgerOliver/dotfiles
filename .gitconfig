@@ -3,6 +3,7 @@
 	co = commit -m
 	ca = commit -am
 	st = status
+    fa = fetch --all
 	l = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"
 	pud = "!f() { \
 		git push -f deploy HEAD:master; \

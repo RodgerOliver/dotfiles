@@ -1,10 +1,14 @@
 [alias]
 	ck = checkout
+	c = commit
 	co = commit -m
 	ca = commit -am
 	st = status
-    fa = fetch --all
-	l = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"
+	ps = push
+	pl = pull
+	fa = fetch --all
+	l = log --decorate --oneline --graph --all
+	ll = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"
 	pud = "!f() { \
 		git push -f deploy HEAD:master; \
 	}; f"

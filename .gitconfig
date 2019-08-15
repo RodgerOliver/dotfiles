@@ -6,6 +6,8 @@
 	st = status
 	ps = push
 	pl = pull
+	b = branch
+	ba = branch -avv
 	fa = fetch --all
 	l = log --decorate --oneline --graph --all
 	ll = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"

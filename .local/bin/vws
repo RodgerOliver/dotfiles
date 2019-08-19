@@ -1,5 +1,7 @@
 #!/bin/sh
 
-cd ~/notes/vimwiki/
-./sync.sh
-cd -
+git --work-tree ~/notes/vimwiki/ pull
+git --work-tree ~/notes/vimwiki/ add .
+git --work-tree ~/notes/vimwiki/ reset HEAD *.swp
+git --work-tree ~/notes/vimwiki/ commit -m 'auto commit'
+git --work-tree ~/notes/vimwiki/ push

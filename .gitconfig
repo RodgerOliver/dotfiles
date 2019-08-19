@@ -9,6 +9,7 @@
 	b = branch
 	ba = branch -avv
 	fa = fetch --all
+	s = show --name-only
 	l = log --decorate --oneline --graph --all
 	ll = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d'"
 	lo = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"

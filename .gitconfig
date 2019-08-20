@@ -13,8 +13,9 @@
 	so = show --name-only
 	d = diff
 	l = log --decorate --oneline --graph
-	ll = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d'"
-	lo = "log --all --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d%n'"
+	lb = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..HEAD"
+	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
+	lo = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
 	pud = "!f() { \
 		git push -f deploy HEAD:master; \
 	}; f"

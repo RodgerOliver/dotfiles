@@ -1,3 +1,5 @@
+[core]
+	editor = vim
 [alias]
 	ck = checkout
 	c = commit
@@ -12,6 +14,7 @@
 	s = show
 	so = show --name-only
 	d = diff
+	ds = diff --cached
 	l = log --decorate --oneline --graph
 	lb = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..HEAD"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"

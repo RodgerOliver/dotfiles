@@ -12,15 +12,17 @@
 [alias]
 	ck = checkout
 	c = commit
-	co = commit -m
-	ca = commit -am
+	cm = commit -m
+	cam = commit -am
 	st = status
 	ps = push
 	pl = pull
 	b = branch
 	ba = branch -avv
 	fa = fetch --all
+	m = merge
 	s = show
+	sm = show -m
 	so = show --name-only
 	d = diff
 	ds = diff --cached

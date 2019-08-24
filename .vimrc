@@ -41,6 +41,10 @@ function! s:Regs()
 endfunction
 
 " ===== AUTOCMDS
+" highlight merge conflict markers
+au VimEnter,WinEnter * if !exists('w:_vsc_conflict_marker_match') |
+	\   let w:_vsc_conflict_marker_match = matchadd('ErrorMsg', '^\(<\|=\||\|>\)\{7\}\([^=].\+\)\?$') |
+\ endif
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 " autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable

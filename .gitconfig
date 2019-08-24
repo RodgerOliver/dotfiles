@@ -1,5 +1,14 @@
 [core]
 	editor = vim
+[diff]
+	tool = vimdiff
+	algorithm = patience
+	indentHeuristic = true
+[difftool]
+	prompt = 0
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
 [alias]
 	ck = checkout
 	c = commit

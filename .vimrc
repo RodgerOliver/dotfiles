@@ -6,6 +6,7 @@ filetype plugin on
 let mapleader = " "
 set background=dark
 colorscheme snazzy
+set t_Co=256
 
 " ===== FUNCTIONS
 function! FoldConfig()
@@ -92,15 +93,19 @@ set timeoutlen=1000 ttimeoutlen=0
 set backspace=indent,eol,start
 set backspace=2
 set tags=tags;
-" better colors
-set t_8f=[38;2;%lu;%lu;%lum
-set t_8b=[48;2;%lu;%lu;%lum
-set termguicolors
-set t_Co=256
 " remove backup and swap files
 set nobackup
 set nowritebackup
 set noswapfile
+" better colors
+if &t_Co >= 256 || has("gui_running")
+	let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+	if (has("termguicolors"))
+		set termguicolors
+	endif
+endif
+
 
 " ===== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey

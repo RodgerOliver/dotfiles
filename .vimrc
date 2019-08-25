@@ -178,6 +178,9 @@ nnoremap c* *Ncgn
 nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
+nnoremap <leader>as :wall<CR>
+nnoremap <leader>aq :qall<CR>
+nnoremap <leader>aQ :qall!<CR>
 " open .vimrc
 nnoremap <leader>vv :e ~/.vimrc<CR>
 nnoremap <leader>vt :tabnew ~/.vimrc<CR>

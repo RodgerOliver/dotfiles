@@ -8,6 +8,11 @@ set background=dark
 colorscheme snazzy
 set t_Co=256
 
+" ===== VARS
+if &diff
+	let s:vimdiff_start = 1
+endif
+
 " ===== FUNCTIONS
 function! FoldConfig()
 	let line = getline(v:lnum)
@@ -38,6 +43,15 @@ function! s:Regs()
 	if match(reg_char, '\w') > -1
 		execute 'normal! "' . reg_char . 'p=`]'
 	endif
+endfunction
+function! s:QuitWindow()
+	if get(s:, 'vimdiff_start', 0)
+		qall
+		return
+	elseif &diff
+		diffoff!
+	endif
+	quit
 endfunction
 
 " ===== AUTOCMDS
@@ -176,7 +190,7 @@ nnoremap <C-l> <C-w>l
 nnoremap c* *Ncgn
 " save and exit
 nnoremap <leader>s :w<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <silent> <leader>q :call <SID>QuitWindow()<CR>
 nnoremap <leader>Q :q!<CR>
 " open .vimrc
 nnoremap <leader>vv :e ~/.vimrc<CR>

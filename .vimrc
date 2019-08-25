@@ -109,7 +109,11 @@ if &t_Co >= 256 || has("gui_running")
 		set termguicolors
 	endif
 endif
-
+" better diff
+set diffopt=vertical,filler,foldcolumn:1
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+	set diffopt+=internal,algorithm:patience,indent-heuristic
+endif
 
 " ===== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey

@@ -148,8 +148,8 @@ noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
 nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR>
 " disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
+noremap <expr> <Up> &diff ? '[czz' : '<ESC>'
+noremap <expr> <Down> &diff ? ']czz' : '<ESC>'
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 " move correctly in wrapped lines

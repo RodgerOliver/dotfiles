@@ -1,0 +1,17 @@
+#!/bin/bash
+
+remote_branches=$(git branch -a | grep 'remotes/origin' | grep -v HEAD)
+local_branches=$(git branch | awk '{if ($1 == "*") print $2; else print $1}')
+outdate_branches=$(git branch -v | grep '\[behind .*\]' | awk '{if ($1 == "*") print $2; else print $1}')
+
+# git fetch --all
+
+echo "Updating Local Branches"
+for branch in ${outdate_branches}; do
+	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+	read -p "Update branch $branch? (yes/no): " -r
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		git checkout $branch
+		git pull origin
+	fi
+done

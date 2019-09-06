@@ -133,6 +133,8 @@ noremap <leader>cc :w<CR>:!gcc % -lm && time ./a.out && rm a.out<CR>
 noremap <leader>cC :w<CR>:!g++ % && time ./a.out && rm a.out<CR>
 " compile Php
 noremap <leader>cp :w<CR>:!time php %<CR>
+" compile Bash
+noremap <leader>cb :w<CR>:!chmod +x % && ./%<CR>
 " map Marks
 nnoremap <leader>M :Marks<CR>
 " map Regs

@@ -13,3 +13,23 @@ for branch in ${outdate_branches}; do
 		git pull
 	fi
 done
+
+echo ""
+echo "Getting Remote Branches"
+for branch_r in ${remote_branches}; do
+	for branch_l in ${local_branches}; do
+		get=0
+		if [ $branch_l == $branch_r ]; then
+			get=1
+			break
+		fi
+	done
+	if [ $get == 0 ]; then
+		echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+		git checkout $branch_r
+		echo "Got branch $branch_r"
+	fi
+done
+
+echo ""
+git checkout master

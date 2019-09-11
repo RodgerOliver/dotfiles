@@ -241,7 +241,7 @@ Plug 'austintaylor/vim-commaobject'
 " FRONT-END
 Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 " Plug 'turbio/bracey.vim'
 " Plug 'jaxbot/browserlink.vim'
 " PHP

@@ -51,6 +51,7 @@ export READER=zathura
 export FILE=ranger
 
 # ===== ALIASES
+alias up='sudo apt update && sudo apt upgrade -y'
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias la='ls -A'

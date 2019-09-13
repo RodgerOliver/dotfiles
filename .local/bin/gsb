@@ -34,4 +34,24 @@ for branch_r in ${remote_branches}; do
 done
 
 echo ""
+echo "Pushing Local Branches"
+for branch in ${new_branches}; do
+	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+	read -p "Push branch $branch? (yes/no): " -r
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		git push -u origin $branch
+	fi
+done
+
+echo ""
+echo "Deleting Local Branches"
+for branch in ${gone_branches}; do
+	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+	read -p "Delete branch $branch? (yes/no): " -r
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		git branch -D $branch
+	fi
+done
+
+echo ""
 git checkout master

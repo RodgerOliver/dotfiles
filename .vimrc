@@ -327,12 +327,12 @@ let g:instant_markdown_autostart = 0
 
 " ===== VIM WIKI
 let index = {}
-let index.path = '~/notes/vimwiki/'
+let index.path = '$NOTES_PATH/vimwiki/'
 let index.syntax = 'markdown'
 let index.ext = '.md'
 
 let local_notes = {}
-let local_notes.path = '~/notes/local/'
+let local_notes.path = '$NOTES_PATH/local/'
 let local_notes.syntax = 'markdown'
 let local_notes.ext = '.md'
 

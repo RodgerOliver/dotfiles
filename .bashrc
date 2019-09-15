@@ -47,8 +47,6 @@ unset file;
 export EDITOR=vim
 export TERM=xterm-256color
 export BROWSER=firefox
-export READER=zathura
-export FILE=ranger
 
 # ===== ALIASES
 alias up='sudo apt update && sudo apt upgrade -y'

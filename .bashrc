@@ -47,6 +47,7 @@ unset file;
 export EDITOR=vim
 export TERM=xterm-256color
 export BROWSER=firefox
+export NOTES_PATH=~/.notes
 
 # ===== ALIASES
 alias up='sudo apt update && sudo apt upgrade -y'

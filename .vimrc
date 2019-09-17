@@ -196,8 +196,6 @@ nnoremap <leader>. :bn<CR>
 nnoremap <leader>, :bp<CR>
 nnoremap <leader>d :windo difft<CR>:windo set wrap<CR>
 nnoremap <leader>D :windo diffo<CR>
-" manage dotfiles
-nnoremap <leader>f :NERDTreeClose<CR>:vs ~/%<CR>:windo difft<CR>:windo set wrap<CR>
 " move in quickfix list
 nnoremap <leader>m :cn<CR>zz
 nnoremap <leader>n :cp<CR>zz

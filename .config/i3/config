@@ -17,9 +17,14 @@ focus_follows_mouse no
 bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
+bindsym $mod+m exec --no-startup-id spotify
+bindsym $mod+n exec --no-startup-id nautilus
+bindsym $mod+b exec --no-startup-id chromium-browser
+bindsym $mod+Shift+m exec --no-startup-id mysql-workbench
+
+# ===== RESIZE  WINDOWS
 bindsym $mod+equal [class="Firefox"] resize set 300px 313px
 bindsym $mod+Shift+equal [class="Firefox"] resize set 465px 429px
-bindsym $mod+m exec --no-startup-id spotify
 
 # ===== WINDOWS ACTIONS
 # make window sticky

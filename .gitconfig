@@ -20,6 +20,7 @@
 	b = branch
 	ba = branch -avv
 	fa = fetch --all
+	fap = fetch --all --prune
 	m = merge
 	s = show
 	sm = show -m

@@ -192,6 +192,7 @@ nnoremap <leader>ue :UltiSnipsEdit<CR>
 nnoremap <leader>x :!clear<CR><CR>
 nnoremap <leader><leader> za
 nnoremap <silent> <C-t> :TagbarToggle<CR>
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 nnoremap <leader>. :bn<CR>
 nnoremap <leader>, :bp<CR>
 nnoremap <leader>d :windo difft<CR>:windo set wrap<CR>

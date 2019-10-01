@@ -204,6 +204,8 @@ nnoremap cO :copen<CR>:set nowrap<CR>
 nnoremap cC :cclose<CR>
 " remove trailing whitespaces and indent
 nnoremap <leader>0 gg=G:%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
+" improve speed in vim
+nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 
 " ===== PLUGINS
 call plug#begin()

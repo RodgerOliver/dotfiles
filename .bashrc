@@ -24,7 +24,7 @@ fi
 # Start graphical server if i3 not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 set -o vi # vi mode
-stty -ixon # Disable ctrl-s and ctrl-q.
+[[ $- == *i* ]] && stty -ixon # Disable ctrl-s and ctrl-q.
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 HISTSIZE=2000

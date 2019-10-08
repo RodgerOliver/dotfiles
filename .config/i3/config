@@ -124,7 +124,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# ===== AUDIO AND BRIGHTNESS
+# ===== EXTERNAL
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
@@ -143,6 +143,8 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # change NUM_LOCK
 bindsym --release Num_Lock  exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+# change CAPS_LOCK
+bindsym --release Caps_Lock  exec --no-startup-id pkill -SIGRTMIN+12 i3blocks
 
 # ===== COLORS
 # border = window title, top and bottom borders

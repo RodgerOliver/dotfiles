@@ -50,7 +50,7 @@ export BROWSER=firefox
 export NOTES_PATH=~/.notes
 
 # ===== ALIASES
-alias up='sudo apt update && sudo apt upgrade -y && sudo apt install -f && sudo apt autoremove'
+alias up='sudo apt update && sudo apt upgrade -y && sudo apt install -f && sudo apt autoremove -y'
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias la='ls -A'

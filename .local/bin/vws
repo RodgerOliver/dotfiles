@@ -4,5 +4,5 @@ cd $NOTES_PATH/vimwiki/
 ./sync.sh
 cd -
 if notify-send --help &> /dev/null; then
-	notify-send "📝 Notes Synced 📝" -t 6000
+	notify-send "📝 Notes Synced 📝" -t 60000
 fi

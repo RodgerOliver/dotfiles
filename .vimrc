@@ -48,6 +48,8 @@ au VimEnter,WinEnter * if !exists('w:_vsc_conflict_marker_match') |
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 " autocmd BufEnter *.php setlocal foldmethod=indent
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
+" update file in real-time
+" au CursorHold,CursorHoldI * checktime
 command! Marks call s:Marks()
 command! Regs call s:Regs()
 

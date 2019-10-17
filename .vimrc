@@ -217,6 +217,9 @@ nnoremap <leader>0 gg=G:%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
 nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
+" resize splits
+nnoremap <silent> + <C-W>>
+nnoremap <silent> - <C-W><
 
 " ===== PLUGINS
 call plug#begin()

@@ -220,6 +220,8 @@ nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
 " resize splits
 nnoremap <silent> + <C-W>>
 nnoremap <silent> - <C-W><
+nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " ===== PLUGINS
 call plug#begin()

@@ -398,3 +398,6 @@ let g:ctrlp_extensions = ['tag']
 " 	\ 'port': '9000',
 " 	\ 'ide_key': 'netbeans-xdebug'
 " 	\ }
+
+" ===== VIM-SYSTEM-COPY
+let g:system_copy#copy_command='xclip -sel clipboard'

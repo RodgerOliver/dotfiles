@@ -28,13 +28,13 @@
 	so = show --name-only
 	d = diff
 	ds = diff --cached
-	l = log --decorate --oneline --graph
+	lo = log --decorate --oneline --graph
+	l = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
 	lb = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..HEAD"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
-	lo = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
 	pud = "!f() { \
 		git push -f deploy HEAD:master; \
 	}; f"
 	debug = "!f() { \
 		git commit -am 'debug' && git pud; \
-		}; f"
+	}; f"

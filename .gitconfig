@@ -12,6 +12,7 @@
 [alias]
 	ck = checkout
 	c = commit
+	a = add
 	cm = commit -m
 	cam = commit -am
 	chr = cherry-pick

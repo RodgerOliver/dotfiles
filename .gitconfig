@@ -21,6 +21,7 @@
 	pl = pull
 	b = branch
 	ba = branch -avv
+	f = fetch
 	fa = fetch --all
 	fap = fetch --all --prune
 	m = merge

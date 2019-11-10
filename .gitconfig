@@ -38,5 +38,5 @@
 		git push -f deploy HEAD:master; \
 	}; f"
 	debug = "!f() { \
-		git commit -am 'debug' && git pud; \
+		git add -A && git commit -m 'debug' && git pud && git reset --mixed HEAD~1; \
 	}; f"

@@ -9,7 +9,7 @@ bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock
 bindsym $mod+Shift+BackSpace exec --no-startup-id ~/.config/i3/scripts/power
 # hide window borders
 # hide_edge_borders both
-bindsym Print exec --no-startup-id scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
+bindsym Print exec --no-startup-id scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/' && notify-send "📸 Screenshot Taken 📸"
 # disable mouse hover focus
 focus_follows_mouse no
 

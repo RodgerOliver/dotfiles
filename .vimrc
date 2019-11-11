@@ -98,7 +98,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " fix backspace
 set backspace=indent,eol,start
 set backspace=2
-set tags=tags;
+set tags=tags,.tags;
 " remove backup and swap files
 set nobackup
 set nowritebackup
@@ -244,6 +244,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 " SNIPPETS
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
@@ -271,7 +272,6 @@ Plug 'godlygeek/tabular'
 " Plug 'ervandew/supertab'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'matze/vim-move'
-" Plug 'ludovicchabant/vim-gutentags'
 " Plug 'valloric/youcompleteme'
 " Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'
@@ -368,6 +368,17 @@ let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
 " ===== CTRLP
 let g:ctrlp_extensions = ['tag']
 
+" ===== VIM-SYSTEM-COPY
+let g:system_copy#copy_command='xclip -sel clipboard'
+
+" ===== GUTENTAGS
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+\ '*.phar', '*.ini', '*.rst', '*.md','*/vendor/*',
+\ '*vendor/*/test*', '*vendor/*/Test*',
+\ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+\ '*var/cache*', '*var/log*']
+let g:gutentags_ctags_tagfile = ".tags"
+
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'
 " execute 'set <A-k>=\ek'
@@ -399,5 +410,3 @@ let g:ctrlp_extensions = ['tag']
 " 	\ 'ide_key': 'netbeans-xdebug'
 " 	\ }
 
-" ===== VIM-SYSTEM-COPY
-let g:system_copy#copy_command='xclip -sel clipboard'

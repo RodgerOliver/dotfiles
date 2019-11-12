@@ -269,11 +269,11 @@ Plug 'vim-vdebug/vdebug'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
 Plug 'godlygeek/tabular'
+Plug 'scrooloose/syntastic'
 " Plug 'ervandew/supertab'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'matze/vim-move'
 " Plug 'valloric/youcompleteme'
-" Plug 'scrooloose/syntastic'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'christoomey/vim-sort-motion'
 " Plug 'christoomey/vim-titlecase'
@@ -381,6 +381,19 @@ let g:gutentags_ctags_tagfile = ".tags"
 let g:gutentags_project_root = ['tags', '.tags']
 let g:gutentags_add_default_project_roots = 0
 
+" ===== SYNTASTIC
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting = 0
+
+" Syntastic configuration for PHP
+let g:syntastic_php_checkers = ['php']
+
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'
 " execute 'set <A-k>=\ek'
@@ -390,15 +403,6 @@ let g:gutentags_add_default_project_roots = 0
 " let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 " let g:ycm_key_list_accept_completion = ['<C-y>']
-
-" ===== SYNTASTIC
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 
 " ===== SUPERTAB
 " let g:SuperTabDefaultCompletionType = '<C-x><C-n>'

@@ -378,6 +378,8 @@ let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
 \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
 \ '*var/cache*', '*var/log*']
 let g:gutentags_ctags_tagfile = ".tags"
+let g:gutentags_project_root = ['tags', '.tags']
+let g:gutentags_add_default_project_roots = 0
 
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'

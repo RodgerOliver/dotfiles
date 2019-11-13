@@ -273,6 +273,7 @@ Plug 'vim-vdebug/vdebug'
 " Plug 'shawncplus/phpcomplete.vim'
 " ----- CODE QUALITY
 Plug 'scrooloose/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ----- OTHER
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'

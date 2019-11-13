@@ -150,8 +150,14 @@ nnoremap <leader>M :Marks<CR>
 nnoremap <leader>R :Regs<CR>
 " fix pasting
 nnoremap p p=`]
-" jump to the end of the line
+" jump to next character
 inoremap <C-c> <C-o>a
+" move cursor in insert mode
+inoremap <C-l> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+" unmap K (display man of current word)
+nnoremap K <Nop>
 " remove highlight last search
 noremap ,<leader> :nohls<CR>
 " get changes of the current file

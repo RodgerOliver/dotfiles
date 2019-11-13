@@ -226,50 +226,51 @@ nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " ===== PLUGINS
 call plug#begin()
 
-" APPEARANCE
-Plug 'flazz/vim-colorschemes'
+" ----- APPEARANCE
 Plug 'rodgeroliver/vim-snazzy'
+Plug 'flazz/vim-colorschemes'
 Plug 'flrnprz/plastic.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
-" GIT
+" ----- GIT
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" FILE BROWSING
+" ----- FILE BROWSING AND SEARCH
 Plug 'scrooloose/nerdtree'
-" SEARCH
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+" ----- TAGS
 Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
-" SNIPPETS
+" ----- SNIPPETS
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-" UTILITIES
+" ----- UTILITIES
 Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'christoomey/vim-system-copy'
 Plug 'tpope/vim-repeat'
-Plug 'alvan/vim-closetag'
 Plug 'austintaylor/vim-commaobject'
-" FRONT-END
-Plug 'othree/html5.vim'
+Plug 'christoomey/vim-system-copy'
+" ----- FRONT-END
 Plug 'ap/vim-css-color'
+" Plug 'othree/html5.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'turbio/bracey.vim'
 " Plug 'jaxbot/browserlink.vim'
-" PHP
-Plug 'shawncplus/phpcomplete.vim'
+" ----- PHP
 Plug 'vim-vdebug/vdebug'
-" OTHER
+" Plug 'shawncplus/phpcomplete.vim'
+" ----- CODE QUALITY
+Plug 'scrooloose/syntastic'
+" ----- OTHER
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
 Plug 'godlygeek/tabular'
-Plug 'scrooloose/syntastic'
 " Plug 'ervandew/supertab'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'matze/vim-move'

@@ -277,6 +277,15 @@ Plug 'vim-vdebug/vdebug'
 " ----- CODE QUALITY
 Plug 'scrooloose/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" if has('nvim')
+" 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+" 	Plug 'Shougo/deoplete.nvim'
+" 	Plug 'roxma/nvim-yarp'
+" 	Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+
 " ----- OTHER
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'

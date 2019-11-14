@@ -116,6 +116,9 @@ set diffopt=vertical,filler,foldcolumn:1
 if has('nvim-0.3.2') || has("patch-8.1.0360")
 	set diffopt+=internal,algorithm:patience,indent-heuristic
 endif
+" html indent
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " ===== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey

@@ -267,10 +267,6 @@ Plug 'austintaylor/vim-commaobject'
 Plug 'christoomey/vim-system-copy'
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
-" Plug 'othree/html5.vim'
-" Plug 'mattn/emmet-vim'
-" Plug 'turbio/bracey.vim'
-" Plug 'jaxbot/browserlink.vim'
 " ----- PHP
 Plug 'vim-vdebug/vdebug'
 " Plug 'shawncplus/phpcomplete.vim'
@@ -298,6 +294,10 @@ Plug 'godlygeek/tabular'
 " Plug 'christoomey/vim-sort-motion'
 " Plug 'christoomey/vim-titlecase'
 " Plug 'wincent/scalpel'
+" Plug 'othree/html5.vim'
+" Plug 'mattn/emmet-vim'
+" Plug 'turbio/bracey.vim'
+" Plug 'jaxbot/browserlink.vim'
 
 call plug#end()
 

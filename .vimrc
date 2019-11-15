@@ -7,6 +7,7 @@ let mapleader = " "
 set background=dark
 colorscheme snazzy
 set t_Co=256
+set guicursor=
 
 " ===== FUNCTIONS
 function! FoldConfig()

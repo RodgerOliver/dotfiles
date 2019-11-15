@@ -269,7 +269,7 @@ Plug 'christoomey/vim-system-copy'
 Plug 'ap/vim-css-color'
 " ----- PHP
 Plug 'vim-vdebug/vdebug'
-" Plug 'shawncplus/phpcomplete.vim'
+Plug 'shawncplus/phpcomplete.vim'
 " ----- SYNTAX CHECKER
 Plug 'scrooloose/syntastic'
 " ----- CODE COMPLETION

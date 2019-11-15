@@ -270,8 +270,9 @@ Plug 'ap/vim-css-color'
 " ----- PHP
 Plug 'vim-vdebug/vdebug'
 " Plug 'shawncplus/phpcomplete.vim'
-" ----- CODE QUALITY
+" ----- SYNTAX CHECKER
 Plug 'scrooloose/syntastic'
+" ----- CODE COMPLETION
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " if has('nvim')
 " 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

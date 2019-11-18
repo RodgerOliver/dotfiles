@@ -244,20 +244,25 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
+
 " ----- GIT
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " ----- FILE BROWSING AND SEARCH
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+
 " ----- TAGS
 Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
+
 " ----- SNIPPETS
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
+
 " ----- UTILITIES
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
@@ -266,13 +271,17 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'austintaylor/vim-commaobject'
 Plug 'christoomey/vim-system-copy'
+
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
+
 " ----- PHP
 Plug 'vim-vdebug/vdebug'
 Plug 'shawncplus/phpcomplete.vim'
+
 " ----- SYNTAX CHECKER
 Plug 'scrooloose/syntastic'
+
 " ----- CODE COMPLETION
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " if has('nvim')

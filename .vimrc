@@ -120,6 +120,9 @@ endif
 " html indent
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+" PHP Generated Code Highlights (HTML & SQL)
+let php_sql_query=1
+let php_htmlInStrings=1
 
 " ===== HIGHLIGHTS
 hi Pmenu ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey

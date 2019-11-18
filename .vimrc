@@ -274,7 +274,7 @@ Plug 'christoomey/vim-system-copy'
 
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
-" Plug 'turbio/bracey.vim'
+Plug 'turbio/bracey.vim'
 " Plug 'othree/html5.vim'
 " Plug 'mattn/emmet-vim'
 

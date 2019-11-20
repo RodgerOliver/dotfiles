@@ -284,6 +284,7 @@ Plug 'turbio/bracey.vim'
 " ----- PHP
 Plug 'vim-vdebug/vdebug'
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 " ----- SYNTAX CHECKER
 Plug 'scrooloose/syntastic'

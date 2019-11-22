@@ -59,6 +59,3 @@ for branch in ${gone_branches}; do
 		git branch -D $branch
 	fi
 done
-
-echo ""
-git checkout master

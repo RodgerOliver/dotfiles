@@ -6,6 +6,7 @@ filetype plugin on
 let mapleader = " "
 set background=dark
 colorscheme snazzy
+set autoread
 
 " ===== FUNCTIONS
 function! FoldConfig()
@@ -48,7 +49,8 @@ autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 autocmd BufEnter *.c setlocal foldmethod=syntax
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 " update file in real-time
-" au CursorHold,CursorHoldI * checktime
+autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * :silent! checktime
+" create aliases for functions
 command! Marks call s:Marks()
 command! Regs call s:Regs()
 

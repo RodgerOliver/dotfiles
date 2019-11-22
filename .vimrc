@@ -174,13 +174,13 @@ noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
 nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR>
 " navigate diffs
-"noremap <expr> <C-k> &diff ? '[czz' : '<ESC>'
-"noremap <expr> <C-j> &diff ? ']czz' : '<ESC>'
 " resize splits with arrow keys
 nnoremap <silent> <Right> <C-W>3>
 nnoremap <silent> <Left> <C-W>3<
-nnoremap <silent> <Down> :resize -3<CR>
-nnoremap <silent> <Up> :resize +3<CR>
+" nnoremap <silent> <Up> :resize +3<CR>
+" nnoremap <silent> <Down> :resize -3<CR>
+noremap <expr> <Up> &diff ? '[czz' : ':resize +3<CR>'
+noremap <expr> <Down> &diff ? ']czz' : ':resize -3<CR>'
 " move correctly in wrapped lines
 nnoremap j gj
 nnoremap k gk

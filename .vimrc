@@ -6,8 +6,6 @@ filetype plugin on
 let mapleader = " "
 set background=dark
 colorscheme snazzy
-set t_Co=256
-set guicursor=
 
 " ===== FUNCTIONS
 function! FoldConfig()
@@ -104,7 +102,9 @@ set tags=tags,.tags;
 set nobackup
 set nowritebackup
 set noswapfile
-" better colors
+" better colors and cursor
+set t_Co=256
+set guicursor=
 if &t_Co >= 256 || has("gui_running")
 	let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"

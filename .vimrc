@@ -171,11 +171,11 @@ noremap ,<leader> :nohls<CR>
 noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
 nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR>
-" disable arrow keys
-noremap <expr> <Up> &diff ? '[czz' : '<ESC>'
-noremap <expr> <Down> &diff ? ']czz' : '<ESC>'
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" resize splits with arrow keys
+nnoremap <silent> <Right> <C-W>3>
+nnoremap <silent> <Left> <C-W>3<
+nnoremap <silent> <Down> :resize -3<CR>
+nnoremap <silent> <Up> :resize +3<CR>
 " move correctly in wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -230,11 +230,6 @@ nnoremap <leader>0 gg=G:%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
 nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
-" resize splits
-nnoremap <silent> + <C-W>>
-nnoremap <silent> - <C-W><
-nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " ===== PLUGINS
 call plug#begin()

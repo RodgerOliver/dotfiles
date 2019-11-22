@@ -177,8 +177,6 @@ nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR
 " resize splits with arrow keys
 nnoremap <silent> <Right> <C-W>3>
 nnoremap <silent> <Left> <C-W>3<
-" nnoremap <silent> <Up> :resize +3<CR>
-" nnoremap <silent> <Down> :resize -3<CR>
 noremap <expr> <Up> &diff ? '[czz' : ':resize +3<CR>'
 noremap <expr> <Down> &diff ? ']czz' : ':resize -3<CR>'
 " move correctly in wrapped lines
@@ -194,12 +192,12 @@ nnoremap tK :tabmove +1<CR>
 nnoremap tJ :tabmove -1<CR>
 nnoremap tL :tabmove +2<CR>
 nnoremap tH :tabmove -2<CR>
-"split screen navigation
+" split screen navigation
 nnoremap gh :sp<Space>
 nnoremap gv :vs<Space>
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
+noremap <expr> <C-j> &diff ? ']czz' : '<C-w>j'
+noremap <expr> <C-k> &diff ? '[czz' : '<C-w>k'
 nnoremap <C-l> <C-w>l
 " multiple cursors feature
 nnoremap c* *Ncgn

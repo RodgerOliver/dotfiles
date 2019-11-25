@@ -177,8 +177,8 @@ nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR
 " resize splits with arrow keys
 nnoremap <silent> <Right> <C-W>3>
 nnoremap <silent> <Left> <C-W>3<
-noremap <expr> <Up> &diff ? '[czz' : ':resize +3<CR>'
-noremap <expr> <Down> &diff ? ']czz' : ':resize -3<CR>'
+nnoremap <silent> <expr> <Up> &diff ? '[czz' : ':resize +3<CR>'
+nnoremap <silent> <expr> <Down> &diff ? ']czz' : ':resize -3<CR>'
 " move correctly in wrapped lines
 nnoremap j gj
 nnoremap k gk

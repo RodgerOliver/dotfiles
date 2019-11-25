@@ -48,6 +48,7 @@ export EDITOR=vim
 export TERM=xterm-256color
 export BROWSER=firefox
 export NOTES_PATH=~/.notes
+export SUDO_ASKPASS=~/.local/bin/zenity_pass
 
 # ===== ALIASES
 alias up='sudo apt update && sudo apt upgrade -y && sudo apt install -f && sudo apt autoremove -y'

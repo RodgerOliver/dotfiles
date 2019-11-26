@@ -67,6 +67,7 @@ alias g='git'
 alias glog='git log --all --graph --pretty=format:"%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d"'
 alias r='ranger'
 alias t='tmux'
+alias sudo='sudo '
 
 # push branch to deploy with git
 gpud() {

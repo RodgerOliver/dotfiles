@@ -18,6 +18,7 @@
 	chr = cherry-pick
 	st = status
 	ps = push
+	psu = push -u origin
 	pl = pull
 	b = branch
 	ba = branch -avv

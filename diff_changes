@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# colors
+green="\e[1;32m";
+red="\e[1;91m";
+reset="\e[0m";
+
 if [ -f ~/.ignore_dots ]; then
 	a=$(find . -type f ! -path './.git/*' ! -path './.icons/*' | grep -vFf ~/.ignore_dots);
 else
@@ -15,9 +20,9 @@ for remote_file in ${a}; do
 		remote_hash=$(md5sum $remote_file | sed "s/\ .*//g");
 		if [[ $local_hash != $remote_hash ]]; then
 			vimdiff $remote_file $local_file;
-			echo "UPDATED ${home_file}";
+			echo -e "${green}UPDATED${reset} ${home_file}";
 		fi
 	else
-		echo "NO FILE ${home_file}";
+		echo -e "${red}NO FILE${reset} ${home_file}";
 	fi
 done

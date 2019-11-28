@@ -32,6 +32,7 @@
 	d = diff
 	ds = diff --cached
 	lo = log --decorate --oneline --graph
+	ls = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(auto)%d' --graph"
 	l = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
 	lb = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..HEAD"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"

@@ -40,5 +40,7 @@
 		git push -f deploy HEAD:master; \
 	}; f"
 	debug = "!f() { \
+		num=$(ps aux | grep 'git pud' | wc -l); \
+		test $num -gt 4 && echo 'Already debugging' && exit; \
 		git add -A && git commit --allow-empty -m 'debug' && git pud && git reset --mixed HEAD~1; \
 	}; f"

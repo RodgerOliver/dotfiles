@@ -272,6 +272,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'austintaylor/vim-commaobject'
 Plug 'christoomey/vim-system-copy'
+Plug 'mariappan/dragvisuals.vim'
 
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
@@ -426,6 +427,13 @@ let g:syntastic_enable_highlighting = 0
 
 " Syntastic configuration for PHP
 let g:syntastic_php_checkers = ['php']
+
+" ===== DRAGVISUALS
+vmap <expr>  <LEFT>   DVB_Drag('left')
+vmap <expr>  <RIGHT>  DVB_Drag('right')
+vmap <expr>  <DOWN>   DVB_Drag('down')
+vmap <expr>  <UP>     DVB_Drag('up')
+vmap <expr>  D        DVB_Duplicate()
 
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'

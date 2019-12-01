@@ -71,6 +71,9 @@ set undodir=~/.vim/undodir
 set undofile
 " highlight current line
 set cursorline
+" draw screen config
+set lazyredraw
+set redrawtime=10000
 " tab config
 set tabstop=3
 set shiftwidth=3

@@ -12,10 +12,12 @@
 	conflictstyle = diff3
 [alias]
 	ck = checkout
-	c = commit
 	a = add
+	c = commit
 	cm = commit -m
 	cam = commit -am
+	cmm = commit --amend --no-edit
+	camm = commit -a --amend --no-edit
 	chr = cherry-pick
 	st = status
 	ps = push

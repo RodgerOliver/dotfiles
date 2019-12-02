@@ -21,7 +21,7 @@
 	chr = cherry-pick
 	st = status
 	ps = push
-	psu = push -u origin
+	psu = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = pull
 	b = branch
 	ba = branch -avv

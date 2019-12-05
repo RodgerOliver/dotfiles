@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd $NOTES_PATH/vimwiki/
+cd $NOTES_PATH/remote/
 ./sync.sh
 cd -
 if notify-send --help &> /dev/null; then

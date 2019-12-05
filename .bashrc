@@ -15,11 +15,13 @@ if ! shopt -oq posix; then
   fi
 fi
 # start tmux session scratchpad
-if tmux has-session -t scratchpad 2> /dev/null; then
-	# tmux attach -t scratchpad
-	echo "continue" &> /dev/null
-else
-	tmux new -d -s scratchpad
+if command -v tmux >/dev/null 2>&1; then
+	if tmux has-session -t scratchpad 2> /dev/null; then
+		# tmux attach -t scratchpad
+		echo "continue" &> /dev/null
+	else
+		tmux new -d -s scratchpad
+	fi
 fi
 # Start graphical server if i3 not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
@@ -30,7 +32,9 @@ shopt -s histappend
 HISTSIZE=2000
 HISTFILESIZE=2000
 # swap esc with caps
-setxkbmap -option caps:swapescape
+if command -v setxkbmap >/dev/null 2>&1; then
+	setxkbmap -option caps:swapescape
+fi
 # add local bin to PATH
 if [ -d "$HOME/.local/bin" ] ; then
 	# export recursively

@@ -207,3 +207,4 @@ exec_always feh --bg-scale ~/.config/wallpaper.jpg
 exec --no-startup-id compton -b
 exec_always --no-startup-id killall autolock; xautolock -time 20 -locker ~/.config/i3/scripts/lock
 exec_always --no-startup-id xset dpms 0 0 1200
+exec_always --no-startup-id numlockx on

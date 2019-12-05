@@ -66,7 +66,7 @@ alias ip='ip -c'
 alias grep='grep --color=auto'
 alias v='vim'
 alias nv='nvim'
-alias vv="vim $NOTES_PATH/vimwiki/index.md"
+alias vv="vim $NOTES_PATH/remote/index.md"
 alias g='git'
 alias glog='git log --all --graph --pretty=format:"%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d"'
 alias r='ranger'

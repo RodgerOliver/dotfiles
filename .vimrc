@@ -380,7 +380,7 @@ let g:instant_markdown_autostart = 0
 
 " ===== VIM WIKI
 let index = {}
-let index.path = '$NOTES_PATH/vimwiki/'
+let index.path = '$NOTES_PATH/remote/'
 let index.syntax = 'markdown'
 let index.ext = '.md'
 

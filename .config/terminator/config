@@ -8,7 +8,7 @@
   broadcast_off = None
   close_term = None
   close_window = None
-  copy = <Primary>Insert
+  copy = <Primary><Alt>c
   cycle_next = None
   cycle_prev = None
   edit_tab_title = None
@@ -41,7 +41,7 @@
   page_down_half = <Alt>n
   page_up = <Alt>i
   page_up_half = <Alt>m
-  paste = <Shift>Insert
+  paste = <Primary><Alt>v
   prev_tab = None
   previous_profile = None
   reset = None

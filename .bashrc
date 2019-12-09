@@ -40,12 +40,13 @@ if [ -d "$HOME/.local/bin" ] ; then
 	# export recursively
 	export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 fi
-
 # source files
 for file in ~/.bash_{aliases,prompt,completion}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+# bind C-L to clear screen
+bind -m vi-insert "\C-l":clear-screen
 
 # ===== EXPORTS
 export EDITOR=vim

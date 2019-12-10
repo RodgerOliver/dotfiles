@@ -139,13 +139,13 @@ hi SpecialKey ctermfg=darkgrey guifg=darkgrey
 " match ExtraWhitespace /\s\+$/
 
 " transparent bg
-	" hi! Normal ctermbg=NONE guibg=NONE
-	" hi! NonText ctermbg=NONE guibg=NONE
-	" hi! LineNr ctermbg=NONE guibg=NONE
-	" hi! CursorLineNr ctermbg=NONE guibg=NONE
+	hi! Normal ctermbg=NONE guibg=NONE
+	hi! NonText ctermbg=NONE guibg=NONE
+	hi! LineNr ctermbg=NONE guibg=NONE
+	hi! CursorLineNr ctermbg=NONE guibg=NONE
+	set nocursorline
 	" hi! Folded guibg=NONE ctermbg=NONE ctermfg=white guifg=#ffffff
 	" set notermguicolors
-	" set nocursorline
 
 " ===== MAPS
 " compile C

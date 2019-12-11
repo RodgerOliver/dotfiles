@@ -37,7 +37,11 @@
 	lo = log --decorate --oneline --graph
 	ls = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(auto)%d' --graph"
 	l = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
-	lb = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..HEAD"
+	lb = "!f() { \
+		branch=$1; \
+		test -z $branch && branch=HEAD; \
+		git log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..$branch; \
+	}; f"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
 	pud = "!f() { \
 		branch=$1; \

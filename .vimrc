@@ -437,6 +437,10 @@ vmap <expr>  <RIGHT>  DVB_Drag('right')
 vmap <expr>  <DOWN>   DVB_Drag('down')
 vmap <expr>  <UP>     DVB_Drag('up')
 vmap <expr>  D        DVB_Duplicate()
+vmap <expr>  <C-H>   DVB_Drag('left')
+vmap <expr>  <C-L>  DVB_Drag('right')
+vmap <expr>  <C-J>   DVB_Drag('down')
+vmap <expr>  <C-K>    DVB_Drag('up')
 
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'

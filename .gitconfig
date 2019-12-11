@@ -40,7 +40,9 @@
 	lb = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..HEAD"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
 	pud = "!f() { \
-		git push -f deploy HEAD:master; \
+		branch=$1; \
+		test -z $branch && branch=HEAD; \
+		git push -f deploy $branch:master; \
 	}; f"
 	debug = "!f() { \
 		num=$(ps aux | grep 'git pud' | wc -l); \

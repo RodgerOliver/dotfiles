@@ -32,6 +32,11 @@
 	s = show
 	sm = show -m
 	so = show --name-only
+	sf = "!f() { \
+		branch=$1; \
+		test -z $branch && branch=HEAD; \
+		git diff --name-only --oneline master...$branch; \
+	}; f"
 	d = diff
 	ds = diff --cached
 	lo = log --decorate --oneline --graph

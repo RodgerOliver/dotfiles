@@ -1,4 +1,5 @@
 #!/bin/bash
+# rpst - Repos Status
 
 # set only newline as the separator
 IFS=$'\n'

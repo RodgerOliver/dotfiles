@@ -1,4 +1,5 @@
 #!/bin/bash
+# gsb - Git Sync Branches
 
 remote_branches=$(git branch -a | grep 'remotes/origin' | grep -v HEAD | sed "s/remotes\/origin\///")
 local_branches=$(git branch | awk '{if ($1 == "*") print $2; else print $1}')

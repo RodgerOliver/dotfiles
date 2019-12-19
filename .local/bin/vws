@@ -1,4 +1,5 @@
 #!/bin/bash
+# vws - VimWiki Sync
 
 cd $NOTES_PATH/remote/
 ./sync.sh

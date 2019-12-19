@@ -1,4 +1,5 @@
 #!/bin/bash
+# gds - Git Deploy Setup
 
 if [ -z $1 ]; then
 	echo "Configure server to receive deploy:"

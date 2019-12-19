@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# set only newline as the separator
+IFS=$'\n'
+# colors
+yellow="\e[38;5;226m";
+reset="\e[0m";
+
+a=$(find ~/Repos/ -maxdepth 1 -type d ! -path ~/Repos/);
+
+for folder_path in ${a}; do
+	home_path=$(echo $HOME | sed 's/\//\\\//g')
+	folder=$(echo $folder_path | sed "s/$home_path\/Repos\///");
+	echo -e "${yellow}===================================";
+	echo "  $folder";
+	echo -e "===================================${reset}";
+	cd $folder_path;
+	git fetch;
+	git status;
+
+	echo -e "\n";
+done

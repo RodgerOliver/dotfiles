@@ -236,6 +236,7 @@ nnoremap <leader>0 gg=G:%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
 nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
+nnoremap <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
 
 " ===== PLUGINS
 call plug#begin()
@@ -304,6 +305,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ----- OTHER
 Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 Plug 'suan/vim-instant-markdown'
 Plug 'godlygeek/tabular'
 " Plug 'ervandew/supertab'
@@ -378,7 +380,7 @@ set updatetime=100
 " ===== VIM INSTANT MARKDOWN
 let g:instant_markdown_autostart = 0
 
-" ===== VIM WIKI
+" ===== VIMWIKI
 let index = {}
 let index.path = '$NOTES_PATH/remote/'
 let index.syntax = 'markdown'

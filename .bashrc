@@ -69,19 +69,9 @@ alias v='vim'
 alias nv='nvim'
 alias vv="vim $NOTES_PATH/remote/index.md"
 alias g='git'
-alias glog='git log --all --graph --pretty=format:"%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d"'
 alias r='ranger'
 alias t='tmux'
 alias sudo='sudo '
-
-# push branch to deploy with git
-gpud() {
-    branch=$1;
-    if [ -z $branch ]; then
-        branch=HEAD;
-    fi
-    git push -f deploy $branch:master
-}
 
 # ===== COMPLETE
 complete -F _complete_alias g

@@ -237,6 +237,14 @@ nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
 nnoremap <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
+" toggle vim-commentary
+if has('win32')
+	nmap <C-/> <Plug>CommentaryLine
+	vmap <C-/> <Plug>Commentary
+else
+	nmap <C-_> <Plug>CommentaryLine
+	vmap <C-_> <Plug>Commentary
+endif
 
 " ===== PLUGINS
 call plug#begin()

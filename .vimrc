@@ -171,7 +171,7 @@ inoremap <C-j> <Down>
 " unmap K (display man of current word)
 nnoremap K <Nop>
 " remove highlight last search
-noremap ,<leader> :nohls<CR>
+noremap <silent> ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <leader>cd :w !diff % -<CR>
 " source .vimrc

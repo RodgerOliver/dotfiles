@@ -107,6 +107,8 @@ set tags=tags,.tags;
 set nobackup
 set nowritebackup
 set noswapfile
+" enable mouse
+set mouse=a
 " better colors and cursor
 set t_Co=256
 set guicursor=

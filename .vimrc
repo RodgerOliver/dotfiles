@@ -164,6 +164,7 @@ nnoremap <leader>M :Marks<CR>
 nnoremap <leader>R :Regs<CR>
 " fix pasting
 nnoremap p p=`]
+nnoremap P gP
 " jump to next character
 inoremap <C-c> <C-o>a
 " move cursor in insert mode

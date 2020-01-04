@@ -205,7 +205,7 @@ exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec --no-startup-id ~/.screenlayout/layout.sh
 exec --no-startup-id dunst
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
 exec_always --no-startup-id killall compton; compton -b
 exec_always --no-startup-id killall autolock; xautolock -time 20 -locker ~/.config/i3/scripts/lock
 exec_always --no-startup-id xset dpms 0 0 1200

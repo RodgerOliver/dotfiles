@@ -1,9 +1,8 @@
 #!/bin/bash
 # vws - VimWiki Sync
 
-cd $NOTES_PATH/remote/
-./sync.sh
-cd -
-if notify-send --help &> /dev/null; then
-	notify-send "📝 Notes Synced 📝" -t 60000
-fi
+git --work-tree="$NOTES_PATH/remote" --git-dir="$NOTES_PATH/remote/.git" pull
+git --work-tree="$NOTES_PATH/remote" --git-dir="$NOTES_PATH/remote/.git" add .
+git --work-tree="$NOTES_PATH/remote" --git-dir="$NOTES_PATH/remote/.git" reset HEAD *.swp
+git --work-tree="$NOTES_PATH/remote" --git-dir="$NOTES_PATH/remote/.git" commit -m 'auto commit'
+git --work-tree="$NOTES_PATH/remote" --git-dir="$NOTES_PATH/remote/.git" push

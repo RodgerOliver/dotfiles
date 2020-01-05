@@ -1,16 +1,22 @@
 #!/bin/bash
 # gsb - Git Sync Branches
 
+y_flag=''
+
+while getopts 'y' flag; do
+	case "${flag}" in
+		y) y_flag='true' ;;
+	esac
+done
+
 remote_branches=$(git branch -a | grep 'remotes/origin' | grep -v HEAD | sed "s/remotes\/origin\///")
 local_branches=$(git branch | awk '{if ($1 == "*") print $2; else print $1}')
 outdate_branches=$(git branch -v | grep '\[behind .*\]' | awk '{if ($1 == "*") print $2; else print $1}')
 gone_branches=$(git branch -v | grep '\[gone\]' | awk '{if ($1 == "*") print $2; else print $1}')
 new_branches=$(git branch -vv | grep '^[*]\?\ \+.\+\ \+[a-f0-9]\{7\}\ [^\[]' | awk '{if ($1 == "*") print $2; else print $1}')
 
-yes_all=$1
-
 prompt() {
-	[[ $yes_all == '-y' ]] && REPLY='y' && return
+	[[ $y_flag == true ]] && REPLY='y' && return
 	read -p "${1}" -r
 }
 

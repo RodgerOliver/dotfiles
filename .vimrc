@@ -239,7 +239,7 @@ nnoremap <leader>0 gg=G:%s/\s\+$//e<CR>:nohls<CR>:w<CR>:e!<CR>
 nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
-nnoremap <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
+nnoremap <silent> <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
 " toggle vim-commentary
 if has('win32')
 	nmap <C-/> <Plug>CommentaryLine

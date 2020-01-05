@@ -14,9 +14,13 @@ prompt() {
 	read -p "${1}" -r
 }
 
+separator() {
+	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+}
+
 echo "Updating Local Branches"
 for branch in ${outdate_branches}; do
-	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+	separator
 	prompt "Update branch $branch? (yes/no): "
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		git checkout $branch
@@ -35,7 +39,7 @@ for branch_r in ${remote_branches}; do
 		fi
 	done
 	if [ $get == 0 ]; then
-		echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+		separator
 		git checkout $branch_r
 		echo "Got branch $branch_r"
 	fi
@@ -44,7 +48,7 @@ done
 echo ""
 echo "Pushing Local Branches"
 for branch in ${new_branches}; do
-	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+	separator
 	prompt "Push branch $branch? (yes/no): "
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		git push -u origin $branch
@@ -54,7 +58,7 @@ done
 echo ""
 echo "Deleting Local Branches"
 for branch in ${gone_branches}; do
-	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+	separator
 	prompt "Delete branch $branch? (yes/no): "
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		git branch -D $branch

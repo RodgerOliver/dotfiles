@@ -3,7 +3,7 @@
 
 y_flag=''
 
-while getopts 'y' flag; do
+while getopts ':y' flag; do
 	case "${flag}" in
 		y) y_flag='true' ;;
 	esac

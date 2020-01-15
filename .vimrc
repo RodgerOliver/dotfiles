@@ -255,6 +255,7 @@ call plug#begin()
 " ----- APPEARANCE
 Plug 'rodgeroliver/vim-snazzy'
 Plug 'flazz/vim-colorschemes'
+Plug 'felixhummel/setcolors.vim'
 Plug 'flrnprz/plastic.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

@@ -34,6 +34,11 @@ prompt_git() {
 				s+='$';
 			fi;
 
+			# Check for hidden files.
+			if [[ -n $(git hidden) ]]; then
+				s+='*';
+			fi;
+
 		fi;
 
 		# Get the short symbolic ref.

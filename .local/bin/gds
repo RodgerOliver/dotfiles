@@ -3,10 +3,10 @@
 
 if [ -z $1 ]; then
 	echo "Configure server to receive deploy:"
-	echo "./script server [path]"
+	echo "gds server [path]"
 	echo ""
 	echo "Configure local repo do deploy:"
-	echo "./script local [remote path] [ssh user] [ssh host] [ssh port]"
+	echo "gds local [remote path] [ssh user] [ssh host] [ssh port]"
 	exit
 fi
 
@@ -53,7 +53,7 @@ elif [ $1 == "local" ]; then
 	if [ -z $2 ] || [ -z $3 ] || [ -z $4 ]; then
 		echo "Correct way:"
 		echo ""
-		echo "./script local [remote path] [ssh user] [ssh host] [ssh port]"
+		echo "gds local [remote path] [ssh user] [ssh host] [ssh port]"
 	else
 		if [ -d ".git/" ]; then
 			echo "Setting up local repo to deploy a git app"

@@ -35,7 +35,7 @@ prompt_git() {
 			fi;
 
 			# Check for hidden files.
-			if [[ -n $(git hidden) ]]; then
+			if [[ -n $(git ls-files -v | grep '^S' | cut -c3-) ]]; then
 				s+='*';
 			fi;
 

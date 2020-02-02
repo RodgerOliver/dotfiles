@@ -1,5 +1,5 @@
 #!/bin/bash
-# rpst - Repos Status
+# grp - Git Repos Actions
 
 # set only newline as the separator
 IFS=$'\n'
@@ -7,17 +7,80 @@ IFS=$'\n'
 yellow="\e[38;5;226m";
 reset="\e[0m";
 
+print_help() {
+	echo "grp - Execute actions for git repository inside ~/Repos/"
+	echo " "
+	echo "Usage:"
+	echo "  grp -pl -st"
+	echo ""
+	echo "  Commands are executed in the order that they are passed as arguments."
+	echo "  If no arguments are given it is going to show the status of the repo."
+	echo ""
+	echo "Options:"
+	echo "  -h,  --help                  show help"
+	echo "  -st, --status                git status"
+	echo "  -fe, --fetch                 git fetch"
+	echo "  -ps, --push                  git push"
+	echo "  -pl, --pull                  git pull"
+	echo "  --exec [command]             execute command for all repos"
+	exit 0
+}
+
+GIT_CMD='';
+
+for arg in "$@"; do
+	case $arg in
+		-h|--help)
+			print_help
+			shift
+			;;
+		-st|--status)
+			GIT_CMD="$GIT_CMD git status;"
+			shift
+			;;
+		-fe|--fetch)
+			GIT_CMD="$GIT_CMD echo 'Fetching repo...'; git fetch;"
+			shift
+			;;
+		-ps|--push)
+			GIT_CMD="$GIT_CMD git push;"
+			shift
+			;;
+		-pl|--pull)
+			GIT_CMD="$GIT_CMD git pull;"
+			shift
+			;;
+		--exec)
+			GIT_CMD=$2
+			shift
+			;;
+		*)
+			shift
+			;;
+	esac
+done
+
+if [[ -z $GIT_CMD ]]; then
+	GIT_CMD="git status"
+fi
+
 a=$(find ~/Repos/ -maxdepth 1 -type d ! -path ~/Repos/);
 
 for folder_path in ${a}; do
 	home_path=$(echo $HOME | sed 's/\//\\\//g')
 	folder=$(echo $folder_path | sed "s/$home_path\/Repos\///");
+	is_repo=$(ls -a $folder_path | grep -P "^.git$");
+
+	if [[ -z $is_repo ]]; then
+		continue;
+	fi
+
 	echo -e "${yellow}===================================";
 	echo "  $folder";
 	echo -e "===================================${reset}";
 	cd $folder_path;
-	git fetch;
-	git status;
+
+	eval $GIT_CMD
 
 	echo -e "\n";
 done

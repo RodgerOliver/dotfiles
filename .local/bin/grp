@@ -35,7 +35,7 @@ for arg in "$@"; do
 			shift
 			;;
 		-st|--status)
-			GIT_CMD="$GIT_CMD git status;"
+			GIT_CMD="$GIT_CMD git status; sleep 1;"
 			shift
 			;;
 		-fe|--fetch)
@@ -61,7 +61,7 @@ for arg in "$@"; do
 done
 
 if [[ -z $GIT_CMD ]]; then
-	GIT_CMD="git status"
+	GIT_CMD="git status; sleep 1;"
 fi
 
 a=$(find ~/Repos/ -maxdepth 1 -type d ! -path ~/Repos/);

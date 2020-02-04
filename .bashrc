@@ -75,5 +75,3 @@ alias sudo='sudo '
 
 # ===== COMPLETE
 complete -F _complete_alias g
-complete -F _complete_alias glog
-complete -F _complete_alias gpud

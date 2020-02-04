@@ -162,8 +162,11 @@ noremap <leader>cb :w<CR>:!clear && chmod +x % && ./%<CR>
 nnoremap <leader>M :Marks<CR>
 " map Regs
 nnoremap <leader>R :Regs<CR>
-" fix pasting
-nnoremap p p=`]
+" paste and indent
+nnoremap çi p=`]
+nnoremap Çi P=`]
+" paste and kep cursor's position
+nnoremap p gp
 nnoremap P gP
 " jump to next character
 inoremap <C-c> <C-o>a

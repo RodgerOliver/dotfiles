@@ -150,13 +150,15 @@ hi SpecialKey ctermfg=darkgrey guifg=darkgrey
 	" set notermguicolors
 
 " ===== MAPS
+" vim-plug actions
+nnoremap <leader>P :PlugInstall<CR>:PlugClean<CR>:PlugUpdate<CR>:PlugUpgrade<CR>
 " compile C
 noremap <leader>cc :w<CR>:!clear && gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++
 noremap <leader>cC :w<CR>:!clear && g++ % && time ./a.out && rm a.out<CR>
-" compile Php
+" run Php
 noremap <leader>cp :w<CR>:!clear && time php %<CR>
-" compile Bash
+" run Bash
 noremap <leader>cb :w<CR>:!clear && chmod +x % && ./%<CR>
 " map Marks
 nnoremap <leader>M :Marks<CR>

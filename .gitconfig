@@ -21,6 +21,7 @@
 	chr = cherry-pick
 	st = status
 	ps = push
+	; ps branch and set upstream (first push)
 	psu = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = pull
 	b = branch
@@ -32,6 +33,7 @@
 	s = show
 	sm = show -m
 	so = show --name-only
+	; show files changed between master and a commit
 	sf = "!f() { \
 		branch=$1; \
 		test -z $branch && branch=HEAD; \
@@ -43,20 +45,24 @@
 	ls = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(auto)%d' --graph"
 	l  = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
+	; show commits of an unmerged branch in master
 	lb = "!f() { \
 		branch=$1; \
 		test -z $branch && branch=HEAD; \
 		git log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..$branch; \
 	}; f"
+	; show commits of a merged branch in master (only if it has one merge on master)
 	lbm = "!f() { \
 		commit=$(git log master --merges --first-parent | grep $(git rev-parse HEAD | cut -c1-5) | awk '{print $2}'); \
 		git log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph $commit..HEAD; \
 	}; f"
+	; send commit to deploy server
 	pud = "!f() { \
 		branch=$1; \
 		test -z $branch && branch=HEAD; \
 		git push -f deploy $branch:master; \
 	}; f"
+	; send working directory to deploy server
 	debug = "!f() { \
 		num=$(ps aux | grep 'git pud' | wc -l); \
 		test $num -gt 4 && echo 'Already debugging' && exit; \

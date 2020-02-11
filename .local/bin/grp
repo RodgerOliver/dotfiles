@@ -27,6 +27,11 @@ print_help() {
 	exit 0
 }
 
+git_cmd() {
+	cmd="git --work-tree=\"$folder_path\" --git-dir=\"$folder_path/.git\" $1"
+	eval $cmd
+}
+
 GIT_CMD='';
 REPOS_PATH="$HOME/Repos/"
 
@@ -37,19 +42,19 @@ for arg in "$@"; do
 			shift
 			;;
 		-st|--status)
-			GIT_CMD="$GIT_CMD git status; sleep 1;"
+			GIT_CMD="$GIT_CMD git_cmd status; sleep 1;"
 			shift
 			;;
 		-fe|--fetch)
-			GIT_CMD="$GIT_CMD echo 'Fetching repo...'; git fetch;"
+			GIT_CMD="$GIT_CMD echo 'Fetching repo...'; git_cmd fetch;"
 			shift
 			;;
 		-ps|--push)
-			GIT_CMD="$GIT_CMD git push;"
+			GIT_CMD="$GIT_CMD git_cmd push;"
 			shift
 			;;
 		-pl|--pull)
-			GIT_CMD="$GIT_CMD git pull;"
+			GIT_CMD="$GIT_CMD git_cmd pull;"
 			shift
 			;;
 		--exec)
@@ -57,7 +62,7 @@ for arg in "$@"; do
 			shift
 			;;
 		--path)
-			REPOS_PATH=$(echo $2 | sed "s/\"//")
+			REPOS_PATH=$2
 			shift
 			;;
 		*)
@@ -69,15 +74,17 @@ done
 home_path=$(echo $HOME | sed 's/\//\\\//g')
 
 if [[ -z $GIT_CMD ]]; then
-	GIT_CMD="git status; sleep 1;"
+	GIT_CMD="git_cmd status; sleep 1;"
 fi
 
-REPOS_PATH=$(echo $REPOS_PATH | sed "s/~/$home_path/")
+REPOS_PATH=$(echo $REPOS_PATH | sed "s/^~\//$home_path\//")
+
+REPOS_PATH_EX=$(echo $REPOS_PATH | sed 's/\//\\\//g')
 
 a=$(find $REPOS_PATH -maxdepth 1 -type d ! -path $REPOS_PATH);
 
 for folder_path in ${a}; do
-	folder=$(echo $folder_path | sed "s/$home_path\///");
+	folder=$(echo $folder_path | sed "s/$REPOS_PATH_EX//");
 	is_repo=$(ls -a $folder_path | grep -P "^.git$");
 
 	if [[ -z $is_repo ]]; then
@@ -87,7 +94,6 @@ for folder_path in ${a}; do
 	echo -e "${yellow}===================================";
 	echo "  $folder";
 	echo -e "===================================${reset}";
-	cd $folder_path;
 
 	eval $GIT_CMD
 

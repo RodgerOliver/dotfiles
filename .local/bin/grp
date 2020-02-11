@@ -23,10 +23,12 @@ print_help() {
 	echo "  -ps, --push                  git push"
 	echo "  -pl, --pull                  git pull"
 	echo "  --exec [command]             execute command for all repos"
+	echo "  --path [path]                location of the repos"
 	exit 0
 }
 
 GIT_CMD='';
+REPOS_PATH="$HOME/Repos/"
 
 for arg in "$@"; do
 	case $arg in
@@ -54,21 +56,28 @@ for arg in "$@"; do
 			GIT_CMD=$2
 			shift
 			;;
+		--path)
+			REPOS_PATH=$(echo $2 | sed "s/\"//")
+			shift
+			;;
 		*)
 			shift
 			;;
 	esac
 done
 
+home_path=$(echo $HOME | sed 's/\//\\\//g')
+
 if [[ -z $GIT_CMD ]]; then
 	GIT_CMD="git status; sleep 1;"
 fi
 
-a=$(find ~/Repos/ -maxdepth 1 -type d ! -path ~/Repos/);
+REPOS_PATH=$(echo $REPOS_PATH | sed "s/~/$home_path/")
+
+a=$(find $REPOS_PATH -maxdepth 1 -type d ! -path $REPOS_PATH);
 
 for folder_path in ${a}; do
-	home_path=$(echo $HOME | sed 's/\//\\\//g')
-	folder=$(echo $folder_path | sed "s/$home_path\/Repos\///");
+	folder=$(echo $folder_path | sed "s/$home_path\///");
 	is_repo=$(ls -a $folder_path | grep -P "^.git$");
 
 	if [[ -z $is_repo ]]; then

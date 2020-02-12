@@ -9,6 +9,11 @@ while getopts ':y' flag; do
 	esac
 done
 
+if ! [[ -d .git ]]; then
+	echo "Not a git repo"
+	exit
+fi
+
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 remote_branches=$(git branch -a | grep 'remotes/origin' | grep -v HEAD | sed "s/remotes\/origin\///")
 local_branches=$(git branch | awk '{if ($1 == "*") print $2; else print $1}')

@@ -165,11 +165,8 @@ nnoremap <leader>M :Marks<CR>
 " map Regs
 nnoremap <leader>R :Regs<CR>
 " paste and indent
-nnoremap çi p=`]
-nnoremap Çi P=`]
-" paste and kep cursor's position
-nnoremap p gp
-nnoremap P gP
+nnoremap p p=`]
+nnoremap P P=`]
 " jump to next character
 inoremap <C-c> <C-o>a
 " move cursor in insert mode

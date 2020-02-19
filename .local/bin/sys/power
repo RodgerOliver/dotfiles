@@ -15,6 +15,6 @@ ok=$(echo $okay | grep -Pi "Yes")
 if [ $option == "logout" ]; then
 	i3-msg exit;
 else
-	~/.local/bin/sys/lock
+	[ $option == "suspend" ] && ~/.local/bin/sys/lock
 	systemctl $option;
 fi

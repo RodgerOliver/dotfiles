@@ -24,6 +24,8 @@ print_help() {
 	echo "  -pl, --pull                  git pull"
 	echo "  --exec [command]             execute command for all repos"
 	echo "  --path [path]                location of the repos"
+	echo "  -l, --list                   list repos"
+	echo "  -e, --exclude=[repo]         exclude repo from command"
 	exit 0
 }
 
@@ -34,6 +36,9 @@ git_cmd() {
 
 GIT_CMD='';
 REPOS_PATH="$HOME/Repos/"
+FLAG_L=0
+FLAG_E=0
+EXCLUDE=()
 
 for arg in "$@"; do
 	case $arg in
@@ -65,6 +70,15 @@ for arg in "$@"; do
 			REPOS_PATH=$2
 			shift
 			;;
+		-l|--list)
+			FLAG_L=1
+			shift
+			;;
+		-e=*|--exclude=*)
+			EXCLUDE+=(${arg#*=})
+			FLAG_E=1
+			shift
+			;;
 		*)
 			shift
 			;;
@@ -90,6 +104,19 @@ for folder_path in ${a}; do
 
 	if [[ -z $is_repo ]]; then
 		continue;
+	fi
+
+	if [[ $FLAG_E == 1 ]]; then
+		do_exclude=$(echo ${EXCLUDE[@]} | grep -P "(^|\ )$folder($|\ )")
+
+		if ! [[ -z $do_exclude ]]; then
+			continue
+		fi
+	fi
+
+	if [[ $FLAG_L -eq 1 ]]; then
+		echo "$folder"
+		continue
 	fi
 
 	echo -e "${yellow}===================================";

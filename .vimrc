@@ -50,6 +50,8 @@ autocmd BufEnter *.c setlocal foldmethod=syntax
 autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=FoldConfig() foldtext=TextFold() foldlevel=0 foldenable
 " update file in real-time
 autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * :silent! checktime
+" automatically update links on read diary
+autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
 " create aliases for functions
 command! Marks call s:Marks()
 command! Regs call s:Regs()

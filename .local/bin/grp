@@ -58,7 +58,7 @@ for arg in "$@"; do
 			shift
 			;;
 		--exec)
-			GIT_CMD=$2
+			GIT_CMD="$GIT_CMD $2;"
 			shift
 			;;
 		--path)

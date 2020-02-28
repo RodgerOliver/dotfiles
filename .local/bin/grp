@@ -114,7 +114,7 @@ for folder_path in ${a}; do
 		continue
 	fi
 
-	echo -e "${yellow}===================================";
+	echo -e "\n${yellow}===================================";
 	echo "  $folder";
 	echo -e "===================================${reset}";
 
@@ -122,5 +122,4 @@ for folder_path in ${a}; do
 	eval $GIT_CMD
 	cd - > /dev/null
 
-	echo -e "\n";
 done

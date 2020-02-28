@@ -158,6 +158,8 @@ nnoremap <leader>P :PlugClean \| PlugInstall \| PlugUpdate \| PlugUpgrade<CR>
 noremap <leader>cc :w<CR>:!clear && gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++
 noremap <leader>cC :w<CR>:!clear && g++ % && time ./a.out && rm a.out<CR>
+" compile Java
+noremap <leader>cJ :w<CR>:!clear && javac % -d classes/ && time java -cp classes/ %:r<CR>
 " run Php
 noremap <leader>cp :w<CR>:!clear && time php %<CR>
 " run Bash

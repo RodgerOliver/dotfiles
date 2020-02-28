@@ -29,11 +29,6 @@ print_help() {
 	exit 0
 }
 
-git_cmd() {
-	cmd="git --work-tree=\"$folder_path\" --git-dir=\"$folder_path/.git\" $1"
-	eval $cmd
-}
-
 GIT_CMD='';
 REPOS_PATH="$HOME/Repos/"
 FLAG_L=0
@@ -47,19 +42,19 @@ for arg in "$@"; do
 			shift
 			;;
 		-st|--status)
-			GIT_CMD="$GIT_CMD git_cmd status; sleep 1;"
+			GIT_CMD="$GIT_CMD git status; sleep 1;"
 			shift
 			;;
 		-fe|--fetch)
-			GIT_CMD="$GIT_CMD echo 'Fetching repo...'; git_cmd fetch;"
+			GIT_CMD="$GIT_CMD echo 'Fetching repo...'; git fetch;"
 			shift
 			;;
 		-ps|--push)
-			GIT_CMD="$GIT_CMD git_cmd push;"
+			GIT_CMD="$GIT_CMD git push;"
 			shift
 			;;
 		-pl|--pull)
-			GIT_CMD="$GIT_CMD git_cmd pull;"
+			GIT_CMD="$GIT_CMD git pull;"
 			shift
 			;;
 		--exec)
@@ -88,7 +83,7 @@ done
 home_path=$(echo $HOME | sed 's/\//\\\//g')
 
 if [[ -z $GIT_CMD ]]; then
-	GIT_CMD="git_cmd status; sleep 1;"
+	GIT_CMD="git status; sleep 1;"
 fi
 
 REPOS_PATH=$(echo $REPOS_PATH | sed "s/^~\//$home_path\//")
@@ -123,7 +118,9 @@ for folder_path in ${a}; do
 	echo "  $folder";
 	echo -e "===================================${reset}";
 
+	cd $folder_path
 	eval $GIT_CMD
+	cd - > /dev/null
 
 	echo -e "\n";
 done

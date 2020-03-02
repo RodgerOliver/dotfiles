@@ -90,16 +90,11 @@ REPOS_PATH=$(echo $REPOS_PATH | sed "s/^~\//$home_path\//")
 
 REPOS_PATH_EX=$(echo $REPOS_PATH | sed 's/\/$//' | sed 's/\//\\\//g')
 
-a=$(find $REPOS_PATH -maxdepth 1 -type d ! -path $REPOS_PATH);
+a=$(find $REPOS_PATH -maxdepth 1 -type d ! -path $REPOS_PATH -exec test -e '{}/.git' ';' -printf '%p\n');
 
 for folder_path in ${a}; do
 
 	folder=$(echo $folder_path | sed "s/$REPOS_PATH_EX\///");
-	is_repo=$(ls -a $folder_path | grep -P "^.git$");
-
-	if [[ -z $is_repo ]]; then
-		continue;
-	fi
 
 	if [[ $FLAG_E == 1 ]]; then
 		do_exclude=$(echo ${EXCLUDE[@]} | grep -P "(^|\ )$folder($|\ )")

@@ -6,7 +6,6 @@ filetype plugin on
 let mapleader = " "
 set background=dark
 colorscheme snazzy
-set autoread
 
 " ===== FUNCTIONS
 function! FoldConfig()

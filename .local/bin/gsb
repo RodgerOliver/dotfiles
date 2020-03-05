@@ -20,6 +20,7 @@ local_branches=$(git branch | awk '{if ($1 == "*") print $2; else print $1}')
 new_branches=$(git branch -vv | grep '^[*]\?\ \+.\+\ \+[a-f0-9]\{7\}\ [^\[]' | awk '{if ($1 == "*") print $2; else print $1}')
 gone_branches=$(git branch -v | grep '\[gone\]' | awk '{if ($1 == "*") print $2; else print $1}')
 outdated_branches=$(git branch -v | grep -P '\[behind \d+\]' | awk '{if ($1 == "*") print $2; else print $1}')
+updated_branches=$(git branch -v | grep -P '\[ahead \d+\]' | awk '{if ($1 == "*") print $2; else print $1}')
 
 prompt() {
 	[[ $y_flag == true ]] && REPLY='y' && return
@@ -37,6 +38,17 @@ for branch in ${outdated_branches}; do
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		git checkout $branch
 		git pull
+	fi
+done
+
+echo ""
+echo "Updating Remote Branches (Push)"
+for branch in ${updated_branches}; do
+	separator
+	prompt "Update remote branch $branch? (yes/no): "
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		git checkout $branch
+		git push
 	fi
 done
 

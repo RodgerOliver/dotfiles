@@ -17,9 +17,9 @@ fi
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 remote_branches=$(git branch -a | grep 'remotes/origin' | grep -v HEAD | sed "s/remotes\/origin\///")
 local_branches=$(git branch | awk '{if ($1 == "*") print $2; else print $1}')
-outdate_branches=$(git branch -v | grep '\[behind .*\]' | awk '{if ($1 == "*") print $2; else print $1}')
-gone_branches=$(git branch -v | grep '\[gone\]' | awk '{if ($1 == "*") print $2; else print $1}')
 new_branches=$(git branch -vv | grep '^[*]\?\ \+.\+\ \+[a-f0-9]\{7\}\ [^\[]' | awk '{if ($1 == "*") print $2; else print $1}')
+gone_branches=$(git branch -v | grep '\[gone\]' | awk '{if ($1 == "*") print $2; else print $1}')
+outdated_branches=$(git branch -v | grep -P '\[behind \d+\]' | awk '{if ($1 == "*") print $2; else print $1}')
 
 prompt() {
 	[[ $y_flag == true ]] && REPLY='y' && return
@@ -30,10 +30,10 @@ separator() {
 	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 }
 
-echo "Updating Local Branches"
-for branch in ${outdate_branches}; do
+echo "Updating Local Branches (Pull)"
+for branch in ${outdated_branches}; do
 	separator
-	prompt "Update branch $branch? (yes/no): "
+	prompt "Update local branch $branch? (yes/no): "
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		git checkout $branch
 		git pull
@@ -58,7 +58,7 @@ for branch_r in ${remote_branches}; do
 done
 
 echo ""
-echo "Pushing Local Branches"
+echo "Pushing New Local Branches"
 for branch in ${new_branches}; do
 	separator
 	prompt "Push branch $branch? (yes/no): "

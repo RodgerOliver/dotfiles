@@ -298,6 +298,7 @@ Plug 'mariappan/dragvisuals.vim'
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
 Plug 'turbio/bracey.vim'
+Plug 'jelera/vim-javascript-syntax'
 " Plug 'othree/html5.vim'
 " Plug 'mattn/emmet-vim'
 

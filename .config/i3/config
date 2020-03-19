@@ -208,10 +208,10 @@ exec --no-startup-id ~/.screenlayout/layout.sh
 exec --no-startup-id dunst
 exec --no-startup-id xss-lock -- systemctl suspend
 exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
-exec_always --no-startup-id killall compton; compton -b
-exec_always --no-startup-id killall autolock; xautolock -time 20 -locker ~/.config/i3/scripts/lock
 exec_always --no-startup-id xset dpms 0 0 1200
 exec_always --no-startup-id numlockx on
+exec_always --no-startup-id killall compton; compton -b
+exec_always --no-startup-id killall autolock; xautolock -time 20 -locker ~/.config/i3/scripts/lock
 
 exec --no-startup-id terminator
 exec --no-startup-id firefox

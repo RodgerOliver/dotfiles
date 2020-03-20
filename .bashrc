@@ -69,7 +69,7 @@ export EDITOR=vim
 export TERM=xterm-256color
 export BROWSER=firefox
 export NOTES_PATH=~/.notes
-export SUDO_ASKPASS=~/.local/bin/zenity_pass
+export SUDO_ASKPASS=~/.local/bin/aux/zenity_pass
 export TERMINAL=terminator
 export TERMINAL_CLASS=Terminator
 

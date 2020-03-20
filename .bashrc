@@ -29,6 +29,8 @@ else
 	export RED="\e[38;5;196m"
 	export WHITE="\e[38;5;255m"
 fi
+export BOLD_GREEN="\e[1;32m"
+export BOLD_RED="\e[1;91m"
 
 # ===== GENERAL
 # sudo completion

@@ -27,7 +27,7 @@ print_help() {
 }
 
 GIT_CMD='';
-REPOS_PATH="$HOME/Repos/"
+REPOS_PATH="$HOME/"
 FLAG_L=0
 FLAG_E=0
 EXCLUDE=()

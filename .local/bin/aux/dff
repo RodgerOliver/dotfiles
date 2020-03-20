@@ -1,0 +1,62 @@
+#!/bin/bash
+# dff - Diff Directories
+
+S_FLAG='false'
+while getopts ':s' flag; do
+	case "${flag}" in
+		s) S_FLAG='true'
+			shift
+			;;
+	esac
+done
+
+# set only newline as the separator
+IFS=$'\n'
+
+# help
+[[ $1 = "help" ]] || [[ $1 = "h" ]] && \
+	echo "dff - Script to diff two directories, current directory with other." && \
+	echo "  By default, the first parameter is ~/" && \
+	echo "" && \
+	echo "Usage:" && \
+	echo "  dff [options] [directory]" && \
+	echo "" && \
+	echo "Options:" && \
+	echo "  -s                    show only status (no editing)" && \
+exit
+
+# directory check
+DIR=$1
+! [ -z $DIR ] && ! [ -d $DIR ] && \
+	echo "Error: first parameter must be a directory." && \
+exit
+
+[ -z $DIR ] && DIR=$HOME
+
+[[ $(pwd) -ef $DIR ]] && \
+	echo "Error: pwd is equal to the target directory." && \
+exit
+
+DIR=$(echo $DIR | sed 's/\//\\\//g')
+
+if [ -f ~/.ignore_dots ]; then
+	a=$(find . -type f ! -path '**/.git/*' ! -path './.icons/*' | sed -e "s/\ /\\\ /g" | grep -vFf ~/.ignore_dots)
+else
+	a=$(find . -type f ! -path '**/.git/*' ! -path './.icons/*' | sed -e "s/\ /\\\ /g")
+fi
+
+for remote_file in ${a}; do
+	local_file=$(echo $remote_file | sed "s/^\./$DIR/")
+	file_name=$(echo $remote_file | sed "s/^\.\///")
+
+	if [ -f $local_file ]; then
+		local_hash=$(md5sum $local_file | sed "s/\ .*//g")
+		remote_hash=$(md5sum $remote_file | sed "s/\ .*//g")
+		if [[ $local_hash != $remote_hash ]]; then
+			[[ $S_FLAG != true ]] && vimdiff $remote_file $local_file
+			echo -e "${BOLD_GREEN}UPDATED${RESET} ${file_name}"
+		fi
+	else
+		echo -e "${BOLD_RED}NO FILE${RESET} ${file_name}"
+	fi
+done

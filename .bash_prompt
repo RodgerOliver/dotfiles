@@ -56,40 +56,15 @@ prompt_git() {
 	fi;
 }
 
-# ===== COLORS
-if tput setaf 1 &> /dev/null; then
-	reset=$(tput sgr0)
-	bold=$(tput bold)
-	yellow=$(tput setaf 226)
-	green=$(tput setaf 34)
-	light_green=$(tput setaf 46)
-	blue=$(tput setaf 27)
-	violet=$(tput setaf 63)
-	orange=$(tput setaf 208)
-	red=$(tput setaf 196)
-	white=$(tput setaf 255)
-else
-	reset="\e[0m"
-	bold=''
-	yellow="\e[38;5;226m"
-	green="\e[38;5;34m"
-	light_green="\e[38;5;46m"
-	blue="\e[38;5;27m"
-	violet="\e[38;5;63m"
-	orange="\e[38;5;208m"
-	red="\e[38;5;196m"
-	white="\e[38;5;255m"
-fi
-
 # ===== PS1
-PS1="\[${bold}\]\n"
-PS1+="\[${yellow}\]\u"
-PS1+="\[${blue}\]@"
-PS1+="\[${orange}\]\h"
-PS1+="\[${white}\]:"
-PS1+="\[${light_green}\]\w"
-PS1+="\$(prompt_git \"\[${white}\] on \[${yellow}\]\" \"\[${blue}\]\")";
-PS1+="\n\[${reset}\]$ "
+PS1="\[${BOLD}\]\n"
+PS1+="\[${YELLOW}\]\u"
+PS1+="\[${BLUE}\]@"
+PS1+="\[${ORANGE}\]\h"
+PS1+="\[${WHITE}\]:"
+PS1+="\[${LIGHT_GREEN}\]\w"
+PS1+="\$(prompt_git \"\[${WHITE}\] on \[${YELLOW}\]\" \"\[${BLUE}\]\")";
+PS1+="\n\[${RESET}\]$ "
 export PS1
 
 PS2="→ "

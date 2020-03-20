@@ -5,6 +5,31 @@
 # .profile is for all shells
 # backup files are in /etc/skel
 # general config files are in /etc
+# ===== COLORS
+if tput setaf 1 &> /dev/null; then
+	export RESET=$(tput sgr0)
+	export BOLD=$(tput bold)
+	export YELLOW=$(tput setaf 226)
+	export GREEN=$(tput setaf 34)
+	export LIGHT_GREEN=$(tput setaf 46)
+	export BLUE=$(tput setaf 27)
+	export VIOLET=$(tput setaf 63)
+	export ORANGE=$(tput setaf 208)
+	export RED=$(tput setaf 196)
+	export WHITE=$(tput setaf 255)
+else
+	export RESET="\e[0m"
+	export BOLD=''
+	export YELLOW="\e[38;5;226m"
+	export GREEN="\e[38;5;34m"
+	export LIGHT_GREEN="\e[38;5;46m"
+	export BLUE="\e[38;5;27m"
+	export VIOLET="\e[38;5;63m"
+	export ORANGE="\e[38;5;208m"
+	export RED="\e[38;5;196m"
+	export WHITE="\e[38;5;255m"
+fi
+
 # ===== GENERAL
 # sudo completion
 if ! shopt -oq posix; then

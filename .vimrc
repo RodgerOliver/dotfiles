@@ -38,6 +38,9 @@ function! s:Regs()
 		execute 'normal! "' . reg_char . 'p=`]'
 	endif
 endfunction
+" create aliases for functions
+command! Marks call s:Marks()
+command! Regs call s:Regs()
 
 " ===== AUTOCMDS
 " highlight merge conflict markers
@@ -51,9 +54,6 @@ autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=Fo
 autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * :silent! checktime
 " automatically update links on read diary
 autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
-" create aliases for functions
-command! Marks call s:Marks()
-command! Regs call s:Regs()
 
 " ===== SETS
 set number

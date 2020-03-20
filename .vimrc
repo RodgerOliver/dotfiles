@@ -259,13 +259,6 @@ call plug#begin()
 
 " ----- APPEARANCE
 Plug 'rodgeroliver/vim-snazzy'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/goyo.vim'
-" Plug 'flrnprz/plastic.vim'
-" Plug 'flazz/vim-colorschemes'
-" Plug 'felixhummel/setcolors.vim'
 
 " ----- GIT
 Plug 'tpope/vim-fugitive'
@@ -281,10 +274,6 @@ Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 
-" ----- SNIPPETS
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
-
 " ----- UTILITIES
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
@@ -292,90 +281,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'austintaylor/vim-commaobject'
-Plug 'christoomey/vim-system-copy'
 Plug 'mariappan/dragvisuals.vim'
-
-" ----- FRONT-END
-Plug 'ap/vim-css-color'
-Plug 'turbio/bracey.vim'
-Plug 'jelera/vim-javascript-syntax'
-" Plug 'othree/html5.vim'
-" Plug 'mattn/emmet-vim'
-
-" ----- PHP
-Plug 'vim-vdebug/vdebug'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-
-" ----- SYNTAX CHECKER
-Plug 'scrooloose/syntastic'
-
-" ----- CODE COMPLETION
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" if has('nvim')
-" 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-" 	Plug 'Shougo/deoplete.nvim'
-" 	Plug 'roxma/nvim-yarp'
-" 	Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" let g:deoplete#enable_at_startup = 1
 
 " ----- OTHER
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
-Plug 'suan/vim-instant-markdown'
 Plug 'godlygeek/tabular'
-" Plug 'ervandew/supertab'
-" Plug 'easymotion/vim-easymotion'
-" Plug 'matze/vim-move'
-" Plug 'valloric/youcompleteme'
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'christoomey/vim-sort-motion'
-" Plug 'christoomey/vim-titlecase'
-" Plug 'wincent/scalpel'
 
 call plug#end()
-
-" ===== AIRLINE
-let g:airline_powerline_fonts = 1
-let g:airline_theme='cool'
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-" function
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-" unicode symbols
-let g:airline_left_sep = '>>'
-"let g:airline_left_sep = '▶'
-let g:airline_right_sep = '<<'
-"let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ'
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = '㏑'
 
 " ===== NERD TREE
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -395,9 +308,6 @@ let g:NERDTreeIndicatorMapCustom = {
 " ===== GIT GUTTER
 set updatetime=100
 
-" ===== VIM INSTANT MARKDOWN
-let g:instant_markdown_autostart = 0
-
 " ===== VIMWIKI
 let index = {}
 let index.path = '$NOTES_PATH/remote/'
@@ -414,19 +324,8 @@ let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 
 " don't use wiki syntax on other .md files
 " let g:vimwiki_global_ext = 0
 
-" ===== UTILSNIPS
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir='~/.vim/plugged/vim-snippets/UltiSnips/'
-let g:UltiSnipsSnippetDirectories=["~/.vim/plugged/vim-snippets/UltiSnips/"]
-
 " ===== CTRLP
 let g:ctrlp_extensions = ['tag']
-
-" ===== VIM-SYSTEM-COPY
-let g:system_copy#copy_command='xclip -sel clipboard'
 
 " ===== GUTENTAGS
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
@@ -438,19 +337,6 @@ let g:gutentags_ctags_tagfile = ".tags"
 let g:gutentags_project_root = ['tags', '.tags']
 let g:gutentags_add_default_project_roots = 0
 
-" ===== SYNTASTIC
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_highlighting = 0
-
-" Syntastic configuration for PHP
-let g:syntastic_php_checkers = ['php']
-
 " ===== DRAGVISUALS
 vmap <expr>  <LEFT>   DVB_Drag('left')
 vmap <expr>  <RIGHT>  DVB_Drag('right')
@@ -461,26 +347,3 @@ vmap <expr>  <C-H>   DVB_Drag('left')
 vmap <expr>  <C-L>  DVB_Drag('right')
 vmap <expr>  <C-J>   DVB_Drag('down')
 vmap <expr>  <C-K>    DVB_Drag('up')
-
-" ===== VIM MOVE
-" execute 'set <A-j>=\ej'
-" execute 'set <A-k>=\ek'
-" let g:move_key_modifier = 'C'
-
-" ===== YCM
-" let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-" let g:ycm_key_list_accept_completion = ['<C-y>']
-
-" ===== SUPERTAB
-" let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
-" let g:SuperTabDefaultCompletionType = 'context'
-
-" ===== VDEBUG
-" let g:vdebug_options = {
-" 	\ 'break_on_open': 0,
-" 	\ 'server': '127.0.0.1',
-" 	\ 'port': '9000',
-" 	\ 'ide_key': 'netbeans-xdebug'
-" 	\ }
-

@@ -30,6 +30,7 @@ else
 	export WHITE="\e[38;5;255m"
 fi
 export BOLD_GREEN="\e[1;32m"
+export BOLD_BLUE="\e[1;34m"
 export BOLD_RED="\e[1;91m"
 
 # ===== GENERAL

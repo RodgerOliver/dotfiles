@@ -1,9 +1,0 @@
-#!/bin/bash
-
-lock=~/.images/lock_icon.png
-win_size=$(xrandr --query | awk '/\<connected\>/{print $4}' | sed 's/+0+0//')
-convert ~/.images/wallpapers/lockpaper.png -resize $win_size\> /tmp/screen.png
-[[ -f $lock ]] && convert /tmp/screen.png $lock -gravity center -composite -matte /tmp/screen.png
-dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
-notify-send "DUNST_COMMAND_PAUSE"
-i3lock -i /tmp/screen.png && notify-send "DUNST_COMMAND_RESUME"

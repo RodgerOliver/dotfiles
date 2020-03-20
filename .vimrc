@@ -121,7 +121,7 @@ if &t_Co >= 256 || has("gui_running")
 	endif
 endif
 " better diff
-set diffopt=vertical,filler,foldcolumn:1
+set diffopt=horizontal,filler,foldcolumn:1
 if has('nvim-0.3.2') || has("patch-8.1.0360")
 	set diffopt+=internal,algorithm:patience,indent-heuristic
 endif
@@ -142,11 +142,11 @@ hi SpecialKey ctermfg=darkgrey guifg=darkgrey
 " match ExtraWhitespace /\s\+$/
 
 " transparent bg
-	hi! Normal ctermbg=NONE guibg=NONE
-	hi! NonText ctermbg=NONE guibg=NONE
-	hi! LineNr ctermbg=NONE guibg=NONE
-	hi! CursorLineNr ctermbg=NONE guibg=NONE
-	set nocursorline
+	" hi! Normal ctermbg=NONE guibg=NONE
+	" hi! NonText ctermbg=NONE guibg=NONE
+	" hi! LineNr ctermbg=NONE guibg=NONE
+	" hi! CursorLineNr ctermbg=NONE guibg=NONE
+	" set nocursorline
 	" hi! Folded guibg=NONE ctermbg=NONE ctermfg=white guifg=#ffffff
 	" set notermguicolors
 
@@ -183,7 +183,7 @@ noremap <silent> ,<leader> :nohls<CR>
 " get changes of the current file
 noremap <leader>cd :w !diff % -<CR>
 " source .vimrc
-nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:AirlineRefresh<CR>:nohls<CR>:e!<CR>
+nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>:nohls<CR>:e!<CR>
 " navigate diffs
 " resize splits with arrow keys
 nnoremap <silent> <Right> <C-W>3>
@@ -207,8 +207,8 @@ nnoremap tH :tabmove -2<CR>
 nnoremap gh :sp<Space>
 nnoremap gv :vs<Space>
 nnoremap <C-h> <C-w>h
-noremap <expr> <C-j> &diff ? ']czz' : '<C-w>j'
-noremap <expr> <C-k> &diff ? '[czz' : '<C-w>k'
+noremap  <C-j> <C-w>j
+noremap  <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " multiple cursors feature
 nnoremap c* *Ncgn

@@ -3,9 +3,6 @@
 
 # set only newline as the separator
 IFS=$'\n'
-# colors
-yellow="\e[38;5;226m";
-reset="\e[0m";
 
 print_help() {
 	echo "grp - Execute actions for git repository inside ~/Repos/"
@@ -109,9 +106,9 @@ for folder_path in ${a}; do
 		continue
 	fi
 
-	echo -e "\n${yellow}===================================";
+	echo -e "\n${YELLOW}${BOLD}===================================";
 	echo "  $folder";
-	echo -e "===================================${reset}";
+	echo -e "===================================${RESET}";
 
 	cd $folder_path
 	eval $GIT_CMD

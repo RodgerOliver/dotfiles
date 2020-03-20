@@ -32,7 +32,7 @@ separator() {
 	echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 }
 
-echo "Updating Local Branches (Pull)"
+echo -e "${YELLOW}${BOLD}Updating Local Branches (Pull)${RESET}"
 for branch in ${outdated_branches}; do
 	separator
 	prompt "Update local branch $branch? (yes/no): "
@@ -43,7 +43,7 @@ for branch in ${outdated_branches}; do
 done
 
 echo ""
-echo "Updating Remote Branches (Push)"
+echo -e "${YELLOW}${BOLD}Updating Remote Branches (Push)${RESET}"
 for branch in ${updated_branches}; do
 	separator
 	prompt "Update remote branch $branch? (yes/no): "
@@ -54,7 +54,7 @@ for branch in ${updated_branches}; do
 done
 
 echo ""
-echo "Getting Remote Branches"
+echo -e "${YELLOW}${BOLD}Getting Remote Branches${RESET}"
 for branch_r in ${remote_branches}; do
 	for branch_l in ${local_branches}; do
 		get=0
@@ -71,7 +71,7 @@ for branch_r in ${remote_branches}; do
 done
 
 echo ""
-echo "Pushing New Local Branches"
+echo -e "${YELLOW}${BOLD}Pushing New Local Branches${RESET}"
 for branch in ${new_branches}; do
 	separator
 	prompt "Push branch $branch? (yes/no): "
@@ -81,7 +81,7 @@ for branch in ${new_branches}; do
 done
 
 echo ""
-echo "Deleting Local Branches"
+echo -e "${YELLOW}${BOLD}Deleting Local Branches${RESET}"
 for branch in ${gone_branches}; do
 	separator
 	prompt "Delete branch $branch? (yes/no): "
@@ -90,10 +90,12 @@ for branch in ${gone_branches}; do
 	fi
 done
 
-echo ""
+! [ -z $rebased_branches ] && \
+echo "" && \
 for branch in ${rebased_branches}; do
-	echo "Warning: Branch $branch was rebase, check it before push!"
+	echo -e "${RED}${BOLD}Warning:${RESET} Branch ${VIOLET}${BOLD}$branch${RESET} was rebase, check it before push!"
 done
 
-echo ""
+echo -e ${LIGHT_GREEN}
 git checkout $current_branch
+echo -e ${RESET}

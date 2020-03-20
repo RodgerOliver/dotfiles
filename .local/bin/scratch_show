@@ -1,0 +1,20 @@
+#!/bin/bash
+
+TMUX_SESSION=scratchpad
+WINDOW_SELECTOR="[title=\"$TMUX_SESSION\" class=\"$TERMINAL_CLASS\"]"
+
+# pattern "[title]: ([WM_CLASS_1] [WM_CLASS_2])" from xprop
+if [[ $(xwininfo -tree -root | grep "\"$TMUX_SESSION\": (\"$TERMINAL\" \"$TERMINAL_CLASS\")") ]]; then
+	echo "Window detected."
+	i3-msg "$WINDOW_SELECTOR scratchpad show; $WINDOW_SELECTOR move position center"
+else
+	echo "Window not detected... spawning."
+
+	if ! tmux has-session -t $TMUX_SESSION; then
+		tmux new -d -s $TMUX_SESSION
+	fi
+
+	i3-msg "exec --no-startup-id $TERMINAL -T \"$TMUX_SESSION\" -x \"tmux a -t $TMUX_SESSION\""
+	sleep 0.5
+	i3-msg "$WINDOW_SELECTOR scratchpad show; $WINDOW_SELECTOR move position center"
+fi

@@ -14,15 +14,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# start tmux session scratchpad
-if command -v tmux >/dev/null 2>&1; then
-	if tmux has-session -t scratchpad 2> /dev/null; then
-		# tmux attach -t scratchpad
-		echo "continue" &> /dev/null
-	else
-		tmux new -d -s scratchpad
-	fi
-fi
 # Start graphical server if i3 not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 set -o vi # vi mode
@@ -54,6 +45,8 @@ export TERM=xterm-256color
 export BROWSER=firefox
 export NOTES_PATH=~/.notes
 export SUDO_ASKPASS=~/.local/bin/zenity_pass
+export TERMINAL=terminator
+export TERMINAL_CLASS=Terminator
 
 # ===== ALIASES
 alias up='sudo apt update && sudo apt upgrade -y && sudo apt install -f && sudo apt autoremove -y'

@@ -219,6 +219,7 @@ nnoremap <leader>Q :q!<CR>
 nnoremap <leader>as :wall<CR>
 nnoremap <leader>aq :qall<CR>
 nnoremap <leader>aQ :qall!<CR>
+nnoremap <leader>aw :wall \| qall!<CR>
 " open .vimrc
 nnoremap <leader>vv :e ~/.vimrc<CR>
 nnoremap <leader>vt :tabnew ~/.vimrc<CR>

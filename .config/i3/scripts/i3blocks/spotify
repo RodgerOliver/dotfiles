@@ -1,0 +1,12 @@
+#!/bin/bash
+
+spotify-controller &> /dev/null
+
+[ $? -eq 1 ] && exit
+
+if spotify-controller status | grep 'Paused' > /dev/null; then
+	printf '\xef\x81\x8c ' # fa-pause
+else
+	printf '\xef\x81\x8b ' # fa-play
+fi
+spotify-controller current-oneline

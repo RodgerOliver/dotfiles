@@ -11,7 +11,9 @@ else
 	echo "Window not detected... spawning."
 
 	if ! tmux has-session -t $TMUX_SESSION; then
-		tmux new -d -s $TMUX_SESSION
+		tmux new-session -n '' -d -s $TMUX_SESSION
+		tmux new-window -n '' -t $TMUX_SESSION
+		tmux previous-window -t $TMUX_SESSION
 	fi
 
 	i3-msg "exec --no-startup-id $TERMINAL -T \"$TMUX_SESSION\" -e \"tmux a -t $TMUX_SESSION\""

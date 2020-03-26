@@ -60,3 +60,5 @@ for remote_file in ${a}; do
 		echo -e "${BOLD_RED}NO FILE${RESET} ${file_name}"
 	fi
 done
+
+echo -e "\n${BOLD_BLUE}All Done!${RESET}"

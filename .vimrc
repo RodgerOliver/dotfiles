@@ -38,6 +38,9 @@ function! s:Regs()
 		execute 'normal! "' . reg_char . 'p=`]'
 	endif
 endfunction
+" create aliases for functions
+command! Marks call s:Marks()
+command! Regs call s:Regs()
 
 " ===== AUTOCMDS
 " highlight merge conflict markers
@@ -51,9 +54,6 @@ autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=Fo
 autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * :silent! checktime
 " automatically update links on read diary
 autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
-" create aliases for functions
-command! Marks call s:Marks()
-command! Regs call s:Regs()
 
 " ===== SETS
 set number
@@ -152,7 +152,7 @@ hi SpecialKey ctermfg=darkgrey guifg=darkgrey
 
 " ===== MAPS
 " vim-plug actions
-nnoremap <leader>P :PlugClean \| PlugInstall \| PlugUpdate \| PlugUpgrade<CR>
+nnoremap <leader>P :PlugClean \| PlugInstall --sync \| PlugUpdate --sync \| PlugUpgrade <CR>
 " compile C
 noremap <leader>cc :w<CR>:!clear && gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++
@@ -219,6 +219,7 @@ nnoremap <leader>Q :q!<CR>
 nnoremap <leader>as :wall<CR>
 nnoremap <leader>aq :qall<CR>
 nnoremap <leader>aQ :qall!<CR>
+nnoremap <leader>aw :wall \| qall!<CR>
 " open .vimrc
 nnoremap <leader>vv :e ~/.vimrc<CR>
 nnoremap <leader>vt :tabnew ~/.vimrc<CR>

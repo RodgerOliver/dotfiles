@@ -152,7 +152,7 @@ hi SpecialKey ctermfg=darkgrey guifg=darkgrey
 
 " ===== MAPS
 " vim-plug actions
-nnoremap <leader>P :PlugClean \| PlugInstall \| PlugUpdate \| PlugUpgrade<CR>
+nnoremap <leader>P :PlugClean \| PlugInstall --sync \| PlugUpdate --sync \| PlugUpgrade <CR>
 " compile C
 noremap <leader>cc :w<CR>:!clear && gcc % -lm && time ./a.out && rm a.out<CR>
 " compile C++

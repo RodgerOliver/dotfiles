@@ -92,9 +92,21 @@ set $ws7 "7: "
 set $ws8 "8: "
 set $ws9 "9: "
 # apps on workspaces
-for_window [class="Spotify"] move to workspace $ws9
 assign [class="Firefox"] $ws2
 assign [class="Chromium-browser"] $ws3
+assign [class="Nautilus"] $ws4
+assign [class="Gimp"] $ws5
+assign [class="Gthumb"] $ws5
+assign [title="CrossFTP"] $ws6
+assign [class="Wine"] $ws6
+assign [class="Filezilla"] $ws6
+assign [class="discord"] $ws9
+assign [class="Thunderbird"] $ws7
+assign [class="Mysql-workbench-bin"] $ws8
+assign [class="Pulseeffects"] $ws9
+# for_window
+for_window [class="Spotify"] move to workspace $ws9
+for_window [class="Pulseeffects"] floating disable
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

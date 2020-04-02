@@ -1,0 +1,4 @@
+#!/bin/bash
+
+notify-send "DUNST_COMMAND_RESUME"
+notify-send "✔️ 🔔 Notification Turned On 🔔 ✔️" -t 5000

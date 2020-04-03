@@ -19,6 +19,7 @@
 	ck = checkout
 	a = add
 	c = commit
+	ca = commit -a
 	cm = commit -m
 	cam = commit -am
 	cmm = commit --amend --no-edit

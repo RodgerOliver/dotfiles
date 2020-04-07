@@ -19,10 +19,10 @@ print_help() {
 	echo "  -fe, --fetch                 git fetch"
 	echo "  -ps, --push                  git push"
 	echo "  -pl, --pull                  git pull"
-	echo "  --exec [command]             execute command for all repos"
-	echo "  --path [path]                location of the repos"
-	echo "  -l, --list                   list repos"
-	echo "  -e, --exclude=[repo]         exclude repo from command"
+	echo "  -e,  --exec [command]        execute command for all repos"
+	echo "  -p,  --path [path]           location of the repos"
+	echo "  -l,  --list                  list repos"
+	echo "  --exclude=[repo]             exclude repo from command"
 	exit 0
 }
 
@@ -54,11 +54,11 @@ for arg in "$@"; do
 			GIT_CMD="$GIT_CMD git pull;"
 			shift
 			;;
-		--exec)
+		-e|--exec)
 			GIT_CMD="$GIT_CMD $2;"
 			shift
 			;;
-		--path)
+		-p|--path)
 			REPOS_PATH=$2
 			shift
 			;;
@@ -66,7 +66,7 @@ for arg in "$@"; do
 			FLAG_L=1
 			shift
 			;;
-		-e=*|--exclude=*)
+		--exclude=*)
 			EXCLUDE+=(${arg#*=})
 			FLAG_E=1
 			shift

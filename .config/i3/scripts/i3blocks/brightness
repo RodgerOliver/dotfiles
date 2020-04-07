@@ -1,2 +1,7 @@
 #!/bin/bash
-xbacklight -get | cut -d'.' -f 1 | sed 's/$/%/g'
+
+max_brightness=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+percentage=$[$brightness * 100 / $max_brightness];
+
+echo $percentage%

@@ -85,16 +85,28 @@ for_window [title="scratchpad" class="Terminator"] border pixel 5
 set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: "
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6:  "
+set $ws7 "7: "
+set $ws8 "8: "
 set $ws9 "9: "
 # apps on workspaces
-for_window [class="Spotify"] move to workspace $ws9
 assign [class="Firefox"] $ws2
 assign [class="Chromium-browser"] $ws3
+assign [class="Nautilus"] $ws4
+assign [class="Gimp"] $ws5
+assign [class="Gthumb"] $ws5
+assign [title="CrossFTP"] $ws6
+assign [class="Wine"] $ws6
+assign [class="Filezilla"] $ws6
+assign [class="discord"] $ws9
+assign [class="Thunderbird"] $ws7
+assign [class="Mysql-workbench-bin"] $ws8
+assign [class="Pulseeffects"] $ws9
+# for_window
+for_window [class="Spotify"] move to workspace $ws9
+for_window [class="Pulseeffects"] floating disable
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -175,7 +187,7 @@ set $c_in #f26419
 # class                 border    bground   text      indicator child_border
 client.focused          $c_bg_fc  $c_bg_fc  $c_tx_fc  $c_in     $c_bg_fc
 client.focused_inactive $c_bg_in  $c_bg_in  $c_tx_fc  $c_in     $c_bg_uf
-client.unfocused        $c_bg_uf  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
+client.unfocused        $c_bg_in  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
 client.urgent           $c_bg_ug  $c_bg_ug  $c_tx_fc  $c_in     $c_bg_uf
 client.background       $c_tx_fc
 
@@ -203,9 +215,9 @@ bar {
 exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec --no-startup-id ~/.screenlayout/layout.sh
-exec --no-startup-id dunst
 exec --no-startup-id xss-lock -- systemctl suspend
 exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
+exec_always --no-startup-id killall dunst; dunst
 exec_always --no-startup-id xset dpms 0 0 1200
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id killall compton; compton -b

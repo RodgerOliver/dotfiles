@@ -1,0 +1,5 @@
+#!/bin/bash
+
+notify-send "❌🔔 Notification Turned Off 🔔❌" -t 5000
+sleep 5
+notify-send "DUNST_COMMAND_PAUSE"

@@ -187,7 +187,7 @@ set $c_in #f26419
 # class                 border    bground   text      indicator child_border
 client.focused          $c_bg_fc  $c_bg_fc  $c_tx_fc  $c_in     $c_bg_fc
 client.focused_inactive $c_bg_in  $c_bg_in  $c_tx_fc  $c_in     $c_bg_uf
-client.unfocused        $c_bg_uf  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
+client.unfocused        $c_bg_in  $c_bg_uf  $c_tc_uf  $c_in     $c_bg_uf
 client.urgent           $c_bg_ug  $c_bg_ug  $c_tx_fc  $c_in     $c_bg_uf
 client.background       $c_tx_fc
 

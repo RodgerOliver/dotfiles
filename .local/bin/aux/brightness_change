@@ -1,0 +1,45 @@
+#!/bin/bash
+# give write permission to brightness file
+
+action=$(echo $1 | grep -e "^up\$\|^down\$")
+percentage=$(echo $2 | grep -P "^\d+$")
+
+if [ -z $action ]; then
+	percentage=$(echo $1 | grep -P "^\d+$")
+	action='set'
+	if [ -z $percentage ]; then
+		echo "First argument must be a number or an action!"
+		exit 1
+	fi
+
+elif ! [ -z $action ] && [ -z $percentage ]; then
+	echo "Second argument must be a number!"
+	exit 1
+fi
+
+path="/sys/class/backlight/intel_backlight"
+max=$(cat $path/max_brightness)
+min=240
+actual=$(cat $path/actual_brightness)
+ammount=$[$max * $percentage / 100]
+
+if [ $action == 'up' ]; then
+	signal="+"
+	one=$ammount
+	two=$actual
+elif [ $action == 'down' ]; then
+	signal="-"
+	one=$actual
+	two=$ammount
+else
+	signal="+"
+	one=$ammount
+	two=0
+fi
+
+new=$[$one $signal $two]
+
+[[ $new -gt $max ]] && echo "Backlight at Maximum" && exit 1
+[[ $new -lt $min ]] && echo "Backlight at Minimum" && exit 1
+
+echo $new | tee "$path/brightness"

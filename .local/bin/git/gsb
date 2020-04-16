@@ -9,7 +9,7 @@ while getopts ':y' flag; do
 	esac
 done
 
-if ! [[ -d .git ]]; then
+if ! [[ -d .git ]] && ! [[ -f .git ]]; then
 	echo "Not a git repo"
 	exit
 fi

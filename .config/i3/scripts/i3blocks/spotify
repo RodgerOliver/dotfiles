@@ -9,4 +9,20 @@ if spotify-controller status | grep 'Paused' > /dev/null; then
 else
 	printf '\xef\x81\x8b ' # fa-play
 fi
-spotify-controller current-oneline
+
+# print artist | music
+output=$(spotify-controller current-oneline)
+
+# if output too long
+if [[ $(echo -n $output | wc -c) -gt 35 ]]; then
+	# print music
+	output=$(spotify-controller current | awk 'END{$1=""; print substr($0, 2)}')
+fi
+
+# if output too long
+if [[ $(echo -n $output | wc -c) -gt 35 ]]; then
+	# print artist
+	output=$(spotify-controller current | awk 'FNR==2{$1=""; print substr($0, 2)}')
+fi
+
+echo -n $output

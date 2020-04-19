@@ -9,7 +9,13 @@ while getopts ':y' flag; do
 	esac
 done
 
-if ! [[ -d .git ]] && ! [[ -f .git ]]; then
+if [[ -f .git ]]; then
+	repo=$(cat .git | sed 's/gitdir: //' | sed 's/\.git\/worktrees\/.*//')
+	echo "Worktree from ${VIOLET}$repo${RESET}"
+	exit
+fi
+
+if ! [[ -d .git ]]; then
 	echo "Not a git repo"
 	exit
 fi

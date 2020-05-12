@@ -12,10 +12,7 @@ done
 if [[ -f .git ]]; then
 	repo=$(cat .git | sed 's/gitdir: //' | sed 's/\.git\/worktrees\/.*//')
 	echo "Worktree from ${VIOLET}$repo${RESET}"
-	exit
-fi
-
-if ! [[ -d .git ]]; then
+elif ! [[ -d .git ]]; then
 	echo "Not a git repo"
 	exit
 fi

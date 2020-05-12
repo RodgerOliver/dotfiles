@@ -77,11 +77,12 @@ export TERMINAL=terminator
 export TERMINAL_CLASS=Terminator
 
 # ===== ALIASES
-alias up='sudo apt update && sudo apt upgrade -y && sudo apt install -f && sudo apt autoremove -y'
+alias up='sudo apt update && sudo apt full-upgrade -y && sudo apt install -f && sudo apt autoremove -y'
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias la='ls -A'
 alias c='clear'
+alias cdc='cd && clear'
 alias q='exit'
 alias mkdir='mkdir -pv'
 alias ip='ip -c'

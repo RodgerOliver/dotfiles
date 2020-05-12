@@ -54,6 +54,8 @@ autocmd FileType vim,sh,xdefaults,conf,tmux setlocal foldmethod=expr foldexpr=Fo
 autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * :silent! checktime
 " automatically update links on read diary
 autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
+" set tab config to markdown files
+autocmd FileType vimwiki,markdown setlocal expandtab
 
 " ===== SETS
 set number

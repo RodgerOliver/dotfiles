@@ -38,9 +38,21 @@ function! s:Regs()
 		execute 'normal! "' . reg_char . 'p=`]'
 	endif
 endfunction
+function! s:JavaSetter()
+	execute "normal ^mmw\"tyew\"vyt;?class$%OOpublic void set vb~bXA(t vA {this.v = v;'mzz"
+endfunction
+function! s:JavaGetter()
+	execute "normal ^mmw\"tyew\"vyt;?class$%OOpublic t get vb~bXA() {return this.v;'mzz"
+endfunction
+function! s:JavaSetup()
+	execute "normal iclass %bhC {/* attributes *//* constructor *//* methods *//* getters *//* setters */"
+endfunction
 " create aliases for functions
 command! Marks call s:Marks()
 command! Regs call s:Regs()
+command! JavaSetter call s:JavaSetter()
+command! JavaGetter call s:JavaGetter()
+command! JavaSetup call s:JavaSetup()
 
 " ===== AUTOCMDS
 " highlight merge conflict markers

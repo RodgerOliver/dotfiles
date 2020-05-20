@@ -322,6 +322,9 @@ Plug 'vim-vdebug/vdebug'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 
+" ----- JAVA
+ Plug 'artur-shaik/vim-javacomplete2'
+
 " ----- SYNTAX CHECKER
 Plug 'scrooloose/syntastic'
 

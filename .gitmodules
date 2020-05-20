@@ -1,0 +1,3 @@
+[submodule ".local/bin/i3-battery-popup"]
+	path = .local/bin/i3-battery-popup
+	url = git@github.com:RodgerOliver/i3-battery-popup

@@ -224,3 +224,4 @@ exec_always --no-startup-id killall dunst; dunst
 exec --no-startup-id terminator
 exec --no-startup-id firefox
 exec --no-startup-id spotify
+exec --no-startup-id i3-battery-popup -L 40 -I 2 -t 1m -n -s ~/.local/bin/i3-battery-popup/i3-battery-popup.wav -v 100

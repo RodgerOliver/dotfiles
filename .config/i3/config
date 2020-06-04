@@ -217,6 +217,7 @@ exec_always --no-startup-id xset dpms 0 0 1200 # xset q
 # exec_always --no-startup-id killall xautolock; xautolock -time 20 -locker lock
 exec_always --no-startup-id killall compton; compton -b
 exec_always --no-startup-id killall dunst; dunst
+exec_always --no-startup-id killall nm-applet; nm-applet
 
 exec --no-startup-id terminator
 exec --no-startup-id firefox

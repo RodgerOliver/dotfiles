@@ -49,6 +49,8 @@
 	lo = log --decorate --oneline --graph
 	ls = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(auto)%d' --graph"
 	l  = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph"
+	lt = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ad %C(auto)%d' --graph"
+	ld = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ai %C(auto)%d' --graph"
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
 	; show commits of an unmerged branch in master
 	lb = "!f() { \

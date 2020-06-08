@@ -109,9 +109,8 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
 set complete=.,w,b,u,t,i
 " fold
-"set foldmethod=syntax
 set nofoldenable
-set foldlevel=2
+set foldlevel=99 " open all folds
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
 " fix backspace
@@ -309,6 +308,7 @@ Plug 'tpope/vim-repeat'
 Plug 'austintaylor/vim-commaobject'
 Plug 'christoomey/vim-system-copy'
 Plug 'mariappan/dragvisuals.vim'
+Plug 'pseewald/anyfold'
 
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
@@ -479,6 +479,9 @@ vmap <expr>  <C-H>   DVB_Drag('left')
 vmap <expr>  <C-L>  DVB_Drag('right')
 vmap <expr>  <C-J>   DVB_Drag('down')
 vmap <expr>  <C-K>    DVB_Drag('up')
+
+" ===== ANYFOLD
+" autocmd Filetype * AnyFoldActivate
 
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'

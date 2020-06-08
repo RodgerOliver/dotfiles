@@ -442,6 +442,7 @@ let g:UltiSnipsSnippetDirectories=["~/.vim/plugged/vim-snippets/UltiSnips/"]
 
 " ===== CTRLP
 let g:ctrlp_extensions = ['tag']
+let g:ctrlp_working_path_mode = 'ra'
 
 " ===== VIM-SYSTEM-COPY
 let g:system_copy#copy_command='xclip -sel clipboard'

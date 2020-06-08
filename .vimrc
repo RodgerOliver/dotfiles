@@ -481,6 +481,9 @@ vmap <expr>  <C-L>  DVB_Drag('right')
 vmap <expr>  <C-J>   DVB_Drag('down')
 vmap <expr>  <C-K>    DVB_Drag('up')
 
+" ===== COC
+let g:coc_disable_startup_warning = 1
+
 " ===== ANYFOLD
 " autocmd Filetype * AnyFoldActivate
 

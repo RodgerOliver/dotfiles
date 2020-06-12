@@ -315,6 +315,7 @@ Plug 'ap/vim-css-color'
 Plug 'turbio/bracey.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
 " Plug 'mattn/emmet-vim'
 
 " ----- PHP

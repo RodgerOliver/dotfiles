@@ -259,6 +259,9 @@ nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
 nnoremap <silent> <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
+" fix broken syntax (syntax sync minlines=200)
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 " toggle vim-commentary
 if has('win32')
 	nmap <C-/> <Plug>CommentaryLine

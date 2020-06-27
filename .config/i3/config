@@ -19,6 +19,7 @@ focus_follows_mouse no
 
 # ===== APPS SHORTCUTS
 bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#333333' -sb '#7768AE' -sf '#FFFFFF' -fn mononoki-13"
+bindsym $mod+r exec --no-startup-id "rofi -combi-modi window,drun,ssh -theme solarized -font 'Mononoki Nerd Font 15' -show combi -show-icons"
 bindsym $mod+Shift+d exec --no-startup-id "sudo -A dmenu_run -nf '#FFFFFF' -nb '#7768AE' -sb '#3d3366' -sf '#FFFFFF' -fn mononoki-13"
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
@@ -87,7 +88,7 @@ set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
-set $ws6 "6:  "
+set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
 set $ws9 "9: "
@@ -99,7 +100,10 @@ assign [class="Gimp"] $ws5
 assign [class="Gthumb"] $ws5
 assign [title="CrossFTP"] $ws6
 assign [class="Wine"] $ws6
+assign [class="Wpsoffice"] $ws6
+assign [class="DesktopEditors"] $ws6
 assign [class="Filezilla"] $ws6
+assign [class="libreoffice-startcenter|Soffice"] $ws6
 assign [class="discord"] $ws9
 assign [class="Thunderbird"] $ws7
 assign [class="Mysql-workbench-bin"] $ws8

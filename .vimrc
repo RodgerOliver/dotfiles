@@ -109,9 +109,8 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
 set complete=.,w,b,u,t,i
 " fold
-"set foldmethod=syntax
 set nofoldenable
-set foldlevel=2
+set foldlevel=99 " open all folds
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
 " fix backspace
@@ -260,6 +259,9 @@ nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
 nnoremap <silent> <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
+" fix broken syntax (syntax sync minlines=200)
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 " toggle vim-commentary
 if has('win32')
 	nmap <C-/> <Plug>CommentaryLine
@@ -309,12 +311,14 @@ Plug 'tpope/vim-repeat'
 Plug 'austintaylor/vim-commaobject'
 Plug 'christoomey/vim-system-copy'
 Plug 'mariappan/dragvisuals.vim'
+Plug 'pseewald/anyfold'
 
 " ----- FRONT-END
 Plug 'ap/vim-css-color'
 Plug 'turbio/bracey.vim'
 Plug 'jelera/vim-javascript-syntax'
-" Plug 'othree/html5.vim'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
 " Plug 'mattn/emmet-vim'
 
 " ----- PHP
@@ -442,6 +446,7 @@ let g:UltiSnipsSnippetDirectories=["~/.vim/plugged/vim-snippets/UltiSnips/"]
 
 " ===== CTRLP
 let g:ctrlp_extensions = ['tag']
+let g:ctrlp_working_path_mode = 'ra'
 
 " ===== VIM-SYSTEM-COPY
 let g:system_copy#copy_command='xclip -sel clipboard'
@@ -479,6 +484,12 @@ vmap <expr>  <C-H>   DVB_Drag('left')
 vmap <expr>  <C-L>  DVB_Drag('right')
 vmap <expr>  <C-J>   DVB_Drag('down')
 vmap <expr>  <C-K>    DVB_Drag('up')
+
+" ===== COC
+let g:coc_disable_startup_warning = 1
+
+" ===== ANYFOLD
+" autocmd Filetype * AnyFoldActivate
 
 " ===== VIM MOVE
 " execute 'set <A-j>=\ej'

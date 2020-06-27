@@ -109,9 +109,8 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,longest
 set complete=.,w,b,u,t,i
 " fold
-"set foldmethod=syntax
 set nofoldenable
-set foldlevel=2
+set foldlevel=99 " open all folds
 " remove esc delay
 set timeoutlen=1000 ttimeoutlen=0
 " fix backspace
@@ -260,6 +259,9 @@ nnoremap <leader>i :set cursorline! relativenumber! lazyredraw!<CR>
 " vimwiki toggle list item
 nnoremap <leader><C-x> :VimwikiToggleListItem<CR>
 nnoremap <silent> <leader>wc :Calendar<CR>:exe "vert resize " . (winwidth(0) + 6)<CR>
+" fix broken syntax (syntax sync minlines=200)
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 " toggle vim-commentary
 if has('win32')
 	nmap <C-/> <Plug>CommentaryLine
@@ -297,6 +299,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'austintaylor/vim-commaobject'
 Plug 'mariappan/dragvisuals.vim'
+Plug 'pseewald/anyfold'
 
 " ----- OTHER
 Plug 'vimwiki/vimwiki'
@@ -341,6 +344,7 @@ let g:vimwiki_ext2syntax = {'.wiki': 'default', '.md': 'markdown', '.markdown': 
 
 " ===== CTRLP
 let g:ctrlp_extensions = ['tag']
+let g:ctrlp_working_path_mode = 'ra'
 
 " ===== GUTENTAGS
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',

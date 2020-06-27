@@ -35,6 +35,7 @@
 	f = fetch
 	fa = fetch --all
 	m = merge
+	sh = stash
 	s = show
 	sm = show -m
 	so = show --name-only

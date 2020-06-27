@@ -103,6 +103,7 @@ assign [class="Wine"] $ws6
 assign [class="Wpsoffice"] $ws6
 assign [class="DesktopEditors"] $ws6
 assign [class="Filezilla"] $ws6
+assign [class="libreoffice-startcenter|Soffice"] $ws6
 assign [class="discord"] $ws9
 assign [class="Thunderbird"] $ws7
 assign [class="Mysql-workbench-bin"] $ws8

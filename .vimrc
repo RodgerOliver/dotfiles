@@ -5,7 +5,6 @@ syntax enable
 filetype plugin on
 let mapleader = " "
 set background=dark
-colorscheme snazzy
 
 " ===== FUNCTIONS
 function! FoldConfig()
@@ -276,6 +275,7 @@ call plug#begin()
 
 " ----- APPEARANCE
 Plug 'rodgeroliver/vim-snazzy'
+Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -358,6 +358,11 @@ Plug 'godlygeek/tabular'
 " Plug 'wincent/scalpel'
 
 call plug#end()
+
+" ===== COLORSCHEME
+let g:dracula_italic = 0
+let g:dracula_bold = 0
+colorscheme dracula
 
 " ===== AIRLINE
 let g:airline_powerline_fonts = 1

@@ -11,8 +11,9 @@ done
 
 if [[ -f .git ]]; then
 	repo=$(cat .git | sed 's/gitdir: //' | sed 's/\.git\/worktrees\/.*//')
+	[[ -z $repo ]] && echo "Not a git repo" && exit
 	echo "Worktree from ${VIOLET}$repo${RESET}"
-elif ! [[ -d .git ]]; then
+elif ! [[ -d .git ]] && [[ -z $(git rev-parse --git-dir 2> /dev/null) ]]; then
 	echo "Not a git repo"
 	exit
 fi

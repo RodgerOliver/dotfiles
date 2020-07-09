@@ -8,7 +8,7 @@ if [ -z $action ]; then
 	percentage=$(echo $1 | grep -P "^\d+$")
 	action='set'
 	if [ -z $percentage ]; then
-		echo "First argument must be a number or an action!"
+		echo "First argument must be a number or an action (up | down)!"
 		exit 1
 	fi
 

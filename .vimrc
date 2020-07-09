@@ -176,6 +176,8 @@ noremap <leader>cJ :w<CR>:!clear && javac % -d classes/ && time java -cp classes
 noremap <leader>cp :w<CR>:!clear && time php %<CR>
 " run Bash
 noremap <leader>cb :w<CR>:!clear && chmod +x % && ./%<CR>
+" run JavaScript
+noremap <leader>cj :w<CR>:!clear && nodejs %<CR>
 " map Marks
 nnoremap <leader>M :Marks<CR>
 " map Regs

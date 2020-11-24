@@ -142,6 +142,17 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Tab workspace back_and_forth
 # bindsym $mod+Tab workspace next
 # bindsym $mod+Shift+Tab workspace prev
+#
+# monitor config
+# workspace $ws1 output EDP-1-1
+# workspace $ws2 output EDP-1-1
+# workspace $ws3 output HDMI-1-1
+# workspace $ws4 output HDMI-1-1
+# workspace $ws5 output HDMI-1-1
+# workspace $ws6 output EDP-1-1
+# workspace $ws7 output EDP-1-1
+# workspace $ws8 output EDP-1-1
+# workspace $ws9 output EDP-1-1
 
 # ===== DEBUG AND EXIT
 # reload the configuration file

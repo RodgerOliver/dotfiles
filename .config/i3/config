@@ -97,8 +97,10 @@ set $ws9 "9: "
 assign [class="Firefox"] $ws2
 assign [class="Chromium-browser"] $ws3
 assign [class="Nautilus"] $ws4
+assign [class="Nemo"] $ws4
 assign [class="Gimp"] $ws5
 assign [class="Gthumb"] $ws5
+assign [class="Inkscape"] $ws5
 assign [title="CrossFTP"] $ws6
 assign [class="Wine"] $ws6
 assign [class="Wpsoffice"] $ws6
@@ -109,6 +111,7 @@ assign [class="discord"] $ws9
 assign [class="Thunderbird"] $ws7
 assign [class="Mysql-workbench-bin"] $ws8
 assign [class="Pulseeffects"] $ws9
+assign [class="Lotion"] $ws9
 # for_window
 for_window [class="Spotify"] move to workspace $ws9
 for_window [class="Pulseeffects"] floating disable

@@ -312,7 +312,7 @@ call plug#end()
 
 " ===== NERD TREE
 nnoremap <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
 			\ "Modified"  : "✹",
 			\ "Staged"    : "✚",
 			\ "Untracked" : "✭",

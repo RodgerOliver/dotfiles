@@ -476,6 +476,9 @@ let g:syntastic_enable_highlighting = 0
 " Syntastic configuration for PHP
 let g:syntastic_php_checkers = ['php']
 
+" Remove unwanted warnings
+let g:syntastic_quiet_messages = { 'regex': 'raw type' }
+
 " ===== DRAGVISUALS
 vmap <expr>  <LEFT>   DVB_Drag('left')
 vmap <expr>  <RIGHT>  DVB_Drag('right')

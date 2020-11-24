@@ -227,6 +227,22 @@ bar {
 	}
 }
 
+bar {
+	tray_output none
+	status_command i3status
+	font pango:mononoki 9
+	position bottom
+
+	# toggle hidden state with mod key
+	mode hide
+	hidden_state hide
+	modifier Mod5 # AltGr (xmodmap)
+
+	# hide workspaces buttons
+	workspace_buttons no
+
+}
+
 # ===== STARTUP COMMANDS
 exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760

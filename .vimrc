@@ -403,7 +403,7 @@ let g:airline_symbols.maxlinenr = '㏑'
 
 " ===== NERD TREE
 nnoremap <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
 			\ "Modified"  : "✹",
 			\ "Staged"    : "✚",
 			\ "Untracked" : "✭",
@@ -475,6 +475,9 @@ let g:syntastic_enable_highlighting = 0
 
 " Syntastic configuration for PHP
 let g:syntastic_php_checkers = ['php']
+
+" Remove unwanted warnings
+let g:syntastic_quiet_messages = { 'regex': 'raw type' }
 
 " ===== DRAGVISUALS
 vmap <expr>  <LEFT>   DVB_Drag('left')

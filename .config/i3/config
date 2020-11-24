@@ -25,7 +25,7 @@ bindsym $mod+Ctrl+r exec --no-startup-id "sudo -A rofi -combi-modi window,drun,s
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id spotify
-bindsym $mod+n exec --no-startup-id nautilus
+bindsym $mod+n exec --no-startup-id nemo
 bindsym $mod+b exec --no-startup-id chromium-browser
 bindsym $mod+Shift+m exec --no-startup-id mysql-workbench
 

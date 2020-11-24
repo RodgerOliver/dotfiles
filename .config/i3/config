@@ -115,6 +115,9 @@ assign [class="Lotion"] $ws9
 # for_window
 for_window [class="Spotify"] move to workspace $ws9
 for_window [class="Pulseeffects"] floating disable
+for_window [class="Microsoft Teams - Preview"] floating enable
+for_window [class="Microsoft Teams - Preview"] move position bottom
+for_window [class="Microsoft Teams - Preview"] move position right
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2

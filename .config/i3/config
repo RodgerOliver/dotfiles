@@ -236,7 +236,8 @@ bar {
 	# toggle hidden state with mod key
 	mode hide
 	hidden_state hide
-	modifier Mod5 # AltGr (xmodmap)
+	# Mod5 = AltGr (xmodmap)
+	modifier Mod5
 
 	# hide workspaces buttons
 	workspace_buttons no

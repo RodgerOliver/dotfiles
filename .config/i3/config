@@ -95,7 +95,7 @@ set $ws8 "8: "
 set $ws9 "9: "
 # apps on workspaces
 assign [class="Firefox"] $ws2
-assign [class="Chromium-browser"] $ws3
+assign [class="Chromium"] $ws3
 assign [class="Nautilus"] $ws4
 assign [class="Nemo"] $ws4
 assign [class="Gimp"] $ws5

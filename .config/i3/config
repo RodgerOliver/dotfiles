@@ -245,7 +245,8 @@ bar {
 }
 
 # ===== STARTUP COMMANDS
-exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# swap Caps Lock and ESC - to revert use 'setxkbmap -option'
+exec --no-startup-id setxkbmap -option "caps:swapescape"
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec --no-startup-id ~/.screenlayout/layout.sh
 exec --no-startup-id xss-lock -- systemctl suspend

@@ -95,7 +95,7 @@ set $ws8 "8: "
 set $ws9 "9: "
 # apps on workspaces
 assign [class="Firefox"] $ws2
-assign [class="Chromium-browser"] $ws3
+assign [class="Chromium"] $ws3
 assign [class="Nautilus"] $ws4
 assign [class="Nemo"] $ws4
 assign [class="Gimp"] $ws5
@@ -239,7 +239,8 @@ bar {
 	# toggle hidden state with mod key
 	mode hide
 	hidden_state hide
-	modifier Mod5 # AltGr (xmodmap)
+	# Mod5 = AltGr (xmodmap)
+	modifier Mod5
 
 	# hide workspaces buttons
 	workspace_buttons no
@@ -247,7 +248,8 @@ bar {
 }
 
 # ===== STARTUP COMMANDS
-exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# swap Caps Lock and ESC - to revert use 'setxkbmap -option'
+exec --no-startup-id setxkbmap -option "caps:swapescape"
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec --no-startup-id ~/.screenlayout/layout.sh
 exec --no-startup-id xss-lock -- systemctl suspend

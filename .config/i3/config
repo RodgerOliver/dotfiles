@@ -10,10 +10,9 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id power
 # hide window borders
 #hide_edge_borders both
 # screenshot
-bindsym --release Print exec --no-startup-id scrot 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/' && notify-send '📸 Screenshot Taken 📸'
-bindsym --release Shift+Print exec --no-startup-id scrot -s 'Screenshot_%d-%m-%y_%H-%M-%S.png' -e 'mv $f ~/Pictures/' && notify-send '📸 Screenshot Taken 📸'
-bindsym --release Control+Print exec --no-startup-id gnome-screenshot -i && notify-send '📸 Screenshot Taken 📸'
+bindsym --release Print exec --no-startup-id scrot '~/Pictures/Screenshot_%d-%m-%y_%H-%M-%S.png' && notify-send '📸 Screenshot Taken 📸'
 bindsym --release $mod+Print exec --no-startup-id gnome-screenshot -a && notify-send '📸 Screenshot Taken 📸'
+bindsym --release Control+Print exec --no-startup-id gnome-screenshot -i && notify-send '📸 Screenshot Taken 📸'
 # disable mouse hover focus
 focus_follows_mouse no
 

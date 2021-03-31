@@ -92,7 +92,7 @@ alias nv='nvim'
 alias vv="vim $NOTES_PATH/remote/index.md"
 alias g='git'
 alias r='source ranger'
-alias t='tmux'
+alias t='tmux new -n ""'
 alias sudo='sudo '
 
 # ===== COMPLETE

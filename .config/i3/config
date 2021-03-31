@@ -146,10 +146,10 @@ bindsym $mod+Tab workspace back_and_forth
 workspace $ws1 output HDMI-1
 workspace $ws2 output EDP-1
 workspace $ws3 output EDP-1
-workspace $ws4 output EDP-1
-workspace $ws5 output EDP-1
-workspace $ws6 output EDP-1
-workspace $ws7 output EDP-1
+workspace $ws4 output HDMI-1
+workspace $ws5 output HDMI-1
+workspace $ws6 output HDMI-1
+workspace $ws7 output HDMI-1
 workspace $ws8 output HDMI-1
 workspace $ws9 output EDP-1
 

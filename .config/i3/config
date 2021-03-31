@@ -249,6 +249,7 @@ exec --no-startup-id setxkbmap -option "caps:swapescape"
 exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
 exec --no-startup-id ~/.screenlayout/layout.sh
 exec --no-startup-id xss-lock -- systemctl suspend
+exec_always --no-startup-id xinput set-prop 14 327 -0.4
 exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
 exec_always --no-startup-id numlockx on
 # screensaver

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+clock_speed=$(lscpu | grep -m1 MHz | awk '{print substr($3, 1, length($3) - 2)}')
+clock_ghz=$(bc <<< "scale=1; $clock_speed / 1000" | sed 's/^\./0./')
+
+echo $clock_ghz GHz

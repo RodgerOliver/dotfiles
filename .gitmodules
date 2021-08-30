@@ -1,3 +1,6 @@
 [submodule ".local/bin/i3-battery-popup"]
 	path = .local/bin/i3-battery-popup
 	url = git@github.com:RodgerOliver/i3-battery-popup
+[submodule ".local/bin/i3lock-multimonitor"]
+	path = .local/bin/i3lock-multimonitor
+	url = git@github.com:RodgerOliver/i3lock-multimonitor.git

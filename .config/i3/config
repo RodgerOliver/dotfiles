@@ -253,6 +253,7 @@ exec_always --no-startup-id xinput set-prop 14 327 -0.4
 exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id setxkbmap -model abnt -layout us -variant intl
+exec_always --no-startup-id blueman-tray
 # screensaver
 exec_always --no-startup-id xset s off -dpms
 exec_always --no-startup-id killall compton; compton -b
@@ -262,5 +263,6 @@ exec_always --no-startup-id killall nm-applet; nm-applet
 exec --no-startup-id terminator
 exec --no-startup-id firefox
 exec --no-startup-id spotify
-exec --no-startup-id blueman-tray
+exec --no-startup-id mysql-workbench
+exec --no-startup-id chromium
 exec --no-startup-id i3-battery-popup -L 20 -I 2 -t 1m -n -s ~/.local/bin/i3-battery-popup/i3-battery-popup.wav -v 100

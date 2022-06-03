@@ -1,5 +1,6 @@
 # ===== GENERAL
 set $mod Mod4
+set $chrome google-chrome-beta --enable-features=WebUIDarkMode --force-dark-mode
 font pango:mononoki 9
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -25,7 +26,7 @@ bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id spotify
 bindsym $mod+n exec --no-startup-id nemo
-bindsym $mod+b exec --no-startup-id chromium-browser
+bindsym $mod+b exec --no-startup-id $chrome
 bindsym $mod+Shift+m exec --no-startup-id mysql-workbench
 
 # ===== RESIZE  WINDOWS
@@ -91,12 +92,15 @@ set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
-set $ws9 "9: "
+set $ws9 "9: "
+set $ws0 "0: "
 # apps on workspaces
-assign [class="Firefox"] $ws2
-assign [class="Chromium"] $ws3
+assign [class="jetbrains-phpstorm"] $ws1
+assign [class="firefox"] $ws2
+assign [class="Google-chrome"] $ws3
 assign [class="Nautilus"] $ws4
 assign [class="Nemo"] $ws4
+assign [class="qBittorrent"] $ws4
 assign [class="Gimp"] $ws5
 assign [class="Gthumb"] $ws5
 assign [class="Inkscape"] $ws5
@@ -106,13 +110,15 @@ assign [class="Wpsoffice"] $ws6
 assign [class="DesktopEditors"] $ws6
 assign [class="Filezilla"] $ws6
 assign [class="libreoffice-startcenter|Soffice"] $ws6
-assign [class="discord"] $ws9
 assign [class="Thunderbird"] $ws7
 assign [class="Mysql-workbench-bin"] $ws8
-assign [class="Pulseeffects"] $ws9
-assign [class="Lotion"] $ws9
+assign [class="pgadmin4"] $ws8
+assign [class="dockstation"] $ws9
+assign [class="podman-desktop-companion"] $ws9
+assign [class="discord"] $ws0
+assign [class="Pulseeffects"] $ws0
+for_window [class="Spotify"] move to workspace $ws0
 # for_window
-for_window [class="Spotify"] move to workspace $ws9
 for_window [class="Pulseeffects"] floating disable
 for_window [class="Microsoft Teams - Preview"] floating enable
 for_window [class="Microsoft Teams - Preview"] move position bottom
@@ -127,6 +133,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
@@ -137,6 +144,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 # move in active workspaces
 bindsym $mod+Tab workspace back_and_forth
 # bindsym $mod+Tab workspace next
@@ -144,14 +152,10 @@ bindsym $mod+Tab workspace back_and_forth
 #
 # monitor config
 workspace $ws1 output HDMI-1
-workspace $ws2 output EDP-1
-workspace $ws3 output EDP-1
-workspace $ws4 output HDMI-1
-workspace $ws5 output HDMI-1
-workspace $ws6 output HDMI-1
-workspace $ws7 output HDMI-1
-workspace $ws8 output HDMI-1
-workspace $ws9 output EDP-1
+workspace $ws2 output HDMI-1
+workspace $ws3 output HDMI-1
+workspace $ws9 output HDMI-1
+workspace $ws0 output EDP-1
 
 # ===== DEBUG AND EXIT
 # reload the configuration file
@@ -247,16 +251,16 @@ bar {
 }
 
 # ===== STARTUP COMMANDS
-# swap Caps Lock and ESC - to revert use 'setxkbmap -option'
-exec --no-startup-id setxkbmap -option "caps:swapescape"
-exec --no-startup-id redshift-gtk -l -22.57690:-44.95760
-exec --no-startup-id ~/.screenlayout/layout.sh
+exec --no-startup-id redshift-gtk -l -22.57690:-44.95760 -t 5000:3500
 exec --no-startup-id xss-lock -- systemctl suspend
-exec_always --no-startup-id xinput set-prop 14 327 -0.4
-exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
-exec_always --no-startup-id numlockx on
+exec --no-startup-id ~/.screenlayout/layout.sh
+# swap Caps Lock and ESC - to revert use 'setxkbmap -option'
+exec_always --no-startup-id setxkbmap -option "caps:swapescape"
 exec_always --no-startup-id setxkbmap -model abnt -layout us -variant intl
+exec_always --no-startup-id feh --bg-scale ~/.images/wallpapers/wallpaper.jpg
+exec_always --no-startup-id xinput set-prop 14 327 -0.4
 exec_always --no-startup-id blueman-tray
+exec_always --no-startup-id numlockx on
 # screensaver
 exec_always --no-startup-id xset s off -dpms
 exec_always --no-startup-id killall compton; compton -b
@@ -266,6 +270,4 @@ exec_always --no-startup-id killall nm-applet; nm-applet
 exec --no-startup-id terminator
 exec --no-startup-id firefox
 exec --no-startup-id spotify
-exec --no-startup-id mysql-workbench
-exec --no-startup-id chromium
 exec --no-startup-id i3-battery-popup -L 20 -I 2 -t 1m -n -s ~/.local/bin/i3-battery-popup/i3-battery-popup.wav -v 100

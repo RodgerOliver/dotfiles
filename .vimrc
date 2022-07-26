@@ -90,10 +90,10 @@ set cursorline
 set lazyredraw
 set redrawtime=10000
 " tab config
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
-set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 " show matching curly, paren or bracket
 set showmatch
 set splitbelow splitright
@@ -178,6 +178,8 @@ noremap <leader>cp :w<CR>:!clear && time php %<CR>
 noremap <leader>cb :w<CR>:!clear && chmod +x % && ./%<CR>
 " run JavaScript
 noremap <leader>cj :w<CR>:!clear && nodejs %<CR>
+" run Python
+noremap <leader>cP :w<CR>:!clear && python3 %<CR>
 " map Marks
 nnoremap <leader>M :Marks<CR>
 " map Regs

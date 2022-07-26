@@ -27,7 +27,6 @@ bindsym $mod+Shift+Return exec --no-startup-id firefox
 bindsym $mod+m exec --no-startup-id spotify
 bindsym $mod+n exec --no-startup-id nemo
 bindsym $mod+b exec --no-startup-id $chrome
-bindsym $mod+Shift+m exec --no-startup-id mysql-workbench
 
 # ===== RESIZE  WINDOWS
 bindsym $mod+equal [class="Firefox"] resize set 300px 313px
@@ -91,19 +90,22 @@ set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
+set $ws8 "8: "
+set $ws9 "9: "
 set $ws0 "0: "
 # apps on workspaces
 assign [class="jetbrains-phpstorm"] $ws1
 assign [class="firefox"] $ws2
 assign [class="Google-chrome"] $ws3
+assign [title="Google Chrome"] $ws3
 assign [class="Nautilus"] $ws4
 assign [class="Nemo"] $ws4
 assign [class="qBittorrent"] $ws4
+assign [class="Meld"] $ws4
 assign [class="Gimp"] $ws5
 assign [class="Gthumb"] $ws5
 assign [class="Inkscape"] $ws5
+assign [class="Designer"] $ws5
 assign [title="CrossFTP"] $ws6
 assign [class="Wine"] $ws6
 assign [class="Wpsoffice"] $ws6
@@ -111,10 +113,11 @@ assign [class="DesktopEditors"] $ws6
 assign [class="Filezilla"] $ws6
 assign [class="libreoffice-startcenter|Soffice"] $ws6
 assign [class="Thunderbird"] $ws7
-assign [class="Mysql-workbench-bin"] $ws8
-assign [class="pgadmin4"] $ws8
-assign [class="dockstation"] $ws9
-assign [class="podman-desktop-companion"] $ws9
+assign [class="Mysql-workbench-bin"] $ws9
+assign [class="pgadmin4"] $ws9
+assign [class="beekeeper-studio"] $ws9
+assign [class="dockstation"] $ws8
+assign [class="podman-desktop-companion"] $ws8
 assign [class="discord"] $ws0
 assign [class="Pulseeffects"] $ws0
 for_window [class="Spotify"] move to workspace $ws0
@@ -266,8 +269,12 @@ exec_always --no-startup-id xset s off -dpms
 exec_always --no-startup-id killall compton; compton -b
 exec_always --no-startup-id killall dunst; dunst
 exec_always --no-startup-id killall nm-applet; nm-applet
+exec --no-startup-id i3-battery-popup -L 20 -I 2 -t 1m -n -s ~/.local/bin/i3-battery-popup/i3-battery-popup.wav -v 100
 
 exec --no-startup-id terminator
+exec --no-startup-id codium
 exec --no-startup-id firefox
 exec --no-startup-id spotify
-exec --no-startup-id i3-battery-popup -L 20 -I 2 -t 1m -n -s ~/.local/bin/i3-battery-popup/i3-battery-popup.wav -v 100
+exec --no-startup-id dockstation
+exec --no-startup-id $chrome
+exec --no-startup-id /opt/Beekeeper\ Studio/beekeeper-studio

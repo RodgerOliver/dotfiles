@@ -94,6 +94,7 @@ alias g='git'
 alias r='source ranger'
 alias t='tmux'
 alias tn='tmux new -n ""'
+alias yt='youtube-dl -f best --hls-prefer-native'
 alias sudo='sudo '
 
 # ===== COMPLETE

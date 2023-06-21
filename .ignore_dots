@@ -5,3 +5,6 @@
 ./.config/ranger/scope.sh
 ./.images/wallpapers/wallpaper.jpg
 ./README.md
+./.gitconfig.user
+./.gitmodules
+./.ignore_dots

@@ -96,6 +96,9 @@ alias t='tmux'
 alias tn='tmux new -n ""'
 alias yt='youtube-dl -f best --hls-prefer-native'
 alias sudo='sudo '
+alias d='docker'
+alias dc='docker-compose'
+alias dcr='docker-compose run --rm'
 
 # ===== COMPLETE
 complete -F _complete_alias g

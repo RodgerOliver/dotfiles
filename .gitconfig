@@ -56,9 +56,11 @@
 	ll = "log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph --all"
 	; show commits of an unmerged branch in master
 	lb = "!f() { \
-		branch=$1; \
-		test -z $branch && branch=HEAD; \
-		git log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph master..$branch; \
+		branch_from=$1; \
+		branch_to=$2; \
+		test -z $branch_from && branch_from=master; \
+		test -z $branch_to && branch_to=HEAD; \
+		git log --pretty=format:'%C(yellow)%h %C(green)%an %C(reset)%s %C(blue)%ar %C(auto)%d' --graph $branch_from..$branch_to; \
 	}; f"
 	; show commits of a merged branch in master (only if it has one merge on master)
 	lbm = "!f() { \

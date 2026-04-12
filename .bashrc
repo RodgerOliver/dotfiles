@@ -50,10 +50,6 @@ set -o vi # vi mode
 shopt -s histappend
 HISTSIZE=2000
 HISTFILESIZE=2000
-# swap esc with caps
-if command -v setxkbmap >/dev/null 2>&1; then
-	setxkbmap -option caps:swapescape
-fi
 # add local bin to PATH
 if [ -d "$HOME/.local/bin" ] ; then
 	# export recursively
@@ -97,8 +93,8 @@ alias tn='tmux new -n ""'
 alias yt='youtube-dl -f best --hls-prefer-native'
 alias sudo='sudo '
 alias d='docker'
-alias dc='docker-compose'
-alias dcr='docker-compose run --rm'
+alias dc='docker compose'
+alias dcr='docker compose run --rm'
 
 # ===== COMPLETE
 complete -F _complete_alias g

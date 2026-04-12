@@ -54,7 +54,12 @@ for remote_file in ${a}; do
 		remote_hash=$(md5sum $remote_file | sed "s/\ .*//g")
 		if [[ $local_hash != $remote_hash ]]; then
 			[[ $S_FLAG != true ]] && vimdiff $remote_file $local_file
-			echo -e "${BOLD_GREEN}UPDATED${RESET} ${file_name}"
+			new_remote_hash=$(md5sum $remote_file | sed "s/\ .*//g")
+			if [[ $remote_hash != $new_remote_hash ]]; then
+				echo -e "${BOLD_GREEN}UPDATED${RESET} ${file_name}"
+			else
+				echo -e "${BOLD_BLUE}UNCHANGED${RESET} ${file_name}"
+			fi
 		fi
 	else
 		echo -e "${BOLD_RED}NO FILE${RESET} ${file_name}"

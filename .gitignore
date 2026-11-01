@@ -1,0 +1,12 @@
+# Machine-specific Git identity
+.gitconfig.user
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor temporary files
+*.swp
+*.swo
+*~

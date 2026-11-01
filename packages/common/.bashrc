@@ -42,19 +42,19 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# Start graphical server if i3 not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 set -o vi # vi mode
 [[ $- == *i* ]] && stty -ixon # Disable ctrl-s and ctrl-q.
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 HISTSIZE=2000
 HISTFILESIZE=2000
-# add local bin to PATH
-if [ -d "$HOME/.local/bin" ] ; then
-	# export recursively
-	export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
-fi
+# User executables
+for dir in "$HOME/.local/bin" \
+           "$HOME/.local/bin/git" "$HOME/.opencode/bin"; do
+    if [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]]; then
+        export PATH="$dir:$PATH"
+    fi
+done
 # source files
 for file in ~/.bash_{aliases,prompt,completion}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
@@ -65,12 +65,6 @@ bind -m vi-insert "\C-l":clear-screen
 
 # ===== EXPORTS
 export EDITOR=vim
-export TERM=xterm-256color
-export BROWSER=firefox
-export NOTES_PATH=~/.notes
-export SUDO_ASKPASS=~/.local/bin/aux/zenity_pass
-export TERMINAL=terminator
-export TERMINAL_CLASS=Terminator
 
 # ===== ALIASES
 alias up='sudo apt update && sudo apt full-upgrade -y && sudo apt install -f && sudo apt autoremove -y'
@@ -85,16 +79,15 @@ alias ip='ip -c'
 alias grep='grep --color=auto'
 alias v='vim'
 alias nv='nvim'
-alias vv="vim $NOTES_PATH/remote/index.md"
 alias g='git'
 alias r='source ranger'
 alias t='tmux'
 alias tn='tmux new -n ""'
-alias yt='youtube-dl -f best --hls-prefer-native'
 alias sudo='sudo '
 alias d='docker'
 alias dc='docker compose'
 alias dcr='docker compose run --rm'
+alias oc='opencode'
 
 # ===== COMPLETE
 complete -F _complete_alias g

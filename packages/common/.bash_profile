@@ -1,6 +1,9 @@
-#!/bin/bash
+# Bash login shell initialization
 
-# source .bashrc
-if [ -f ~/.bashrc ]; then
-	source ~/.bashrc
+if [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
+
+if [[ $- == *i* ]] && [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
 fi

@@ -426,12 +426,12 @@ let g:instant_markdown_autostart = 0
 
 " ===== VIMWIKI
 let index = {}
-let index.path = '$NOTES_PATH/remote/'
+let index.path = expand('~/.notes/remote/')
 let index.syntax = 'markdown'
 let index.ext = '.md'
 
 let local_notes = {}
-let local_notes.path = '$NOTES_PATH/local/'
+let local_notes.path = expand('~/.notes/local/')
 let local_notes.syntax = 'markdown'
 let local_notes.ext = '.md'
 
@@ -453,7 +453,7 @@ let g:ctrlp_extensions = ['tag']
 let g:ctrlp_working_path_mode = 'ra'
 
 " ===== VIM-SYSTEM-COPY
-let g:system_copy#copy_command='xclip -sel clipboard'
+let g:system_copy#copy_command='wl-copy'
 
 " ===== GUTENTAGS
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',

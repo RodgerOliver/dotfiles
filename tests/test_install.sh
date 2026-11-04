@@ -470,4 +470,173 @@ fi
 
 echo "PASS: Automatic recovery preserves unrelated files"
 
+echo "Testing real-home authorization..."
+
+AUTH_HOME="$TEST_ROOT/authorized-home"
+mkdir -p "$AUTH_HOME"
+
+auth_args=(
+    --package common
+    --target "$AUTH_HOME"
+)
+
+# Without authorization, installation must fail.
+if HOME="$AUTH_HOME" "$INSTALLER" \
+    --install "${auth_args[@]}" > /dev/null 2>&1; then
+    echo "FAIL: Unauthorized HOME installation succeeded"
+    exit 1
+fi
+
+if [[ -e "$AUTH_HOME/.bashrc" || -L "$AUTH_HOME/.bashrc" ]]; then
+    echo "FAIL: Unauthorized installation modified HOME"
+    exit 1
+fi
+
+echo "PASS: Unauthorized HOME installation blocked"
+
+# Without authorization, uninstallation must fail.
+if HOME="$AUTH_HOME" "$INSTALLER" \
+    --uninstall "${auth_args[@]}" > /dev/null 2>&1; then
+    echo "FAIL: Unauthorized HOME uninstallation succeeded"
+    exit 1
+fi
+
+echo "PASS: Unauthorized HOME uninstallation blocked"
+
+# Explicit authorization should permit installation.
+if ! HOME="$AUTH_HOME" "$INSTALLER" \
+    --install --allow-home "${auth_args[@]}" > /dev/null 2>&1; then
+    echo "FAIL: Authorized HOME installation"
+    exit 1
+fi
+
+if [[ ! -L "$AUTH_HOME/.bashrc" ]]; then
+    echo "FAIL: Authorized installation did not create symlinks"
+    exit 1
+fi
+
+echo "PASS: Authorized HOME installation"
+
+# Explicit authorization should permit uninstallation.
+if ! HOME="$AUTH_HOME" "$INSTALLER" \
+    --uninstall --allow-home "${auth_args[@]}" > /dev/null 2>&1; then
+    echo "FAIL: Authorized HOME uninstallation"
+    exit 1
+fi
+
+if [[ -e "$AUTH_HOME/.bashrc" || -L "$AUTH_HOME/.bashrc" ]]; then
+    echo "FAIL: Authorized uninstallation left managed symlinks"
+    exit 1
+fi
+
+echo "PASS: Authorized HOME uninstallation"
+
+echo "Testing SIGTERM interruption recovery..."
+
+(
+    set -euo pipefail
+
+    SIGNAL_HOME="$TEST_ROOT/signal-home"
+    SIGNAL_LOG="$TEST_ROOT/signal.log"
+    SIGNAL_PID=""
+
+    mkdir -p "$SIGNAL_HOME"
+    printf 'original signal configuration\n' > "$SIGNAL_HOME/.bashrc"
+
+    cleanup_signal() {
+        if [[ -n "$SIGNAL_PID" ]]; then
+            kill -TERM "$SIGNAL_PID" 2>/dev/null || true
+            wait "$SIGNAL_PID" 2>/dev/null || true
+        fi
+    }
+
+    trap cleanup_signal EXIT
+
+    DOTFILES_TEST_PAUSE_AFTER_BACKUP=1 \
+        "$INSTALLER" \
+            --install \
+            --backup \
+            --package common \
+            --target "$SIGNAL_HOME" \
+            > "$SIGNAL_LOG" 2>&1 &
+
+    SIGNAL_PID=$!
+
+    paused=false
+
+    for ((i = 0; i < 100; i++)); do
+        if grep -q 'DOTFILES_TEST_BACKUP_PAUSED' "$SIGNAL_LOG"; then
+            paused=true
+            break
+        fi
+
+        if ! kill -0 "$SIGNAL_PID" 2>/dev/null; then
+            break
+        fi
+
+        sleep 0.1
+    done
+
+    if [[ "$paused" != true ]]; then
+        echo "FAIL: SIGTERM test did not reach backup pause"
+        cat "$SIGNAL_LOG"
+        exit 1
+    fi
+
+    echo "PASS: Installer paused after backup"
+
+    kill -TERM "$SIGNAL_PID"
+
+    recovered=false
+
+    for ((i = 0; i < 100; i++)); do
+        if grep -q 'Recovery completed successfully' "$SIGNAL_LOG"; then
+            recovered=true
+            break
+        fi
+
+        if ! kill -0 "$SIGNAL_PID" 2>/dev/null; then
+            break
+        fi
+
+        sleep 0.1
+    done
+
+    if [[ "$recovered" != true ]]; then
+        echo "FAIL: SIGTERM recovery did not complete"
+        cat "$SIGNAL_LOG"
+        exit 1
+    fi
+
+    # Wait for the installer to exit, without allowing an indefinite wait.
+    for ((i = 0; i < 100; i++)); do
+        if ! kill -0 "$SIGNAL_PID" 2>/dev/null; then
+            break
+        fi
+        sleep 0.1
+    done
+
+    if kill -0 "$SIGNAL_PID" 2>/dev/null; then
+        echo "FAIL: Installer did not exit after SIGTERM"
+        kill -KILL "$SIGNAL_PID" 2>/dev/null || true
+        wait "$SIGNAL_PID" 2>/dev/null || true
+        SIGNAL_PID=""
+        exit 1
+    fi
+
+    wait "$SIGNAL_PID" 2>/dev/null || true
+    SIGNAL_PID=""
+
+    if [[ -f "$SIGNAL_HOME/.bashrc" &&
+          ! -L "$SIGNAL_HOME/.bashrc" ]] &&
+       grep -qx 'original signal configuration' "$SIGNAL_HOME/.bashrc"; then
+        echo "PASS: SIGTERM restores original configuration"
+    else
+        echo "FAIL: SIGTERM did not restore original configuration"
+        exit 1
+    fi
+
+    echo "PASS: SIGTERM recovery completed"
+)
+
 echo "All tests passed."

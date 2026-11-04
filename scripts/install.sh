@@ -6,6 +6,10 @@ PACKAGES_DIR="$REPO_DIR/packages"
 TARGET_DIR="$HOME"
 BACKUP_DIR=""
 ACTION="install"
+ALLOW_HOME=false
+INSTALL_IN_PROGRESS=false
+RECOVERY_IN_PROGRESS=false
+RECOVERY_READY=false
 CUSTOM_DESKTOP=""
 CUSTOM_DISTRO=""
 DRY_RUN=true
@@ -14,6 +18,7 @@ INCLUDE_APPEARANCE=true
 BACKUP=false
 PREEXISTING_LINKS=()
 CUSTOM_PACKAGES=()
+ACTIVE_PACKAGES=()
 
 detect_distro() {
     local os_release="${1:-/etc/os-release}"
@@ -121,6 +126,9 @@ parse_args() {
                 CUSTOM_PACKAGES+=("$2")
                 shift
                 ;;
+            --allow-home)
+                ALLOW_HOME=true
+                ;;
             --no-fonts)
                 INCLUDE_FONTS=false
                 ;;
@@ -149,6 +157,7 @@ Options:
   --distro NAME     Select pop-os, fedora, bazzite, cachyos, or none
   --desktop NAME    Select cosmic, gnome, kde, or none
   --package NAME    Select a package (repeatable)
+  --allow-home      Explicitly permit changes to the real HOME
   --no-fonts        Exclude fonts
   --no-appearance   Exclude appearance
   --target DIR      Set installation target (default: HOME)
@@ -164,6 +173,47 @@ EOF
         esac
         shift
     done
+}
+
+check_target_authorization() {
+    local home_dir
+
+    home_dir="$(cd -- "$HOME" && pwd -P)" || return 1
+
+    if [[ "$DRY_RUN" == false &&
+          "$TARGET_DIR" == "$home_dir" &&
+          "$ALLOW_HOME" != true ]]; then
+        echo "Error: Modifying HOME requires --allow-home." >&2
+        return 1
+    fi
+}
+
+handle_install_interrupt() {
+    local signal="$1"
+
+    trap - INT TERM HUP
+
+    echo "Installation interrupted by $signal." >&2
+
+    if [[ "$INSTALL_IN_PROGRESS" == true &&
+        "$RECOVERY_READY" == true &&
+        "$RECOVERY_IN_PROGRESS" == false ]]; then
+        RECOVERY_IN_PROGRESS=true
+
+        if ! recover_failed_installation "${ACTIVE_PACKAGES[@]}"; then
+            echo "CRITICAL: Automatic recovery incomplete." >&2
+        fi
+    fi
+
+    exit 1
+}
+
+clear_install_traps() {
+    INSTALL_IN_PROGRESS=false
+    RECOVERY_IN_PROGRESS=false
+    ACTIVE_PACKAGES=()
+    RECOVERY_READY=false
+    trap - INT TERM HUP
 }
 
 run_stow() {
@@ -184,22 +234,31 @@ run_stow() {
         options+=(--simulate)
         printf '\nGNU Stow dry-run:\n'
     else
-        if [[ "$TARGET_DIR" == "$(cd -- "$HOME" && pwd -P)" ]]; then
-            echo "Error: Installing into HOME is disabled during development." >&2
+        check_target_authorization || return 1
+
+        ACTIVE_PACKAGES=("${packages[@]}")
+        INSTALL_IN_PROGRESS=true
+
+        trap 'handle_install_interrupt INT' INT
+        trap 'handle_install_interrupt TERM' TERM
+        trap 'handle_install_interrupt HUP' HUP
+
+        BACKUP_DIR=""
+
+        if ! snapshot_stow_links "${packages[@]}"; then
+            echo "Error: Could not snapshot existing symlinks. Installation aborted." >&2
+            clear_install_traps
             return 1
         fi
 
-        BACKUP_DIR=""
-        if ! snapshot_stow_links "${packages[@]}"; then
-            echo "Error: Could not snapshot existing symlinks. Installation aborted." >&2
-            return 1
-        fi
+        RECOVERY_READY=true
 
         if [[ "$BACKUP" == true ]]; then
             printf '\nBacking up conflicting files:\n'
 
             if ! backup_stow_conflicts "${packages[@]}"; then
                 echo "Error: Backup failed. Installation aborted." >&2
+                clear_install_traps
                 return 1
             fi
         fi
@@ -208,15 +267,20 @@ run_stow() {
     fi
 
     if stow "${options[@]}" -- "${packages[@]}"; then
+        clear_install_traps
         return 0
     fi
 
     echo "Error: GNU Stow installation failed." >&2
 
     if [[ "$DRY_RUN" == false ]]; then
+        RECOVERY_IN_PROGRESS=true
+
         if ! recover_failed_installation "${packages[@]}"; then
             echo "Error: Automatic recovery was incomplete." >&2
         fi
+
+        clear_install_traps
     fi
 
     return 1
@@ -327,6 +391,7 @@ backup_stow_conflicts() {
     fi
 
     backup_dir="$(create_backup_dir)" || return 1
+    BACKUP_DIR="$backup_dir"
 
     for conflict in "${conflicts[@]}"; do
         if ! is_safe_relative_path "$conflict" ||
@@ -353,9 +418,15 @@ backup_stow_conflicts() {
 
         moved+=("$conflict")
         printf 'Backed up: %s\n' "$conflict"
+
+        if [[ "${DOTFILES_TEST_PAUSE_AFTER_BACKUP:-0}" == "1" ]]; then
+            echo "DOTFILES_TEST_BACKUP_PAUSED" >&2
+            while :; do
+                sleep 1
+            done
+        fi
     done
 
-    BACKUP_DIR="$backup_dir"
     printf 'Backup directory: %s\n' "$BACKUP_DIR"
 }
 
@@ -638,10 +709,7 @@ run_unstow() {
     if [[ "$DRY_RUN" == true ]]; then
         options+=(--simulate)
     else
-        if [[ "$TARGET_DIR" == "$(cd -- "$HOME" && pwd -P)" ]]; then
-            echo "Error: Uninstallation into your real HOME is disabled during development." >&2
-            return 1
-        fi
+        check_target_authorization || return 1
     fi
 
     printf '\nGNU Stow uninstallation:\n'

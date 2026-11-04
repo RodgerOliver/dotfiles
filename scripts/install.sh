@@ -738,4 +738,6 @@ main() {
     fi
 }
 
-main "$@"
+if [[ "${DOTFILES_TEST_SOURCE_ONLY:-0}" != "1" ]]; then
+    main "$@"
+fi

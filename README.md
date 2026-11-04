@@ -185,6 +185,27 @@ git diff --check
 
 All installation and uninstallation tests should use isolated directories under `/tmp` until direct home-directory deployment has been reviewed and enabled.
 
+### Automated Tests
+
+Run the installer test suite:
+
+```bash
+./tests/test_install.sh
+```
+
+The test suite covers:
+
+- Distribution and desktop selection
+- Explicit package selection
+- Invalid arguments
+- Dry-run safety
+- Installation and uninstallation
+- Conflicting files and backups
+- Successful and incomplete recovery
+- End-to-end installation failure recovery
+
+All filesystem-changing tests use isolated temporary directories.
+
 ## License
 
 No license has been specified for this repository.

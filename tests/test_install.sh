@@ -639,4 +639,107 @@ echo "Testing SIGTERM interruption recovery..."
     echo "PASS: SIGTERM recovery completed"
 )
 
+echo "Testing copy installation method..."
+
+COPY_HOME="$TEST_ROOT/copy-home"
+mkdir -p "$COPY_HOME/.config/terminator"
+
+printf 'original terminator config\n' \
+    > "$COPY_HOME/.config/terminator/config"
+
+# Dry-run must not modify files.
+"$INSTALLER" \
+    --dry-run \
+    --method copy \
+    --package terminal \
+    --target "$COPY_HOME" > /dev/null
+
+if grep -qx 'original terminator config' \
+    "$COPY_HOME/.config/terminator/config"; then
+    echo "PASS: Copy dry-run preserves existing files"
+else
+    echo "FAIL: Copy dry-run modified files"
+    exit 1
+fi
+
+# Real copy installation requires backups.
+if "$INSTALLER" \
+    --install \
+    --method copy \
+    --package terminal \
+    --target "$COPY_HOME" > /dev/null 2>&1; then
+    echo "FAIL: Copy installation succeeded without --backup"
+    exit 1
+fi
+
+echo "PASS: Copy installation requires backups"
+
+# Install the terminal package.
+if ! "$INSTALLER" \
+    --install \
+    --method copy \
+    --backup \
+    --package terminal \
+    --target "$COPY_HOME" > /dev/null; then
+    echo "FAIL: Copy installation"
+    exit 1
+fi
+
+EXPECTED_CONFIG="$REPO_DIR/packages/terminal/.config/terminator/config"
+INSTALLED_CONFIG="$COPY_HOME/.config/terminator/config"
+
+if [[ -f "$INSTALLED_CONFIG" &&
+      ! -L "$INSTALLED_CONFIG" ]] &&
+   cmp -s "$EXPECTED_CONFIG" "$INSTALLED_CONFIG"; then
+    echo "PASS: Copy installation creates regular configuration files"
+else
+    echo "FAIL: Copied configuration differs from source"
+    exit 1
+fi
+
+if grep -Rq 'original terminator config' \
+    "$COPY_HOME/.dotfiles-backups"; then
+    echo "PASS: Copy installation preserves original configuration"
+else
+    echo "FAIL: Original configuration was not backed up"
+    exit 1
+fi
+
+# Reject symlinked destination directories.
+COPY_EXTERNAL="$TEST_ROOT/copy-external"
+COPY_SYMLINK_HOME="$TEST_ROOT/copy-symlink-home"
+
+mkdir -p "$COPY_EXTERNAL" "$COPY_SYMLINK_HOME"
+ln -s "$COPY_EXTERNAL" "$COPY_SYMLINK_HOME/.config"
+
+if "$INSTALLER" \
+    --install \
+    --method copy \
+    --backup \
+    --package terminal \
+    --target "$COPY_SYMLINK_HOME" > /dev/null 2>&1; then
+    echo "FAIL: Copy installation accepted symlinked destination"
+    exit 1
+fi
+
+if [[ -L "$COPY_SYMLINK_HOME/.config" ]] &&
+   [[ ! -e "$COPY_EXTERNAL/terminator/config" ]]; then
+    echo "PASS: Copy installation rejects symlinked destinations"
+else
+    echo "FAIL: Copy installation modified symlinked destination"
+    exit 1
+fi
+
+# Copy-mode uninstallation is not supported yet.
+if "$INSTALLER" \
+    --uninstall \
+    --method copy \
+    --package terminal \
+    --target "$COPY_HOME" > /dev/null 2>&1; then
+    echo "FAIL: Copy-mode uninstall unexpectedly succeeded"
+    exit 1
+fi
+
+echo "PASS: Copy-mode uninstall is rejected"
+
 echo "All tests passed."

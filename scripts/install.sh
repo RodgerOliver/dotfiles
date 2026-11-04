@@ -6,6 +6,7 @@ PACKAGES_DIR="$REPO_DIR/packages"
 TARGET_DIR="$HOME"
 BACKUP_DIR=""
 ACTION="install"
+INSTALL_METHOD="stow"
 ALLOW_HOME=false
 INSTALL_IN_PROGRESS=false
 RECOVERY_IN_PROGRESS=false
@@ -129,6 +130,24 @@ parse_args() {
             --allow-home)
                 ALLOW_HOME=true
                 ;;
+            --method)
+                if (($# < 2)); then
+                    echo "Error: --method requires a value." >&2
+                    exit 1
+                fi
+
+                case "$2" in
+                    stow|copy)
+                        INSTALL_METHOD="$2"
+                        ;;
+                    *)
+                        echo "Error: Unsupported installation method: $2" >&2
+                        exit 1
+                        ;;
+                esac
+
+                shift
+                ;;
             --no-fonts)
                 INCLUDE_FONTS=false
                 ;;
@@ -158,6 +177,7 @@ Options:
   --desktop NAME    Select cosmic, gnome, kde, or none
   --package NAME    Select a package (repeatable)
   --allow-home      Explicitly permit changes to the real HOME
+  --method METHOD   Installation method: stow (default) or copy
   --no-fonts        Exclude fonts
   --no-appearance   Exclude appearance
   --target DIR      Set installation target (default: HOME)
@@ -696,6 +716,227 @@ recover_failed_installation() {
     echo "Recovery completed successfully."
 }
 
+enumerate_copy_package() {
+    local package="$1"
+    local output="$2"
+
+    if ! find "$PACKAGES_DIR/$package" \
+        -mindepth 1 \
+        -print0 > "$output"; then
+        echo "Error: Cannot enumerate package: $package" >&2
+        return 1
+    fi
+}
+
+validate_copy_source_links() {
+    local package root link target resolved list_file
+    local failed=false
+
+    list_file="$(mktemp)" || return 1
+
+    for package in "$@"; do
+        root="$(realpath -e -- "$PACKAGES_DIR/$package")" || {
+            rm -f -- "$list_file"
+            return 1
+        }
+
+        if ! find "$PACKAGES_DIR/$package" -type l -print0 > "$list_file"; then
+            echo "Error: Failed to enumerate source symlinks: $package" >&2
+            rm -f -- "$list_file"
+            return 1
+        fi
+
+        while IFS= read -r -d '' link; do
+            target="$(readlink -- "$link")" || {
+                rm -f -- "$list_file"
+                return 1
+            }
+
+            if [[ "$target" == /* ]]; then
+                echo "Error: Absolute source symlink: $link" >&2
+                failed=true
+                continue
+            fi
+
+            resolved="$(realpath -m -- "$(dirname -- "$link")/$target")" || {
+                rm -f -- "$list_file"
+                return 1
+            }
+
+            if [[ "$resolved" != "$root/"* ]]; then
+                echo "Error: Source symlink escapes package: $link" >&2
+                failed=true
+            fi
+        done < "$list_file"
+    done
+
+    rm -f -- "$list_file"
+    [[ "$failed" == false ]]
+}
+
+validate_copy_destinations() {
+    local package source relative destination list_file
+    local failed=false
+
+    list_file="$(mktemp)" || return 1
+
+    for package in "$@"; do
+        if ! enumerate_copy_package "$package" "$list_file"; then
+            rm -f -- "$list_file"
+            return 1
+        fi
+        while IFS= read -r -d '' source; do
+            relative="${source#"$PACKAGES_DIR/$package/"}"
+
+            case "${relative##*/}" in
+                .gitkeep|.stow-local-ignore)
+                    continue
+                    ;;
+            esac
+
+            if ! is_safe_relative_path "$relative"; then
+                echo "Error: Unsafe package path: $relative" >&2
+                failed=true
+                continue
+            fi
+
+            destination="$TARGET_DIR/$relative"
+
+            if has_symlinked_parent "$relative"; then
+                echo "Error: Symlinked destination parent: $relative" >&2
+                failed=true
+                continue
+            fi
+
+            if [[ -L "$destination" ]]; then
+                echo "Error: Destination is a symlink: $relative" >&2
+                failed=true
+                continue
+            fi
+
+            if [[ -d "$source" && -e "$destination" &&
+                  ! -d "$destination" ]]; then
+                echo "Error: Destination is not a directory: $relative" >&2
+                failed=true
+                continue
+            fi
+            done < "$list_file"
+    done
+
+    rm -f -- "$list_file"
+    [[ "$failed" == false ]]
+}
+
+validate_copy_overlaps() {
+    local package source relative type previous
+    local -A seen=()
+
+    for package in "$@"; do
+        while IFS= read -r -d '' source; do
+            relative="${source#"$PACKAGES_DIR/$package/"}"
+
+            case "${relative##*/}" in
+                .gitkeep|.stow-local-ignore) continue ;;
+            esac
+
+            if ! is_safe_relative_path "$relative"; then
+                echo "Error: Unsafe source path: $relative" >&2
+                return 1
+            fi
+
+            if [[ -d "$source" && ! -L "$source" ]]; then
+                type="directory"
+            elif [[ -L "$source" ]]; then
+                type="symlink"
+            elif [[ -f "$source" ]]; then
+                type="file"
+            else
+                echo "Error: Unsupported source type: $relative" >&2
+                return 1
+            fi
+
+            if [[ -n "${seen[$relative]+exists}" ]]; then
+                previous="${seen[$relative]}"
+
+                if [[ "$type" != "directory" ||
+                      "$previous" != "directory" ]]; then
+                    echo "Error: Package destination collision: $relative" >&2
+                    return 1
+                fi
+            fi
+
+            seen["$relative"]="$type"
+        done < <(
+            find "$PACKAGES_DIR/$package" -mindepth 1 -print0
+        )
+    done
+
+    return 0
+}
+
+run_copy() {
+    local package source
+    local -a packages=("$@")
+    local -a options=(
+        --archive
+        --no-perms
+        --no-owner
+        --no-group
+        --omit-dir-times
+        --verbose
+        --itemize-changes
+        --exclude='.gitkeep'
+        --exclude='.stow-local-ignore'
+    )
+
+    if ! command -v rsync >/dev/null 2>&1; then
+        echo "Error: rsync is required for copy mode." >&2
+        return 1
+    fi
+
+    if ! validate_copy_destinations "${packages[@]}"; then
+        echo "Error: Copy preflight validation failed." >&2
+        return 1
+    fi
+
+    if ! validate_copy_source_links "${packages[@]}"; then
+        echo "Error: Copy source validation failed." >&2
+        return 1
+    fi
+
+    if ! validate_copy_overlaps "${packages[@]}"; then
+        echo "Error: Copy package overlap validation failed." >&2
+        return 1
+    fi
+
+    if [[ "$DRY_RUN" == true ]]; then
+        options+=(--dry-run)
+        printf '\nCopy-mode dry-run:\n'
+    else
+        check_target_authorization || return 1
+
+        if [[ "$BACKUP" != true ]]; then
+            echo "Error: Copy mode requires --backup." >&2
+            return 1
+        fi
+
+        BACKUP_DIR="$(create_backup_dir)" || return 1
+        options+=(--backup "--backup-dir=$BACKUP_DIR")
+
+        printf '\nCopy-mode installation:\n'
+        printf 'Backup directory: %s\n' "$BACKUP_DIR"
+    fi
+
+    for package in "${packages[@]}"; do
+        source="$PACKAGES_DIR/$package/"
+
+        if ! rsync "${options[@]}" -- "$source" "$TARGET_DIR/"; then
+            echo "Error: Failed to copy package: $package" >&2
+            return 1
+        fi
+    done
+}
+
 run_unstow() {
     local -a packages=("$@")
     local -a options=(
@@ -725,6 +966,11 @@ main() {
     local -a packages=(common terminal)
 
     parse_args "$@"
+
+    if [[ "$ACTION" == "uninstall" && "$INSTALL_METHOD" == "copy" ]]; then
+        echo "Error: Copy-mode uninstallation is not implemented yet." >&2
+        return 1
+    fi
 
     if [[ "$ACTION" == "uninstall" && "$BACKUP" == true ]]; then
         echo "Error: --backup cannot be used with --uninstall." >&2
@@ -772,6 +1018,7 @@ main() {
         fi
     done
 
+    printf 'Method:       %s\n' "$INSTALL_METHOD"
     printf 'Distribution: %s\n' "$distro"
     printf 'Desktop:      %s\n' "$desktop"
     printf 'Repository:   %s\n' "$REPO_DIR"
@@ -781,10 +1028,20 @@ main() {
 
     case "$ACTION" in
         install)
-            if ! run_stow "${packages[@]}"; then
-                echo "GNU Stow installation failed." >&2
-                return 1
-            fi
+            case "$INSTALL_METHOD" in
+                stow)
+                    if ! run_stow "${packages[@]}"; then
+                        echo "GNU Stow installation failed." >&2
+                        return 1
+                    fi
+                    ;;
+                copy)
+                    if ! run_copy "${packages[@]}"; then
+                        echo "Copy installation failed." >&2
+                        return 1
+                    fi
+                    ;;
+            esac
             ;;
         uninstall)
             if ! run_unstow "${packages[@]}"; then

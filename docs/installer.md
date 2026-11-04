@@ -25,6 +25,54 @@ mkdir -p /tmp/dotfiles-test
 ./scripts/install.sh --install --target /tmp/dotfiles-test
 ```
 
+
+## Copy installation method
+
+The installer supports two methods:
+
+- `stow` (default): Creates symbolic links using GNU Stow.
+- `copy`: Copies configuration files using rsync.
+
+### Preview a copy installation
+
+```bash
+./scripts/install.sh --dry-run --method copy
+```
+
+### Install using copies
+
+```bash
+./scripts/install.sh --install --method copy --backup --allow-home
+```
+
+### Install into a custom directory
+
+```bash
+./scripts/install.sh --install --method copy --backup --target /path/to/target
+```
+
+### Copy mode behavior
+
+- Requires rsync.
+- Requires `--backup` for actual installations.
+- Stores backups in `.dotfiles-backups/` inside the target directory.
+- Preserves relative symbolic links from packages.
+- Rejects conflicting package destinations.
+- Rejects symlinked destination paths.
+- Does not delete unrelated files.
+- Does not support `--uninstall`.
+
+### Limitations
+
+Copy mode does not currently support automatic rollback.
+
+If installation fails or is interrupted, original files must be
+restored manually from the backup directory.
+
+Newly created files are not backed up.
+
+Use `--allow-home` when installing into your actual home directory.
+
 ## Configuration Selection
 
 By default, the installer selects shared packages and applicable distribution and desktop packages.

@@ -14,34 +14,33 @@ PREEXISTING_LINKS=()
 CUSTOM_PACKAGES=()
 
 detect_distro() {
-    local id="" id_like=""
+    local os_release="${1:-/etc/os-release}"
+    local id=""
 
-    if [[ -r /etc/os-release ]]; then
-        . /etc/os-release
-        id="${ID:-}"
-        id_like="${ID_LIKE:-}"
+    if [[ -r "$os_release" ]]; then
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            case "$line" in
+                ID=*)
+                    id="${line#ID=}"
+                    id="${id%$'\r'}"
+
+                    # Remove matching surrounding quotes.
+                    if [[ "$id" == \"*\" && "$id" == *\" ]] ||
+                       [[ "$id" == \'*\' && "$id" == *\' ]]; then
+                        id="${id:1:${#id}-2}"
+                    fi
+                    break
+                    ;;
+            esac
+        done < "$os_release"
     fi
 
     case "$id" in
-        pop|pop-os)
-            echo "pop-os"
-            ;;
-        fedora)
-            echo "fedora"
-            ;;
-        bazzite)
-            echo "bazzite"
-            ;;
-        cachyos)
-            echo "cachyos"
-            ;;
-        *)
-            case " $id_like " in
-                *" fedora "*) echo "fedora" ;;
-                *" arch "*) echo "cachyos" ;;
-                *) echo "unknown" ;;
-            esac
-            ;;
+        pop|pop-os) echo "pop-os" ;;
+        fedora) echo "fedora" ;;
+        bazzite) echo "bazzite" ;;
+        cachyos) echo "cachyos" ;;
+        *) echo "unknown" ;;
     esac
 }
 

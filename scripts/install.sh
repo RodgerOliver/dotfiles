@@ -7,6 +7,7 @@ TARGET_DIR="$HOME"
 BACKUP_DIR=""
 ACTION="install"
 CUSTOM_DESKTOP=""
+CUSTOM_DISTRO=""
 DRY_RUN=true
 INCLUDE_FONTS=true
 INCLUDE_APPEARANCE=true
@@ -76,6 +77,24 @@ parse_args() {
             --dry-run)
                 DRY_RUN=true
                 ;;
+            --distro)
+                if (($# < 2)) || [[ "$2" == --* ]]; then
+                    echo "Error: --distro requires a value." >&2
+                    exit 1
+                fi
+
+                case "$2" in
+                    pop-os|fedora|bazzite|cachyos|none)
+                        CUSTOM_DISTRO="$2"
+                        ;;
+                    *)
+                        echo "Error: Unsupported distribution: $2" >&2
+                        exit 1
+                        ;;
+                esac
+
+                shift
+                ;;
             --desktop)
                 if (($# < 2)) || [[ "$2" == --* ]]; then
                     echo "Error: --desktop requires a value." >&2
@@ -127,6 +146,7 @@ Options:
   --install         Create symlinks (isolated targets only)
   --uninstall       Remove managed symlinks (isolated targets only)
   --dry-run         Preview installation (default)
+  --distro NAME     Select pop-os, fedora, bazzite, cachyos, or none
   --desktop NAME    Select cosmic, gnome, kde, or none
   --package NAME    Select a package (repeatable)
   --no-fonts        Exclude fonts
@@ -650,7 +670,11 @@ main() {
 
     TARGET_DIR="$(cd -- "$TARGET_DIR" && pwd -P)"
 
-    distro="$(detect_distro)"
+    if [[ -n "$CUSTOM_DISTRO" ]]; then
+        distro="$CUSTOM_DISTRO"
+    else
+        distro="$(detect_distro)"
+    fi
 
     if [[ -n "$CUSTOM_DESKTOP" ]]; then
         desktop="$CUSTOM_DESKTOP"
@@ -663,6 +687,10 @@ main() {
     else
         [[ "$INCLUDE_FONTS" == true ]] && packages+=(fonts)
         [[ "$INCLUDE_APPEARANCE" == true ]] && packages+=(appearance)
+
+        if [[ "$distro" != "unknown" && "$distro" != "none" ]]; then
+            packages+=("distro-$distro")
+        fi
 
         if [[ "$desktop" != "unknown" && "$desktop" != "none" ]]; then
             packages+=("desktop-$desktop")

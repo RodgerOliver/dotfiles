@@ -37,7 +37,6 @@ dotfiles/
 │   ├── distro-fedora/   # Fedora-specific configuration
 │   ├── distro-bazzite/  # Bazzite-specific configuration
 │   └── distro-cachyos/  # CachyOS-specific configuration
-├── distros/             # Distribution-specific setup resources
 ├── machines/            # Machine-specific resources
 ├── scripts/
 │   └── install.sh       # Installation and uninstallation script

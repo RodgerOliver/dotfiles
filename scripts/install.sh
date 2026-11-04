@@ -5,6 +5,7 @@ REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 PACKAGES_DIR="$REPO_DIR/packages"
 TARGET_DIR="$HOME"
 BACKUP_DIR=""
+ACTION="install"
 DRY_RUN=true
 INCLUDE_FONTS=true
 INCLUDE_APPEARANCE=true
@@ -61,6 +62,11 @@ parse_args() {
     while (($#)); do
         case "$1" in
             --install)
+                ACTION="install"
+                DRY_RUN=false
+                ;;
+            --uninstall)
+                ACTION="uninstall"
                 DRY_RUN=false
                 ;;
             --dry-run)
@@ -97,6 +103,7 @@ Usage: ./scripts/install.sh [OPTIONS]
 
 Options:
   --install         Create symlinks (isolated targets only)
+  --uninstall       Remove managed symlinks (isolated targets only)
   --dry-run         Preview installation (default)
   --package NAME    Select a package (repeatable)
   --no-fonts        Exclude fonts
@@ -575,11 +582,43 @@ recover_failed_installation() {
     echo "Recovery completed successfully."
 }
 
+run_unstow() {
+    local -a packages=("$@")
+    local -a options=(
+        --dir="$PACKAGES_DIR"
+        --target="$TARGET_DIR"
+        --no-folding
+        --verbose=2
+        --delete
+    )
+
+    if [[ "$DRY_RUN" == true ]]; then
+        options+=(--simulate)
+    else
+        if [[ "$TARGET_DIR" == "$(cd -- "$HOME" && pwd -P)" ]]; then
+            echo "Error: Uninstallation into your real HOME is disabled during development." >&2
+            return 1
+        fi
+    fi
+
+    printf '\nGNU Stow uninstallation:\n'
+
+    if ! command stow "${options[@]}" -- "${packages[@]}"; then
+        echo "Error: GNU Stow uninstallation failed." >&2
+        return 1
+    fi
+}
+
 main() {
     local distro desktop package
     local -a packages=(common terminal)
 
     parse_args "$@"
+
+    if [[ "$ACTION" == "uninstall" && "$BACKUP" == true ]]; then
+        echo "Error: --backup cannot be used with --uninstall." >&2
+        return 1
+    fi
 
     if [[ ! -d "$TARGET_DIR" ]]; then
         echo "Error: Target directory does not exist: $TARGET_DIR" >&2
@@ -615,15 +654,31 @@ main() {
     printf 'Target:       %s\n' "$TARGET_DIR"
     printf '\nSelected packages:\n'
     printf '  %s\n' "${packages[@]}"
-    if ! run_stow "${packages[@]}"; then
-        echo "GNU Stow operation failed." >&2
-        return 1
-    fi
+
+    case "$ACTION" in
+        install)
+            if ! run_stow "${packages[@]}"; then
+                echo "GNU Stow installation failed." >&2
+                return 1
+            fi
+            ;;
+        uninstall)
+            if ! run_unstow "${packages[@]}"; then
+                echo "GNU Stow uninstallation failed." >&2
+                return 1
+            fi
+            ;;
+        *)
+            echo "Error: Unknown action: $ACTION" >&2
+            return 1
+            ;;
+    esac
 
     if [[ "$DRY_RUN" == true ]]; then
         printf '\nDry-run complete. No files have been changed.\n'
     else
-        printf '\nInstallation complete.\n'
+        printf '\n%s complete.\n' \
+            "$([[ "$ACTION" == "install" ]] && echo "Installation" || echo "Uninstallation")"
     fi
 }
 

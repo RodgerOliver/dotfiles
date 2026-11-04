@@ -6,6 +6,7 @@ PACKAGES_DIR="$REPO_DIR/packages"
 TARGET_DIR="$HOME"
 BACKUP_DIR=""
 ACTION="install"
+CUSTOM_DESKTOP=""
 DRY_RUN=true
 INCLUDE_FONTS=true
 INCLUDE_APPEARANCE=true
@@ -45,14 +46,18 @@ detect_distro() {
 }
 
 detect_desktop() {
-    local desktop="${XDG_CURRENT_DESKTOP:-}"
+    local desktop="${1:-}"
+
+    if [[ -z "$desktop" ]]; then
+        desktop="${XDG_CURRENT_DESKTOP:-${XDG_SESSION_DESKTOP:-}}"
+    fi
 
     desktop="${desktop,,}"
 
-    case "$desktop" in
-        *cosmic*) echo "cosmic" ;;
-        *gnome*) echo "gnome" ;;
-        *kde*|*plasma*) echo "kde" ;;
+    case ":$desktop:" in
+        *:cosmic:*) echo "cosmic" ;;
+        *:gnome:*) echo "gnome" ;;
+        *:kde:*|*:plasma:*) echo "kde" ;;
         *) echo "unknown" ;;
     esac
 }
@@ -70,6 +75,24 @@ parse_args() {
                 ;;
             --dry-run)
                 DRY_RUN=true
+                ;;
+            --desktop)
+                if (($# < 2)) || [[ "$2" == --* ]]; then
+                    echo "Error: --desktop requires a value." >&2
+                    exit 1
+                fi
+
+                case "$2" in
+                    cosmic|gnome|kde|none)
+                        CUSTOM_DESKTOP="$2"
+                        ;;
+                    *)
+                        echo "Error: Unsupported desktop: $2" >&2
+                        exit 1
+                        ;;
+                esac
+
+                shift
                 ;;
             --package)
                 if (($# < 2)) || [[ "$2" == --* ]]; then
@@ -104,6 +127,7 @@ Options:
   --install         Create symlinks (isolated targets only)
   --uninstall       Remove managed symlinks (isolated targets only)
   --dry-run         Preview installation (default)
+  --desktop NAME    Select cosmic, gnome, kde, or none
   --package NAME    Select a package (repeatable)
   --no-fonts        Exclude fonts
   --no-appearance   Exclude appearance
@@ -627,7 +651,12 @@ main() {
     TARGET_DIR="$(cd -- "$TARGET_DIR" && pwd -P)"
 
     distro="$(detect_distro)"
-    desktop="$(detect_desktop)"
+
+    if [[ -n "$CUSTOM_DESKTOP" ]]; then
+        desktop="$CUSTOM_DESKTOP"
+    else
+        desktop="$(detect_desktop)"
+    fi
 
     if ((${#CUSTOM_PACKAGES[@]})); then
         packages=("${CUSTOM_PACKAGES[@]}")
@@ -635,7 +664,7 @@ main() {
         [[ "$INCLUDE_FONTS" == true ]] && packages+=(fonts)
         [[ "$INCLUDE_APPEARANCE" == true ]] && packages+=(appearance)
 
-        if [[ "$desktop" != "unknown" ]]; then
+        if [[ "$desktop" != "unknown" && "$desktop" != "none" ]]; then
             packages+=("desktop-$desktop")
         fi
     fi

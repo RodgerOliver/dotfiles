@@ -963,7 +963,15 @@ run_unstow() {
 
 main() {
     local distro desktop package
-    local -a packages=(common terminal)
+    local -a packages=(
+        common
+        git
+        vim
+        ranger
+        tmux
+        terminator
+        opencode
+    )
 
     parse_args "$@"
 

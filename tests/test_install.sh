@@ -23,12 +23,17 @@ output="$(
         --target "$TARGET" 2>&1
 )"
 
-if [[ "$output" != *"Selected packages:"* ]] ||
-   [[ "$output" != *"  common"* ]] ||
-   [[ "$output" != *"  terminal"* ]]; then
-    echo "FAIL: Default package selection"
+if [[ "$output" != *"Selected packages:"* ]]; then
+    echo "FAIL: Installer did not display selected packages"
     exit 1
 fi
+
+for package in common git vim ranger tmux terminator opencode; do
+    if [[ "$output" != *"  $package"* ]]; then
+        echo "FAIL: Default package missing: $package"
+        exit 1
+    fi
+done
 
 if [[ -e "$TARGET/.bashrc" || -L "$TARGET/.bashrc" ]]; then
     echo "FAIL: Dry-run modified the target"
@@ -82,7 +87,7 @@ echo "Testing explicit package selection..."
 output="$(
     "$INSTALLER" \
         --dry-run \
-        --package terminal \
+        --package terminator \
         --distro none \
         --desktop none \
         --target "$TARGET" 2>&1
@@ -90,7 +95,7 @@ output="$(
 
 selected_packages="${output#*Selected packages:}"
 
-if [[ "$selected_packages" != *"  terminal"* ]] ||
+if [[ "$selected_packages" != *"  terminator"* ]] ||
    [[ "$selected_packages" == *"  common"* ]] ||
    [[ "$selected_packages" == *"  fonts"* ]]; then
     echo "FAIL: Explicit package selection"
@@ -651,7 +656,7 @@ printf 'original terminator config\n' \
 "$INSTALLER" \
     --dry-run \
     --method copy \
-    --package terminal \
+    --package terminator \
     --target "$COPY_HOME" > /dev/null
 
 if grep -qx 'original terminator config' \
@@ -666,7 +671,7 @@ fi
 if "$INSTALLER" \
     --install \
     --method copy \
-    --package terminal \
+    --package terminator \
     --target "$COPY_HOME" > /dev/null 2>&1; then
     echo "FAIL: Copy installation succeeded without --backup"
     exit 1
@@ -674,18 +679,18 @@ fi
 
 echo "PASS: Copy installation requires backups"
 
-# Install the terminal package.
+# Install the terminator package.
 if ! "$INSTALLER" \
     --install \
     --method copy \
     --backup \
-    --package terminal \
+    --package terminator \
     --target "$COPY_HOME" > /dev/null; then
     echo "FAIL: Copy installation"
     exit 1
 fi
 
-EXPECTED_CONFIG="$REPO_DIR/packages/terminal/.config/terminator/config"
+EXPECTED_CONFIG="$REPO_DIR/packages/terminator/.config/terminator/config"
 INSTALLED_CONFIG="$COPY_HOME/.config/terminator/config"
 
 if [[ -f "$INSTALLED_CONFIG" &&
@@ -716,7 +721,7 @@ if "$INSTALLER" \
     --install \
     --method copy \
     --backup \
-    --package terminal \
+    --package terminator \
     --target "$COPY_SYMLINK_HOME" > /dev/null 2>&1; then
     echo "FAIL: Copy installation accepted symlinked destination"
     exit 1
@@ -734,7 +739,7 @@ fi
 if "$INSTALLER" \
     --uninstall \
     --method copy \
-    --package terminal \
+    --package terminator \
     --target "$COPY_HOME" > /dev/null 2>&1; then
     echo "FAIL: Copy-mode uninstall unexpectedly succeeded"
     exit 1
